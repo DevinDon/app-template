@@ -1,0 +1,24 @@
+{
+  "name": "app-client",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The client end of this app.",
+  "scripts": {
+    "build": "tsc && gulp",
+    "pack": "gulp pack",
+    "watch": "echo \"run tsc -w by yourself\" && gulp watch"
+  },
+  "keywords": [
+    "client",
+    "web",
+    "typescript"
+  ],
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify-es": "^1.0.4"
+  },
+  "author": "Devin Don <DevinDon@Foxmail.com>",
+  "license": "MIT"
+}
