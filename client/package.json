@@ -20,5 +20,8 @@
     "gulp-uglify-es": "^1.0.4"
   },
   "author": "Devin Don <DevinDon@Foxmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "pify": "^4.0.1"
+  }
 }
