@@ -1,0 +1,24 @@
+{
+  "name": "app-server",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The server end of this app.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dist": "node dist",
+    "start": "ts-node src",
+    "test": "ts-node test",
+    "watch": "tsc -w"
+  },
+  "keywords": [
+    "server",
+    "nodejs",
+    "typescript"
+  ],
+  "author": "Devin Don <DevinDon@Foxmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "koa-backend-server": "^0.4.8"
+  }
+}
