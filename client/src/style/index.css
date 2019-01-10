@@ -1,0 +1,29 @@
+:root {
+  --color-primary: #209cee;
+  --color-info: #00d1b2;
+  --color-success: #23d160;
+  --color-warning: #ffaa57;
+  --color-error: #ff3860;
+  --color-light: #f5f5f5;
+  --color-dark: #363636;
+  --color-gray: #777777;
+  --transition: 350ms 100ms ease-in-out all;
+}
+
+html {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+html * {
+  transition: var(--transition);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 80vw;
+  min-height: 100vh;
+}
