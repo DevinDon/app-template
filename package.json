@@ -10,6 +10,7 @@
   "scripts": {
     "build": "gulp build",
     "clean": "gulp clean",
+    "install": "cd client && npm i && cd ../server && npm i",
     "pack": "gulp build && gulp pack",
     "pack:only": "gulp pack",
     "start": "gulp",
