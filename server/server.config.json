@@ -9,7 +9,7 @@
     "synchronize": true,
     "logging": true,
     "entities": [
-      "src/entity /**/*.entity.ts"
+      "src/entity/**/*.entity.ts"
     ],
     "migrations": [],
     "subscribers": []
