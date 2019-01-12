@@ -110,7 +110,7 @@ gulp.task('pack', async () => {
     .pipe(gulp.dest('../dist'));
   gulp.src(`${PATH.client.dist}/**/*`)
     .pipe(gulp.dest('../dist/client'));
-  gulp.src('../server/dist/**/*')
+  gulp.src(['../server/dist/**/*', '../server/*.json'])
     .pipe(gulp.dest('../dist/server'));
 });
 
