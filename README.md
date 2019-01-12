@@ -6,9 +6,40 @@ TypeScript Template Porject, with client(web) end and server end.
 
 TypeScript 项目模板, 前端 + 后端.
 
-*Last update: 2018.1.10*
+*Last update: 2018.1.13*
 
-*最后更新: 2018.1.10*
+*最后更新: 2018.1.13*
+
+# Script
+
+*See [gulpfile.js](https://github.com/DevinDon/app-template/blob/master/gulpfile.js) for detail.*
+
+    "build": "gulp build",
+    "clean": "gulp clean",
+    "pack": "gulp build && gulp pack",
+    "pack:only": "gulp pack",
+    "start": "gulp",
+    "watch": "gulp watch"
+
+## Build the app
+
+> `npm run build` or `npm start`
+
+## Clean all dist folder
+
+> `npm run clean`
+
+## Build & pack the app
+
+> `npm run pack`
+
+## Pack the app only
+
+> `npm run pack:only`
+
+## Monitor source code and compile automatically
+
+> `npm run watch`
 
 # Client
 
