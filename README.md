@@ -12,9 +12,9 @@ TypeScript 项目模板, 前端 + 后端.
 
 # Client
 
-The client uses AMD module and TypeScript by default, and packaged by gulp.
+The client uses CommonJS module and TypeScript by default, packaged via gulp and browserify.
 
-客户端默认使用 AMD 模块, 以 TypeScript 为默认语言, 使用 gulp 打包.
+客户端默认使用 CommonJS 模块, 以 TypeScript 为默认语言, 使用 gulp 和 browserify 打包.
 
 Or Angular, my favourite.
 
