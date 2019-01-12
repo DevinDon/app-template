@@ -110,6 +110,8 @@ async function cleanMap() {
   });
 }
 
+gulp.task('clean', cleanDist);
+
 // Watch with source map
 gulp.task('watch', async () => {
   await updateScript();

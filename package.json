@@ -9,8 +9,9 @@
   },
   "scripts": {
     "build": "gulp build",
-    "start": "gulp",
+    "clean": "gulp clean",
     "pack": "gulp build && gulp pack",
+    "start": "gulp",
     "watch": "gulp watch"
   },
   "repository": {
