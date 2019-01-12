@@ -136,7 +136,7 @@ gulp.task('build', async () => {
 gulp.task('pack', async () => {
   gulp.src(PATH.docker.path + '**/*')
     .pipe(gulp.dest(PATH.dist));
-  gulp.src(PATH.client.dist + '**/*.js')
+  gulp.src(PATH.client.dist + '**/*')
     .pipe(gulp.dest(PATH.dist + 'client'));
   gulp.src([PATH.server.dist + '**/*.js', PATH.server.path + '*.json'])
     .pipe(gulp.dest(PATH.dist + 'server'));

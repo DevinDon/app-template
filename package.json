@@ -10,7 +10,7 @@
   "scripts": {
     "build": "gulp build",
     "start": "gulp",
-    "pack": "gulp pack",
+    "pack": "gulp build && gulp pack",
     "watch": "gulp watch"
   },
   "repository": {
