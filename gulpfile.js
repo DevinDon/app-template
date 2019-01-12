@@ -4,6 +4,7 @@ const gulpCSSMin = require('gulp-clean-css');
 const gulpConcat = require('gulp-concat');
 const gulpLess = require('gulp-less');
 const gulpSourceMap = require('gulp-sourcemaps');
+const gulpTypeScript = require('gulp-typescript');
 const gulpUglify = require('gulp-uglify-es');
 
 const browserify = require('browserify');
@@ -14,11 +15,19 @@ const buffer = require('vinyl-buffer');
 /** Source path. */
 const PATH = {
   client: {
-    dist: 'dist'
+    path: 'client/',
+    dist: 'client/dist/',
+    src: 'client/src/'
   },
-  pack: {
-    dist: '../dist'
-  }
+  server: {
+    path: 'server/',
+    dist: 'server/dist/',
+    src: 'server/src/'
+  },
+  docker: {
+    path: 'docker/'
+  },
+  dist: 'dist/'
 };
 
 async function updateScript() {
@@ -26,7 +35,7 @@ async function updateScript() {
     browserify({
       basedir: '.',
       debug: true,
-      entries: ['src/script/index.ts']
+      entries: [PATH.client.src + 'script/index.ts']
     })
       .plugin(tsify)
       .bundle()
@@ -44,34 +53,51 @@ async function updateScript() {
         }
       ))
       .pipe(gulpSourceMap.write('./'))
-      .pipe(gulp.dest(PATH.client.dist))
       .on('end', res)
+      .pipe(gulp.dest(PATH.client.dist));
   });
 }
 
 async function updateStatic() {
-  gulp.src('src/assets/**/*')
-    .pipe(gulp.dest(`${PATH.client.dist}/assets`));
-  gulp.src('src/**/*.html')
+  gulp.src(PATH.client.src + 'assets/**/*')
+    .pipe(gulp.dest(PATH.client.dist + 'assets'));
+  gulp.src(PATH.client.src + '**/*.html')
     .pipe(gulp.dest(PATH.client.dist));
 }
 
 async function updateStyle() {
   return new Promise((res, rej) => {
-    gulp.src('src/style/**/*.less')
+    gulp.src(PATH.client.src + 'style/**/*.less')
       .pipe(gulpSourceMap.init())
       .pipe(gulpLess())
       .pipe(gulpConcat('index.css'))
       .pipe(gulpCSSMin())
       .pipe(gulpSourceMap.write('./'))
-      .pipe(gulp.dest(PATH.client.dist))
-      .on('end', res);
+      .on('end', res)
+      .pipe(gulp.dest(PATH.client.dist));
+  });
+}
+
+async function updateServer() {
+  return new Promise((res, rej) => {
+    gulp.src(PATH.server.src + '**/*')
+      .pipe(gulpTypeScript.createProject(PATH.server.path + 'tsconfig.json')())
+      // .js
+      .on('end', res)
+      .pipe(gulp.dest(PATH.server.dist));
   });
 }
 
 async function cleanDist() {
   return new Promise((res, rej) => {
-    gulp.src(PATH.client.dist, { allowEmpty: true })
+    gulp.src(
+      [
+        PATH.client.dist,
+        PATH.server.dist,
+        PATH.dist
+      ],
+      { allowEmpty: true }
+    )
       .on('end', res)
       .pipe(gulpClean());
   });
@@ -79,7 +105,7 @@ async function cleanDist() {
 
 async function cleanMap() {
   return new Promise((res, rej) => {
-    gulp.src(`${PATH.client.dist}/**/*.map`, { allowEmpty: true })
+    gulp.src(PATH.client.dist + '**/*.map', { allowEmpty: true })
       .on('end', res)
       .pipe(gulpClean());
   });
@@ -90,28 +116,31 @@ gulp.task('watch', async () => {
   await updateScript();
   await updateStatic();
   await updateStyle();
-  gulp.watch('src/script/**/*.ts', updateScript);
-  gulp.watch(['src/assets/**/*', 'src/**/*.html'], updateStatic);
-  gulp.watch('src/style/**/*.less', updateStyle);
+  await updateServer();
+  gulp.watch(PATH.client.src + 'script/**/*.ts', updateScript);
+  gulp.watch([PATH.client.src + 'assets/**/*', PATH.client.src + '**/*.html'], updateStatic);
+  gulp.watch(PATH.client.src + 'style/**/*.less', updateStyle);
+  gulp.watch(PATH.server.src, updateServer);
 });
 
-// Build client without source map
+// Build app without source map, but not pack
 gulp.task('build', async () => {
   await cleanDist();
   await updateScript();
   await updateStatic();
   await updateStyle();
+  await updateServer();
   await cleanMap();
 });
 
-// Pack client, server and docker to /dist folder
+// Build and pack app to /dist folder
 gulp.task('pack', async () => {
-  gulp.src('../docker/**/*')
-    .pipe(gulp.dest('../dist'));
-  gulp.src(`${PATH.client.dist}/**/*`)
-    .pipe(gulp.dest('../dist/client'));
-  gulp.src(['../server/dist/**/*', '../server/*.json'])
-    .pipe(gulp.dest('../dist/server'));
+  gulp.src(PATH.docker.path + '**/*')
+    .pipe(gulp.dest(PATH.dist));
+  gulp.src(PATH.client.dist + '/**/*')
+    .pipe(gulp.dest(PATH.dist + 'client'));
+  gulp.src([PATH.server.dist + '**/*.js', PATH.server.path + '*.json'])
+    .pipe(gulp.dest(PATH.dist + 'server'));
 });
 
-// gulp.task('default', gulp.parallel('build'));
+gulp.task('default', gulp.parallel('build'));

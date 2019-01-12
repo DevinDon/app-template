@@ -3,31 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "description": "The client end of this app.",
-  "scripts": {
-    "build": "gulp build",
-    "start": "gulp",
-    "pack": "gulp pack",
-    "watch": "gulp watch"
-  },
+  "scripts": {},
   "keywords": [
     "client",
     "web",
     "typescript"
   ],
-  "devDependencies": {
-    "browserify": "^16.2.3",
-    "gulp": "^4.0.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-clean-css": "^4.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-less": "^4.0.1",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify-es": "^1.0.4",
-    "tsify": "^4.0.1",
-    "typescript": "^3.2.2",
-    "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0"
-  },
   "author": "Devin Don <DevinDon@Foxmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.2.2"
+  }
 }
