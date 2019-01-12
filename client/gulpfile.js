@@ -15,6 +15,9 @@ const buffer = require('vinyl-buffer');
 const PATH = {
   client: {
     dist: 'dist'
+  },
+  pack: {
+    dist: '../dist'
   }
 };
 
@@ -101,4 +104,14 @@ gulp.task('build', async () => {
   await cleanMap();
 });
 
-gulp.task('default', gulp.parallel('build'));
+// Pack client, server and docker to /dist folder
+gulp.task('pack', async () => {
+  gulp.src('../docker/**/*')
+    .pipe(gulp.dest('../dist'));
+  gulp.src(`${PATH.client.dist}/**/*`)
+    .pipe(gulp.dest('../dist/client'));
+  gulp.src('../server/dist/**/*')
+    .pipe(gulp.dest('../dist/server'));
+});
+
+// gulp.task('default', gulp.parallel('build'));
