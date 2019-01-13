@@ -12,6 +12,10 @@
   "author": "Devin Don <DevinDon@Foxmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/pixi.js": "^4.8.6",
     "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "pixi.js": "^4.8.5"
   }
 }
