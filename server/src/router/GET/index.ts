@@ -37,7 +37,7 @@ export const GET: RouterPaths = {
     path: '/',
     ware: index,
     cors: undefined, // It is no need to set with GET method.
-    withoutPrefix: true
+    withoutPrefix: false
   }
 };
 
