@@ -1,0 +1,24 @@
+{
+  "database": {
+    "type": "mysql",
+    "host": "app-database",
+    "port": 3306,
+    "username": "app",
+    "password": "app",
+    "database": "app",
+    "synchronize": true,
+    "logging": true,
+    "entities": [
+      "dist/entity/**/*.entity.js"
+    ],
+    "migrations": [],
+    "subscribers": []
+  },
+  "session": {
+    "name": "session.id",
+    "redis": {
+      "host": "app-redis",
+      "port": 6379
+    }
+  }
+}
