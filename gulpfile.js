@@ -53,6 +53,7 @@ async function updateScript() {
         }
       ))
       .pipe(gulpSourceMap.write('./'))
+      .on('error', e => (console.error(e), res()))
       .on('end', res)
       .pipe(gulp.dest(PATH.client.dist));
   });
@@ -73,6 +74,7 @@ async function updateStyle() {
       .pipe(gulpConcat('index.css'))
       .pipe(gulpCSSMin())
       .pipe(gulpSourceMap.write('./'))
+      .on('error', e => (console.error(e), res()))
       .on('end', res)
       .pipe(gulp.dest(PATH.client.dist));
   });
@@ -82,6 +84,7 @@ async function updateServer() {
   return new Promise((res, rej) => {
     gulp.src(PATH.server.src + '**/*.ts')
       .pipe(gulpTypeScript.createProject(PATH.server.path + 'tsconfig.json')())
+      .on('error', e => (console.error(e), res()))
       .on('end', res)
       .pipe(gulp.dest(PATH.server.dist));
   });
