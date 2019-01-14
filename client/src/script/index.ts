@@ -1,1 +1,3 @@
-console.log('Hello, world!');
+import Game from './Game';
+
+const game = new Game();
