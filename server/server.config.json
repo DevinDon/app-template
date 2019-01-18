@@ -9,7 +9,7 @@
     "synchronize": true,
     "logging": true,
     "entities": [
-      "dist/entity/**/*.entity.js"
+      "entity/**/*.entity.js"
     ],
     "migrations": [],
     "subscribers": []
