@@ -3,9 +3,9 @@ version: '3'
 services:
 
   # MySQL, backend, expose 3306
-  app-database:
+  app-mysql:
     image: mysql:5
-    container_name: app-database
+    container_name: app-mysql
     environment:
       MYSQL_ROOT_PASSWORD: app
       MYSQL_DATABASE: app
@@ -17,6 +17,21 @@ services:
       - "3306"
     volumes:
       - ./config/mysql:/etc/mysql:ro
+
+  # PostgreSQL, backend ,expose 5432
+  app-postgres:
+    image: postgres
+    container_name: app-postgres
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: app
+    networks:
+      - backend
+    expose:
+      - "5432"
+    # volumes:
+    #   - ./config/postgresql:/etc/postgresql:ro
 
   # Redis, backend, expose 6379
   app-redis:
@@ -34,10 +49,10 @@ services:
     build: ./server
     container_name: app-server
     depends_on:
-      - app-database
+      - app-mysql
       - app-redis
     links:
-      - app-database
+      - app-mysql
       - app-redis
     networks:
       - frontend
