@@ -1,7 +1,24 @@
 {
-  "router": {
-    "static": {
-      "path": "../client/dist"
+  "database": {
+    "type": "postgres",
+    "host": "app-postgres",
+    "port": 5432,
+    "username": "app",
+    "password": "app",
+    "database": "app",
+    "synchronize": true,
+    "logging": true,
+    "entities": [
+      "dist/entity/**/*.entity.js"
+    ],
+    "migrations": [],
+    "subscribers": []
+  },
+  "session": {
+    "name": "session.id",
+    "redis": {
+      "host": "app-redis",
+      "port": 6379
     }
   }
 }
