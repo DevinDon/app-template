@@ -71,6 +71,8 @@ services:
     depends_on:
       - app-server
     links:
+      - app-postgres
+      - app-redis
       - app-server
     networks:
       - frontend
@@ -79,7 +81,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "13306:3306"
+      # - "13306:3306"
       - "15432:5432"
       - "16379:6379"
     volumes:
