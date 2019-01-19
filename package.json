@@ -43,7 +43,7 @@
     "gulp-typescript": "^5.0.0",
     "gulp-uglify-es": "^1.0.4",
     "tsify": "^4.0.1",
-    "typescript": "^3.2.2",
+    "typescript": "^3.2.4",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }
