@@ -1,29 +1,34 @@
 # APP Template
 
+Web application with Angular & Koa.
+
 # Description
 
-TypeScript Template Porject, with client(web) end and server end.
+TypeScript Template Porject, with client(Angular) end and server(Koa) end.
 
-TypeScript 项目模板, 前端 + 后端.
+TypeScript 项目模板, 前端 Angular + 后端 Koa.
 
-*Last update: 2018.1.13*
+*Last update: 2018.1.20*
 
-*最后更新: 2018.1.13*
+*最后更新: 2018.1.20*
 
 # Script
 
 *See [gulpfile.js](https://github.com/DevinDon/app-template/blob/master/gulpfile.js) for detail.*
 
-    "build": "gulp build",
-    "clean": "gulp clean",
-    "pack": "gulp build && gulp pack",
-    "pack:only": "gulp pack",
-    "start": "gulp",
-    "watch": "gulp watch"
+```json
+"scripts": {
+  "build": "cd client && npm run build && cd ../server && npm run build",
+  "clean": "gulp clean",
+  "install": "cd client && npm i && cd ../server && npm i",
+  "pack": "npm run build && gulp pack",
+  "pack:only": "gulp pack"
+}
+```
 
 ## Build the app
 
-> `npm run build` or `npm start`
+> `npm run build`
 
 ## Clean all dist folder
 
@@ -37,25 +42,21 @@ TypeScript 项目模板, 前端 + 后端.
 
 > `npm run pack:only`
 
-## Monitor source code and compile automatically
-
-> `npm run watch`
-
 # Client
 
-The client uses CommonJS module and TypeScript by default, packaged via gulp and browserify.
+Build client with Angular.
 
-客户端默认使用 CommonJS 模块, 以 TypeScript 为默认语言, 使用 gulp 和 browserify 打包.
-
-Or Angular, my favourite.
-
-或者使用 Angular, 我的最爱.
+使用 Angular 构建客户端.
 
 # Server
 
 The server uses KBS as the backend server by default.
 
 服务器端默认使用基于 Koa2 封装的 [Koa Backend Server, KBS](https://www.npmjs.com/package/koa-backend-server) 作为后端服务器.
+
+With database, redis(session) and router support.
+
+提供数据库, 持久会话以及路由管理支持.
 
 # Deploy
 
