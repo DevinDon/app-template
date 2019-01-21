@@ -1,3 +1,1 @@
-export interface Config {
-  [index: string]: any;
-}
+export type TrackByFunction = (index: number, item: number) => any;
