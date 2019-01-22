@@ -1,5 +1,5 @@
-import { TrackByFunction } from '../type';
+import { TrackByFunction } from '@angular/core';
 
-export function trackBy(property: string): TrackByFunction {
-  return (index: number, item: number) => item[property];
+export function trackBy<T = any>(property: string): TrackByFunction<T> {
+  return (index: number, item: T) => item[property];
 }
