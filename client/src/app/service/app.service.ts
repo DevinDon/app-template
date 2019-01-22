@@ -6,6 +6,7 @@ import { trackBy } from '../other/function';
 })
 export class AppService {
 
+  public trackBy = trackBy;
   public trackByID: TrackByFunction<any> = trackBy('id');
 
   constructor() { }
