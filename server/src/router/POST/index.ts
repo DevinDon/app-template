@@ -1,7 +1,6 @@
 import { Middleware } from 'koa';
-import { RouterPaths } from 'koa-backend-server';
-import { Response } from '../../type';
-import { allowAllCORS } from '../config';
+import { CORS_ALLOW_ALL, RouterPaths } from 'koa-backend-server';
+import { Response } from '../../@types';
 
 interface REQ {
   name: string;
@@ -29,7 +28,7 @@ export const POST: RouterPaths = {
   'index': {
     path: '/',
     ware: index,
-    cors: allowAllCORS,
+    cors: CORS_ALLOW_ALL,
     withoutPrefix: false // default to false
   }
 };

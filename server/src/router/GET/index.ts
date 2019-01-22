@@ -1,6 +1,6 @@
 import { Middleware } from 'koa';
 import { RouterPaths } from 'koa-backend-server';
-import { Response } from '../../type';
+import { Response } from '../../@types';
 
 /** This type is only use in this file, do not export it. */
 type RES = Response<{
