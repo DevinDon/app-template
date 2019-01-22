@@ -33,15 +33,15 @@ a, .link {
   &:not(.button) {
     &::before {
       position: absolute;
-      bottom: -0.05rem;
+      top: -0.05rem;
       left: 0;
       content: "";
       background-color: @colorGray;
-      width: 100%;
+      width: 75%;
       height: 0.05rem;
     }
     &:hover::before {
-      width: 0;
+      width: 25%;
     }
     &::after {
       position: absolute;
@@ -50,7 +50,7 @@ a, .link {
       content: "";
       background-color: @colorGray;
       width: 0;
-      height: 0.1rem;
+      height: 0.15rem;
     }
     &:hover::after {
       width: 100%;
