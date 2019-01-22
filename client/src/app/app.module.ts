@@ -6,10 +6,12 @@ import { DialogModule } from './module/dialog.module';
 import { MatModule } from './module/mat.module';
 import { OtherModule } from './module/other.module';
 import { AppRoutingModule } from './module/routing.module';
+import { FillWithPipe } from './other/pipe/fill-with.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FillWithPipe
   ],
   imports: [
     BrowserModule,
