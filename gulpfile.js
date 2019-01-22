@@ -1,7 +1,5 @@
 const gulp = require('gulp');
 const gulpClean = require('gulp-clean');
-const gulpTypeScript = require('gulp-typescript');
-const execSync = require('child_process').execSync;
 
 /** Source path. */
 const PATH = {
