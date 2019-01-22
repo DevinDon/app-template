@@ -41,6 +41,7 @@
 }
 
 body {
+  font-size: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -48,15 +49,19 @@ body {
 app-root {
   min-width: 80vw;
   min-height: 100vh;
-  .flexColumn();
+  .flexColumn(space-between, flex-start);
   font-family: 'Consolas', '微软雅黑 Light', '微软雅黑', '黑体', sans-serif;
   overflow-x: hidden;
   overflow-y: auto;
   color: @colorDark;
 }
 
+router-outlet {
+  flex-grow: 1;
+}
+
 a, a:visited, a:hover, a:link, a:active {
-  color: inherit;
+  color: @colorGray;
   cursor: pointer;
   text-decoration-line: none;
 }
@@ -64,14 +69,26 @@ a, a:visited, a:hover, a:link, a:active {
 a, .link {
   position: relative;
   &:not(.button) {
+    &::before {
+      position: absolute;
+      bottom: -0.05rem;
+      left: 0;
+      content: '';
+      background-color: @colorGray;
+      width: 100%;
+      height: 0.05rem;
+    }
+    &:hover::before {
+      width: 0;
+    }
     &::after {
       position: absolute;
       bottom: -0.15rem;
       left: 0;
       content: '';
-      background-color: @colorDark;
+      background-color: @colorGray;
       width: 0;
-      height: 0.15rem;
+      height: 0.1rem;
     }
     &:hover::after {
       width: 100%;
