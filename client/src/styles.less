@@ -15,15 +15,11 @@ body {
 app-root {
   min-width: 80vw;
   min-height: 100vh;
-  .flexColumn(space-between, flex-start);
+  .flexColumn(flex-start, flex-start);
   font-family: "Consolas", "微软雅黑 Light", "微软雅黑", "黑体", sans-serif;
   overflow-x: hidden;
   overflow-y: auto;
   color: @colorDark;
-}
-
-router-outlet {
-  flex-grow: 1;
 }
 
 a, a:visited, a:hover, a:link, a:active {
