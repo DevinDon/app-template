@@ -1,12 +1,13 @@
 import { Middleware } from 'koa';
 import { RouterPaths } from 'koa-backend-server';
 import { Response } from '../../@types';
+import { generateResponse } from '../config';
 
 /** This type is only use in this file, do not export it. */
-type RES = Response<{
+interface Content {
   ip: string;
   query: any;
-}>;
+}
 
 /**
  * The root path of GET method, this is a example.
@@ -16,18 +17,11 @@ type RES = Response<{
  */
 const index: Middleware = async (c, next) => {
   /** GET params. */
-  const request = c.request.query;
+  const query = c.request.query;
   /** Client ip, or remote ip. */
   const ip = c.request.ip;
   // Set response.
-  (c.body as RES) = {
-    id: Date.now(),
-    status: true,
-    content: {
-      ip,
-      query: request
-    }
-  };
+  c.body = generateResponse<Content>({ ip, query });
   // To next middleware.
   await next();
 };

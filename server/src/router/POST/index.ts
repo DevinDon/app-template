@@ -1,8 +1,9 @@
 import { Middleware } from 'koa';
 import { CORS_ALLOW_ALL, RouterPaths } from 'koa-backend-server';
 import { Response } from '../../@types';
+import { generateResponse } from '../config';
 
-interface REQ {
+interface Content {
   name: string;
   email: string;
 }
@@ -11,15 +12,11 @@ type RES = Response<any>;
 
 const index: Middleware = async (c, next) => {
   /** POST request data, do not trust client. */
-  const request: REQ = {
+  const content: Content = {
     name: c.request.body.name || '',
     email: c.request.body.email || ''
   };
-  (c.body as RES) = {
-    id: Date.now(),
-    status: Boolean(request.name && request.email),
-    content: request
-  };
+  c.body = generateResponse<Content>(content);
   await next();
 };
 
