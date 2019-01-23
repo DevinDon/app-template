@@ -26,12 +26,13 @@ app-root {
 }
 
 a, a:visited, a:hover, a:link, a:active {
-  color: @colorGray;
+  color: inherit;
   cursor: pointer;
   text-decoration-line: none;
 }
 
-a, .link {
+a.link {
+  color: @colorPrimary;
   position: relative;
   &:not(.button) {
     &:hover {
