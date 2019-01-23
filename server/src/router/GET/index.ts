@@ -23,6 +23,7 @@ const index: Middleware = async (c, next) => {
   c.body = generateResponse<Content>({ content });
 };
 
+/** All GET router. */
 export const GET: RouterPaths = {
   'index path for example': {
     path: '/',
