@@ -10,5 +10,5 @@ export interface Response<T = string> {
   /** Business status, not http status. */
   status: boolean;
   /** Response content. */
-  content: T;
+  content?: T;
 }
