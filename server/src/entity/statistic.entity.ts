@@ -9,7 +9,7 @@ export class Statistic extends BaseEntity {
   @Column({
     type: 'text'
   })
-  who: string;
+  how: string;
 
   @Column({
     type: 'timestamp'
@@ -24,7 +24,7 @@ export class Statistic extends BaseEntity {
   @Column({
     type: 'text'
   })
-  how: string;
+  who: string;
 
 }
 

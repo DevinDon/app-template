@@ -1,12 +1,10 @@
 import { Middleware } from 'koa';
-import { RouterPaths } from 'koa-backend-server';
+import { CORS_ALLOW_ALL, RouterPaths } from 'koa-backend-server';
+import { Statistic } from '../../entity';
 import { generateResponse } from '../function';
 
 /** This type is only use in this file, do not export it. */
-interface Content {
-  ip: string;
-  query: any;
-}
+type Content = Partial<Statistic>;
 
 /**
  * The root path of GET method, this is a example.
@@ -15,22 +13,22 @@ interface Content {
  * @param {Promise<any>} next Call after all done.
  */
 const index: Middleware = async (c, next) => {
-  /** GET params. */
-  const query = c.request.query;
-  /** Client ip, or remote ip. */
-  const ip = c.request.ip;
-  // Set response.
-  c.body = generateResponse<Content>({ content: { ip, query } });
-  // To next middleware.
-  await next();
+  next();
+  const content: Content = {
+    who: c.request.ip,
+    when: new Date().toISOString(),
+    where: c.request.path,
+    how: c.request.method.toUpperCase()
+  };
+  c.body = generateResponse<Content>({ content });
 };
 
 export const GET: RouterPaths = {
-  'index': {
+  'index path for example': {
     path: '/',
     ware: index,
-    cors: undefined, // It is no need to set with GET method.
-    withoutPrefix: false
+    cors: CORS_ALLOW_ALL,
+    withoutPrefix: false // default to false, if true this path will be set without prefix
   }
 };
 

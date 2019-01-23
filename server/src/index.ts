@@ -1,5 +1,6 @@
 import { Server } from 'koa-backend-server';
 import PATH from './router';
+import { statistic } from './ware';
 
 const server = new Server({
   router: {
@@ -7,5 +8,7 @@ const server = new Server({
     version: 'v1'
   }
 });
+// // Use example statistic middleware
+// server.use(statistic);
 
 server.listen();
