@@ -31,7 +31,7 @@ a, a:visited, a:hover, a:link, a:active {
   text-decoration-line: none;
 }
 
-a.link {
+.link {
   color: @colorPrimary;
   position: relative;
   &:not(.button) {
@@ -51,6 +51,23 @@ a.link {
       background-color: @colorGray;
       width: 100%;
     }
+  }
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.button {
+  background-color: @colorPrimary;
+  border-radius: 0.2rem;
+  color: @colorLight;
+  margin: 0.25rem 0.5rem;
+  padding: 0.5rem 1rem;
+  &:hover {
+    margin: 0;
+    padding: 0.75rem 1.5rem;
   }
 }
 
