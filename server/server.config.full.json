@@ -1,8 +1,9 @@
 {
-  "router": {
-    "static": {
-      "path": "../client/dist"
-    }
+  "address": {
+    "portocol": "HTTP",
+    "host": "0.0.0.0",
+    "port": 8080,
+    "ssl": ""
   },
   "database": {
     "type": "postgres",
@@ -18,6 +19,12 @@
     ],
     "migrations": [],
     "subscribers": []
+  },
+  "router": {
+    "static": {
+      "path": "../client/dist"
+    },
+    "version": "v1"
   },
   "session": {
     "name": "session.id",
