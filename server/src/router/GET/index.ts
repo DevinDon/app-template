@@ -1,7 +1,6 @@
 import { Middleware } from 'koa';
 import { RouterPaths } from 'koa-backend-server';
-import { Response } from '../../@types';
-import { generateResponse } from '../config';
+import { generateResponse } from '../function';
 
 /** This type is only use in this file, do not export it. */
 interface Content {
@@ -21,7 +20,7 @@ const index: Middleware = async (c, next) => {
   /** Client ip, or remote ip. */
   const ip = c.request.ip;
   // Set response.
-  c.body = generateResponse<Content>({ ip, query });
+  c.body = generateResponse<Content>({ content: { ip, query } });
   // To next middleware.
   await next();
 };
