@@ -4,7 +4,7 @@ import { trackBy } from '../other/function';
 @Injectable({
   providedIn: 'root'
 })
-export class AppService {
+export class APPService {
 
   public trackBy = trackBy;
   public trackByID: TrackByFunction<any> = trackBy('id');
