@@ -10,20 +10,20 @@ body {
   font-size: 1rem;
   margin: 0;
   padding: 0;
-}
-
-app-root {
-  min-width: 80vw;
-  min-height: 100vh;
-  .flexColumn(flex-start, flex-start);
-  font-family: "Consolas", "微软雅黑 Light", "微软雅黑", "黑体", sans-serif;
-  overflow-x: hidden;
-  overflow-y: auto;
-  color: @colorDark;
-  > * {
-    width: 100%;
+  > app-root {
+    min-width: 80vw;
+    min-height: 100vh;
+    .flexColumn(flex-start, flex-start);
+    font-family: "Consolas", "微软雅黑 Light", "微软雅黑", "黑体", sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: @colorDark;
+    > * {
+      width: 100%;
+    }
   }
 }
+
 
 a, a:visited, a:hover, a:link, a:active {
   color: inherit;
