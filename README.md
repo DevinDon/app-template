@@ -8,9 +8,9 @@ TypeScript Template Porject, with client(Angular) end and server(Koa) end.
 
 TypeScript 项目模板, 前端 Angular + 后端 Koa.
 
-*Last update: 2018.1.20*
+*Last update: 2018.1.24*
 
-*最后更新: 2018.1.20*
+*最后更新: 2018.1.24*
 
 # Script
 
@@ -18,17 +18,29 @@ TypeScript 项目模板, 前端 Angular + 后端 Koa.
 
 ```json
 "scripts": {
-  "build": "cd client && npm run build && cd ../server && npm run build",
+  "build": "npm run build:client && npm run build:server",
+  "build:client": "cd client && npm run build",
+  "build:server": "cd server && npm run build",
   "clean": "gulp clean",
   "install": "cd client && npm i && cd ../server && npm i",
   "pack": "npm run build && gulp pack",
-  "pack:only": "gulp pack"
+  "pack:only": "gulp pack",
+  "pack:arm32v7": "npm run build && gulp pack:arm32v7",
+  "pack:arm32v7:only": "gulp pack:arm32v7"
 }
 ```
 
 ## Build the app
 
-> `npm run build`
+> `npm run build:client && npm run build:server`
+
+### Build client
+
+> `npm run build:client`
+
+### Build server
+
+> `npm run build:server`
 
 ## Clean all dist folder
 
@@ -41,6 +53,12 @@ TypeScript 项目模板, 前端 Angular + 后端 Koa.
 ## Pack the app only
 
 > `npm run pack:only`
+
+## Build and pack for ARM32V7(Raspberry Pi)
+
+> `npm run pack:arm32v7`
+
+##
 
 # Client
 
