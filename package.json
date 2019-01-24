@@ -1,9 +1,8 @@
 {
   "name": "app",
   "version": "0.0.0",
-  "description": "APP package.",
+  "description": "Application with client and server.",
   "private": true,
-  "main": "index.js",
   "directories": {
     "doc": "docs"
   },
