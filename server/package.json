@@ -9,7 +9,8 @@
     "dist": "node dist",
     "start": "ts-node src",
     "test": "ts-node test/src",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "dev": "npm start dev"
   },
   "keywords": [
     "server",
@@ -19,7 +20,7 @@
   "author": "Devin Don <DevinDon@Foxmail.com>",
   "license": "MIT",
   "dependencies": {
-    "koa-backend-server": "^0.5.2"
+    "koa-backend-server": "^0.5.3"
   },
   "devDependencies": {}
 }
