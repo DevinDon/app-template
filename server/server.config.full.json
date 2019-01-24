@@ -3,7 +3,10 @@
     "portocol": "HTTP",
     "host": "0.0.0.0",
     "port": 8080,
-    "ssl": ""
+    "ssl": {
+      "cert": "CERT content here if HTTP2/S",
+      "key": "KEY content here if HTTP2/S"
+    }
   },
   "database": {
     "type": "postgres",
