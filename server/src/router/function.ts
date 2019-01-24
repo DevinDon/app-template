@@ -16,7 +16,7 @@ export function generateResponse<T = any>(response: ResponseInput<T>): Response<
     status: {
       id: (status && status.id) || String(Date.now()),
       code: (status && status.code) || content ? 0 : 1,
-      message: (status && status.message) || 'No message.',
+      message: (status && status.message) || '',
       date: new Date().toISOString()
     },
     content
