@@ -8,29 +8,32 @@ TypeScript Template Porject, with client(Angular) end and server(Koa) end.
 
 TypeScript 项目模板, 前端 Angular + 后端 Koa.
 
-*Last update: 2018.1.24*
+*Last update: 2018.1.26*
 
-*最后更新: 2018.1.24*
+*最后更新: 2018.1.26*
 
 # Script
 
-*See [gulpfile.js](https://github.com/DevinDon/app-template/blob/master/gulpfile.js) for detail.*
-
+**package.json**
 ```json
 "scripts": {
   "build": "npm run build:client && npm run build:server",
   "build:client": "cd client && npm run build",
   "build:server": "cd server && npm run build",
-  "clean": "gulp clean",
-  "install": "cd client && npm i && cd ../server && npm i",
-  "pack": "npm run build && gulp pack",
-  "pack:only": "gulp pack",
-  "pack:arm32v7": "npm run build && gulp pack:arm32v7",
-  "pack:arm32v7:only": "gulp pack:arm32v7"
+  "clean": "node tool clean",
+  "install": "npm run install:client && npm run install:server",
+  "install:client": "cd client && npm i",
+  "install:server": "cd server && npm i",
+  "pack": "npm run build && npm run pack:only",
+  "pack:only": "node tool pack"
 }
 ```
 
-## Build the app
+*See [tool.js](https://github.com/DevinDon/app-template/blob/master/tool.js) for detail.*
+
+## Build
+
+*Build this application.*
 
 > `npm run build:client && npm run build:server`
 
@@ -42,23 +45,29 @@ TypeScript 项目模板, 前端 Angular + 后端 Koa.
 
 > `npm run build:server`
 
-## Clean all dist folder
+## Clean
 
 > `npm run clean`
 
-## Build & pack the app
+## Pack
+
+*Build and pack this application.*
 
 > `npm run pack`
 
-## Pack the app only
+### Pack only
+
+*Pack this application only.*
 
 > `npm run pack:only`
 
-## Build and pack for ARM32V7(Raspberry Pi)
+### Pack for other arch
 
-> `npm run pack:arm32v7`
+*For example, the **ARM32V7(RaspberryPi)**.*
 
-##
+> `npm run pack arm32v7`
+
+> `npm run pack:only arm32v7`
 
 # Client
 
