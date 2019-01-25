@@ -10,12 +10,12 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "cd client && npm run build",
     "build:server": "cd server && npm run build",
-    "clean": "gulp clean",
+    "clean": "node tool clean",
     "install": "npm run install:client && npm run install:server",
     "install:client": "cd client && npm i",
     "install:server": "cd server && npm i",
-    "pack": "npm run build && gulp pack",
-    "pack:only": "gulp pack"
+    "pack": "npm run build && npm run pack:only",
+    "pack:only": "node tool pack"
   },
   "repository": {
     "type": "git",
