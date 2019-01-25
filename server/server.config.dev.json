@@ -1,4 +1,13 @@
 {
+  "address": {
+    "portocol": "HTTP",
+    "host": "0.0.0.0",
+    "port": 8080,
+    "ssl": {
+      "cert": "CERT content here if HTTP2/S",
+      "key": "KEY content here if HTTP2/S"
+    }
+  },
   "database": {
     "type": "postgres",
     "host": "app-postgres",
@@ -9,10 +18,16 @@
     "synchronize": true,
     "logging": true,
     "entities": [
-      "dist/entity/**/*.entity.js"
+      "entity/**/*.entity.ts"
     ],
     "migrations": [],
     "subscribers": []
+  },
+  "router": {
+    "static": {
+      "path": "../client/dist"
+    },
+    "version": "v1"
   },
   "session": {
     "name": "session.id",

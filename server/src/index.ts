@@ -4,8 +4,7 @@ import { statistic } from './ware';
 
 const server = new Server({
   router: {
-    paths: PATH,
-    version: 'v1'
+    paths: PATH
   }
 });
 // // Use example statistic middleware
