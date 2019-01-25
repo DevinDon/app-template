@@ -33,42 +33,21 @@ a, a:visited, a:hover, a:link, a:active {
 .link {
   color: @colorPrimary;
   position: relative;
-  &:not(.button) {
-    &:hover {
-      color: @colorGray;
-    }
-    &::after {
-      background-color: @colorPrimary;
-      bottom: -0.15rem;
-      content: "";
-      height: 0.15rem;
-      left: 0;
-      position: absolute;
-      width: 0;
-    }
-    &:hover::after {
-      background-color: @colorGray;
-      width: 100%;
-    }
-  }
-}
-
-button {
-  border: none;
-  cursor: pointer;
-}
-
-.button {
-  background-color: @colorPrimary;
-  border-radius: 0.2rem;
-  color: @colorLight;
-  margin: 0.25rem 0.5rem;
-  padding: 0.5rem 1rem;
-  text-align: center;
-  vertical-align: middle;
   &:hover {
-    margin: 0;
-    padding: 0.75rem 1.5rem;
+    color: @colorGray;
+  }
+  &::after {
+    background-color: @colorPrimary;
+    bottom: -0.15rem;
+    content: "";
+    height: 0.15rem;
+    left: 0;
+    position: absolute;
+    width: 0;
+  }
+  &:hover::after {
+    background-color: @colorGray;
+    width: 100%;
   }
 }
 
