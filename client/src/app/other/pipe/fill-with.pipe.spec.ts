@@ -4,9 +4,8 @@ describe('FillWithPipe', () => {
 
   let pipe: FillWithPipe;
 
-  beforeAll(done => {
+  beforeAll(() => {
     pipe = new FillWithPipe();
-    done();
   });
 
   it('should create an instance', done => {

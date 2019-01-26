@@ -10,15 +10,12 @@ describe('DialogAlertComponent', () => {
     TestBed.configureTestingModule({
       declarations: [DialogAlertComponent]
     }).compileComponents();
-  }));
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(DialogAlertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  }));
 
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 
