@@ -6,8 +6,12 @@ import { trackBy } from '../other/function';
 })
 export class APPService {
 
-  public trackBy = trackBy;
-  public trackByID: TrackByFunction<any> = trackBy('id');
+  /** APP title. */
+  title = 'Client';
+  /** TrackByFunction. */
+  trackBy = trackBy;
+  /** TrackByIDFunction. */
+  trackByID: TrackByFunction<any> = trackBy('id');
 
   constructor() { }
 
