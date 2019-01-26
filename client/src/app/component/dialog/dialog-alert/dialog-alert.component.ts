@@ -9,7 +9,6 @@ export class DialogAlertComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }
