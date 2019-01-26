@@ -25,7 +25,10 @@ TypeScript 项目模板, 前端 Angular + 后端 Koa.
   "install:client": "cd client && npm i",
   "install:server": "cd server && npm i",
   "pack": "npm run build && npm run pack:only",
-  "pack:only": "node tool pack"
+  "pack:only": "node tool pack",
+  "update": "npm up --dev && npm run update:client && npm run update:server",
+  "update:client": "cd client && npm run update",
+  "update:server": "cd server && npm run update"
 }
 ```
 
@@ -68,6 +71,12 @@ TypeScript 项目模板, 前端 Angular + 后端 Koa.
 > `npm run pack arm32v7`
 
 > `npm run pack:only arm32v7`
+
+## Update package version
+
+*Update all package`
+
+> `npm run update`
 
 # Client
 

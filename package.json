@@ -15,7 +15,10 @@
     "install:client": "cd client && npm i",
     "install:server": "cd server && npm i",
     "pack": "npm run build && npm run pack:only",
-    "pack:only": "node tool pack"
+    "pack:only": "node tool pack",
+    "update": "npm up --dev && npm run update:client && npm run update:server",
+    "update:client": "cd client && npm run update",
+    "update:server": "cd server && npm run update"
   },
   "repository": {
     "type": "git",
