@@ -1,27 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppComponent } from './component/app/app.component';
+import { APPComponent } from './component/app.component';
 import { DialogModule } from './module/dialog.module';
 import { MatModule } from './module/mat.module';
 import { OtherModule } from './module/other.module';
-import { AppRoutingModule } from './module/routing.module';
+import { APPRoutingModule } from './module/routing.module';
 import { FillWithPipe } from './other/pipe/fill-with.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    APPComponent,
     FillWithPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    APPRoutingModule,
     BrowserAnimationsModule,
     MatModule,
     OtherModule,
     DialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [APPComponent]
 })
 export class AppModule { }
