@@ -9,8 +9,8 @@
     "dist": "node dist",
     "start": "ts-node src",
     "test": "ts-node test/src",
-    "watch": "tsc -w",
-    "dev": "npm start dev"
+    "update": "npm up --dev",
+    "watch": "tsc -w"
   },
   "keywords": [
     "server",
