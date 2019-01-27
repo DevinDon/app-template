@@ -7,6 +7,8 @@ import { MatModule } from './module/mat.module';
 import { OtherModule } from './module/other.module';
 import { APPRoutingModule } from './module/routing.module';
 import { FillWithPipe } from './other/pipe/fill-with.pipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { FillWithPipe } from './other/pipe/fill-with.pipe';
     BrowserAnimationsModule,
     MatModule,
     OtherModule,
-    DialogModule
+    DialogModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [APPComponent]
