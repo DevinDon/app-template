@@ -1,14 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { APPService } from './app.service';
 
-describe('AppService', () => {
+describe('APPService', () => {
 
   let service: APPService;
 
-  beforeEach(done => {
+  beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.get(APPService);
-    done();
   });
 
   it('should be created', done => {
