@@ -1,5 +1,6 @@
 {
   "index": "/index.html",
+  "appData": "Tour of Hero.",
   "assetGroups": [
     {
       "name": "app",
@@ -12,7 +13,8 @@
           "/*.js"
         ]
       }
-    }, {
+    },
+    {
       "name": "assets",
       "installMode": "lazy",
       "updateMode": "prefetch",
