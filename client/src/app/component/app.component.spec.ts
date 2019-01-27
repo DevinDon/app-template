@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { APPService } from 'src/app/service/app.service';
+import { PWALogService } from '../service/pwa/pwa-log.service';
+import { StubPWALogService } from '../service/pwa/pwa-log.service.spec';
 import { APPComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -17,7 +19,8 @@ describe('AppComponent', () => {
         APPComponent
       ],
       providers: [
-        APPService
+        APPService,
+        { provide: PWALogService, useClass: StubPWALogService }
       ]
     }).compileComponents();
     fixture = TestBed.createComponent(APPComponent);

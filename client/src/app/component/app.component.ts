@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { APPService } from 'src/app/service/app.service';
+import { PWALogService } from '../service/pwa/pwa-log.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,8 @@ import { APPService } from 'src/app/service/app.service';
 export class APPComponent {
 
   constructor(
-    public app: APPService
+    public app: APPService,
+    private pwaLogService: PWALogService
   ) { }
 
 }
