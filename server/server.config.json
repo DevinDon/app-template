@@ -25,7 +25,7 @@
   },
   "router": {
     "static": {
-      "path": "dist"
+      "path": "client"
     },
     "version": "v1"
   },
