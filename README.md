@@ -8,9 +8,9 @@ TypeScript Template Porject, with client(Angular) end and server(Koa) end.
 
 TypeScript 项目模板, 前端 Angular + 后端 Koa.
 
-*Last update: 2018.1.26*
+*Last update: 2018.1.28*
 
-*最后更新: 2018.1.26*
+*最后更新: 2018.1.28*
 
 # Script
 
