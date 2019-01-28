@@ -78,6 +78,12 @@ services:
       - frontend
       - backend
       - hostnet
+    expose:
+      - "80"
+      - "443"
+      # - "3306"
+      - "5432"
+      - "6379"
     ports:
       - "80:80"
       - "443:443"
