@@ -1,0 +1,9 @@
+@import "function.scss";
+
+mat-toolbar.header {
+  @include flexRow();
+}
+
+mat-toolbar.footer {
+  @include flexRow(center);
+}
