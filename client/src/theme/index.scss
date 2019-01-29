@@ -7,22 +7,44 @@
   )
 );
 
-$light-primary: mat-palette($mat-cyan);
-$light-accent: mat-palette($mat-light-blue);
-$light-warn: mat-palette($mat-red);
-$light-theme: mat-light-theme($light-primary, $light-accent, $light-warn);
-
-.use-light-theme {
-  @include angular-material-theme($light-theme);
+.light-blue-theme {
+  @include angular-material-theme(
+    mat-light-theme(
+      mat-palette($mat-blue),
+      mat-palette($mat-deep-orange),
+      mat-palette($mat-red)
+    )
+  );
 }
 
-$dark-primary: mat-palette($mat-teal);
-$dark-accent: mat-palette($mat-indigo);
-$dark-warn: mat-palette($mat-deep-orange);
-$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+.dark-cyan-theme {
+  @include angular-material-theme(
+    mat-dark-theme(
+      mat-palette($mat-cyan),
+      mat-palette($mat-pink),
+      mat-palette($mat-red)
+    )
+  );
+}
 
-.use-dark-theme {
-  @include angular-material-theme($dark-theme);
+.light-indigo-theme {
+  @include angular-material-theme(
+    mat-light-theme(
+      mat-palette($mat-indigo),
+      mat-palette($mat-deep-orange),
+      mat-palette($mat-red)
+    )
+  );
+}
+
+.dark-teal-theme {
+  @include angular-material-theme(
+    mat-dark-theme(
+      mat-palette($mat-teal),
+      mat-palette($mat-pink),
+      mat-palette($mat-red)
+    )
+  );
 }
 
 body {
