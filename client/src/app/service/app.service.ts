@@ -54,6 +54,9 @@ export class APPService {
    * @returns {void} Void.
    */
   changeTheme(name: keyof ThemeList): void {
+    if (document.body.classList.contains(name)) {
+      return;
+    }
     document.body.classList.value = 'mat-app-background';
     document.body.classList.add(name);
     document.head.querySelector('[name=theme-color]').setAttribute('content', this.themes[name].color);
