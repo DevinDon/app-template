@@ -1,7 +1,11 @@
 @import '~@angular/material/theming';
-@import 'global.scss';
+@import 'function.scss';
 
-@include mat-core();
+@include mat-core(
+  mat-typography-config(
+    $font-family: '"Consolas", "微软雅黑 Light", "微软雅黑", "黑体", sans-serif'
+  )
+);
 
 $light-primary: mat-palette($mat-cyan);
 $light-accent: mat-palette($mat-light-blue);
@@ -19,4 +23,16 @@ $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
 .use-dark-theme {
   @include angular-material-theme($dark-theme);
+}
+
+body {
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+  font-family: "Consolas", "微软雅黑 Light", "微软雅黑", "黑体", sans-serif;
+  > app-root {
+    @include flexColumn(flex-start, flex-start);
+    min-width: 80vw;
+    min-height: 100vh;
+  }
 }

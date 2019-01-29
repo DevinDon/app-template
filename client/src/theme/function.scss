@@ -1,0 +1,25 @@
+@mixin flexColumn($justify: space-between, $align: center) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin flexRow($justify: space-between, $align: center) {
+  display: flex;
+  flex-direction: row;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin transition($during: 300ms) {
+  transition: $during 50ms ease-in-out all;
+}
+
+@mixin boxShadow() {
+  box-shadow: 5px 5px 15px -7px rgba(0,0,0,.3);
+}
+
+@mixin textShadow() {
+  text-shadow: 0.5px 0.5px 0.5px rgba(0,0,0,.2);
+}
