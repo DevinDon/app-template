@@ -1,6 +1,18 @@
 import { Injectable, TrackByFunction } from '@angular/core';
 import { trackBy } from '../other/function';
 
+interface Theme {
+  name: string;
+  color: string;
+}
+
+interface ThemeList {
+  'light-blue-theme': Theme;
+  'dark-cyan-theme': Theme;
+  'light-indigo-theme': Theme;
+  'dark-teal-theme': Theme;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,12 +25,27 @@ export class APPService {
   /** TrackByIDFunction. */
   trackByID: TrackByFunction<any> = trackBy('id');
 
-  private themeColor: HTMLElement;
-  private bodyCSS: DOMTokenList;
+  private themes: ThemeList;
 
   constructor() {
-    this.themeColor = document.head.querySelector('[name=theme-color]');
-    this.bodyCSS = document.body.classList;
+    this.themes = {
+      'dark-cyan-theme': {
+        name: 'dark-cyan-theme',
+        color: '#00bcd4'
+      },
+      'dark-teal-theme': {
+        name: 'dark-teal-theme',
+        color: '#009688'
+      },
+      'light-blue-theme': {
+        name: 'light-blue-theme',
+        color: '#2196f3'
+      },
+      'light-indigo-theme': {
+        name: 'light-indigo-theme',
+        color: '#3f51b5'
+      }
+    };
   }
 
   /**
@@ -26,9 +53,10 @@ export class APPService {
    * @param {string} name Theme name.
    * @returns {void} Void.
    */
-  changeTheme(name: 'light-blue-theme' | 'dark-cyan-theme' | 'light-indigo-theme' | 'dark-teal-theme'): void {
-    this.bodyCSS.remove('light-blue-theme', 'dark-cyan-theme', 'light-indigo-theme', 'dark-teal-theme');
-    this.bodyCSS.add(name);
+  changeTheme(name: keyof ThemeList): void {
+    document.body.classList.value = 'mat-app-background';
+    document.body.classList.add(name);
+    document.head.querySelector('[name=theme-color]').setAttribute('content', this.themes[name].color);
     console.log(`Theme changed to ${name}.`);
   }
 
