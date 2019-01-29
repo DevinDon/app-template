@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { APPService } from 'src/app/service/app.service';
+import { MatModule } from '../module/mat.module';
 import { APPComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -11,7 +14,10 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        NoopAnimationsModule,
+        RouterTestingModule,
+        MatModule,
+        FormsModule
       ],
       declarations: [
         APPComponent
@@ -31,11 +37,6 @@ describe('AppComponent', () => {
 
   it('should have as title "Client"', () => {
     expect(component.app.title).toEqual('Client');
-  });
-
-  it('should render title in a p.welcome tag', () => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('p.welcome').textContent).toContain('Welcome to Client!');
   });
 
 });
