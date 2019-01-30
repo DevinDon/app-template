@@ -2,6 +2,15 @@
 
 Web application with Angular & Koa.
 
+# Feature
+
+- Docker compose support, just one command to deploy.
+- Multi-platform support, such as Raspberry Pi(ARM32v7) and x86/64.
+- Database(MySQL, POSTGRESQL and so on) support, via TypeORM.
+- Session support, with redis storage.
+- PWA support, via Angular PWA.
+- Angular Material support, and the custome theme template.
+
 # Description
 
 TypeScript Template Porject, with client(Angular) end and server(Koa) end.
@@ -74,7 +83,7 @@ TypeScript 项目模板, 前端 Angular + 后端 Koa.
 
 ## Update package version
 
-*Update all package`
+*Update all package.*
 
 > `npm run update`
 
