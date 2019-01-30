@@ -1,6 +1,6 @@
 # Client
 
-App client with Angular.
+APP client with Angular.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.2.
 
