@@ -12,8 +12,8 @@
   align-items: $align;
 }
 
-@mixin transition($during: 300ms) {
-  transition: $during 50ms ease-in-out all;
+@mixin transition($during: 300ms, $delay: 25ms) {
+  transition: $during $delay ease-in-out all;
 }
 
 @mixin boxShadow() {

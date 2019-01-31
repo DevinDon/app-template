@@ -1,12 +1,78 @@
 @import '~@angular/material/theming';
 @import 'function.scss';
 
+/** Background palette for light themes. */
+$mat-light-theme-background: (
+  status-bar: map_get($mat-grey, 300),
+  app-bar:    map_get($mat-grey, 100),
+  background: white,
+  hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+  card:       white,
+  dialog:     white,
+  disabled-button: rgba(black, 0.12),
+  raised-button: white,
+  focused-button: $dark-focused,
+  selected-button: map_get($mat-grey, 300),
+  selected-disabled-button: map_get($mat-grey, 400),
+  disabled-button-toggle: map_get($mat-grey, 200),
+  unselected-chip: map_get($mat-grey, 300),
+  disabled-list-option: map_get($mat-grey, 200),
+);
+
+// Set font family.
 @include mat-core(
   mat-typography-config(
     $font-family: '"Consolas", "微软雅黑 Light", "微软雅黑", "黑体", sans-serif'
   )
 );
 
+/** White color, #fff. */
+$color-white: (
+  100: white,
+  500: white,
+  700: white,
+  contrast: (
+    100: $dark-primary-text,
+    500: $dark-primary-text,
+    700: $dark-primary-text
+  )
+);
+
+/** Light coless theme, white + blue + red. */
+.light-coless-theme {
+  @include angular-material-theme(
+    mat-light-theme(
+      mat-palette($color-white),
+      mat-palette($mat-blue),
+      mat-palette($mat-red)
+    )
+  );
+}
+
+/** Black color, #303030. */
+$color-black: (
+  100: #444444,
+  500: #303030,
+  700: #161616,
+  contrast: (
+    100: $light-primary-text,
+    500: $light-primary-text,
+    700: $light-primary-text
+  )
+);
+
+/** Dark coless theme, black + teal + red. */
+.dark-coless-theme {
+  @include angular-material-theme(
+    mat-dark-theme(
+      mat-palette($color-black),
+      mat-palette($mat-teal),
+      mat-palette($mat-red)
+    )
+  );
+}
+
+/** Light blue theme, blue + deep orange + red. */
 .light-blue-theme {
   @include angular-material-theme(
     mat-light-theme(
@@ -17,6 +83,7 @@
   );
 }
 
+/** Dark cyan theme, cyan + pink + red. */
 .dark-cyan-theme {
   @include angular-material-theme(
     mat-dark-theme(
@@ -27,6 +94,7 @@
   );
 }
 
+/** Light indigo theme, indigo + deep orange + red. */
 .light-indigo-theme {
   @include angular-material-theme(
     mat-light-theme(
@@ -37,6 +105,7 @@
   );
 }
 
+/** Dark teal theme, teal + pink + red. */
 .dark-teal-theme {
   @include angular-material-theme(
     mat-dark-theme(
@@ -47,6 +116,7 @@
   );
 }
 
+// Set global styles.
 body {
   font-size: 1rem;
   margin: 0;

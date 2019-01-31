@@ -1,12 +1,10 @@
 import { Injectable, TrackByFunction } from '@angular/core';
+import { Theme } from '../other/@types';
 import { trackBy } from '../other/function';
 
-interface Theme {
-  name: string;
-  color: string;
-}
-
 interface ThemeList {
+  'light-coless-theme': Theme;
+  'dark-coless-theme': Theme;
   'light-blue-theme': Theme;
   'dark-cyan-theme': Theme;
   'light-indigo-theme': Theme;
@@ -29,6 +27,10 @@ export class APPService {
 
   constructor() {
     this.themes = {
+      'dark-coless-theme': {
+        name: 'dark-coless-theme',
+        color: '#303030'
+      },
       'dark-cyan-theme': {
         name: 'dark-cyan-theme',
         color: '#00bcd4'
@@ -40,6 +42,10 @@ export class APPService {
       'light-blue-theme': {
         name: 'light-blue-theme',
         color: '#2196f3'
+      },
+      'light-coless-theme': {
+        name: 'light-coless-theme',
+        color: '#fafafa'
       },
       'light-indigo-theme': {
         name: 'light-indigo-theme',
@@ -54,9 +60,6 @@ export class APPService {
    * @returns {void} Void.
    */
   changeTheme(name: keyof ThemeList): void {
-    if (document.body.classList.contains(name)) {
-      return;
-    }
     document.body.classList.value = 'mat-app-background';
     document.body.classList.add(name);
     document.head.querySelector('[name=theme-color]').setAttribute('content', this.themes[name].color);
