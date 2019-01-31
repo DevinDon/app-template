@@ -127,4 +127,7 @@ body {
     min-width: 80vw;
     min-height: 100vh;
   }
+  .mat-raised-button, .mat-button {
+    border-radius: 2px;
+  }
 }
