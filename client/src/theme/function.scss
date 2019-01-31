@@ -16,8 +16,12 @@
   transition: $during $delay ease-in-out all;
 }
 
-@mixin boxShadow() {
-  box-shadow: 5px 5px 15px -7px rgba(0,0,0,.3);
+@function boxShadow($direction: bottom) {
+  $shadow: 1px 3px 10px -5px rgba(0, 0, 0, 0.3);
+  @if $direction != bottom {
+    $shadow: 1px -3px 10px -5px rgba(0, 0, 0, 0.3);
+  }
+  @return $shadow;
 }
 
 @mixin textShadow() {
