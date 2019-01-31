@@ -1,6 +1,7 @@
 import { Injectable, TrackByFunction } from '@angular/core';
 import { Theme } from '../other/@types';
 import { trackBy } from '../other/function';
+import { FillWithPipe } from '../other/pipe/fill-with.pipe';
 
 interface ThemeList {
   'light-coless-theme': Theme;
@@ -16,6 +17,8 @@ interface ThemeList {
 })
 export class APPService {
 
+  private fillWithPipe: FillWithPipe;
+
   /** APP title. */
   title = 'Client';
   /** TrackByFunction. */
@@ -26,6 +29,7 @@ export class APPService {
   private themes: ThemeList;
 
   constructor() {
+    this.fillWithPipe = new FillWithPipe();
     this.themes = {
       'dark-coless-theme': {
         name: 'dark-coless-theme',
@@ -64,6 +68,18 @@ export class APPService {
     document.body.classList.add(name);
     document.head.querySelector('[name=theme-color]').setAttribute('content', this.themes[name].color);
     console.log(`Theme changed to ${name}.`);
+  }
+
+  /**
+   * Get time, format HH:MM:SS.
+   * @returns {string} Time string.
+   */
+  getTime(): string {
+    const time = new Date();
+    const hour = this.fillWithPipe.transform(time.getHours(), 2);
+    const minute = this.fillWithPipe.transform(time.getMinutes(), 2);
+    const second = this.fillWithPipe.transform(time.getSeconds(), 2);
+    return `${hour}:${minute}:${second}`;
   }
 
 }
