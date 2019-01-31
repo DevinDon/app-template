@@ -1,0 +1,68 @@
+<div fxFlex="grow" fxFlexFill fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="8px">
+  <h1>{{app.title}}</h1>
+  <p class="welcome">Welcome to
+    <mat-form-field style="text-align: center;">
+      <input matInput placeholder="Title" [(ngModel)]="app.title">
+    </mat-form-field>
+    !
+  </p>
+  <div>
+    <mat-button-toggle-group #groupTheme="matButtonToggleGroup" (change)="app.changeTheme(groupTheme.value)">
+      <mat-button-toggle disabled>更换主题</mat-button-toggle>
+      <mat-button-toggle value="light-coless-theme" [checked]="true">White</mat-button-toggle>
+      <mat-button-toggle value="dark-coless-theme">Black</mat-button-toggle>
+      <mat-button-toggle value="light-blue-theme">Blue</mat-button-toggle>
+      <mat-button-toggle value="dark-cyan-theme">Cyan</mat-button-toggle>
+      <mat-button-toggle value="light-indigo-theme">Indigo</mat-button-toggle>
+      <mat-button-toggle value="dark-teal-theme">Teal</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div>
+    <button mat-button>Button</button>
+    <button mat-button color="primary">Primary</button>
+    <button mat-button color="accent">Accent</button>
+    <button mat-button color="warn">Warn</button>
+    <button mat-button disabled>Disabled</button>
+  </div>
+  <p>This is a <a class="link" href="">inside link</a> and a <a mat-button>mat link</a>.</p>
+  <div>
+    <button mat-raised-button>Button</button>
+    <button mat-raised-button color="primary">Primary</button>
+    <button mat-raised-button color="accent">Accent</button>
+    <button mat-raised-button color="warn">Warn</button>
+    <button mat-raised-button disabled>Disabled</button>
+  </div>
+  <div>
+    <button mat-fab>
+      <mat-icon>thumb_up</mat-icon>
+    </button>
+    <button mat-fab color="primary">
+      <mat-icon>thumb_up</mat-icon>
+    </button>
+    <button mat-fab color="accent">
+      <mat-icon>thumb_up</mat-icon>
+    </button>
+    <button mat-fab color="warn">
+      <mat-icon>thumb_up</mat-icon>
+    </button>
+    <button mat-fab disabled>
+      <mat-icon>thumb_up</mat-icon>
+    </button>
+  </div>
+  <mat-card style="width: 20rem;">
+    <mat-card-header>
+      <mat-card-title>Title</mat-card-title>
+      <mat-card-subtitle>Subtitle</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>This is a material card component.</p>
+      <p>It can show something for you.</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button disabled>NO</button>
+      <button mat-button [color]="'primary'">OK</button>
+      <button mat-button [color]="'accent'">WHAT</button>
+      <button mat-button [color]="'warn'">CANCLE</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
