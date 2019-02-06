@@ -38,17 +38,6 @@ $color-white: (
   )
 );
 
-/** Light coless theme, white + blue + red. */
-.light-coless-theme {
-  @include angular-material-theme(
-    mat-light-theme(
-      mat-palette($color-white),
-      mat-palette($mat-blue),
-      mat-palette($mat-red)
-    )
-  );
-}
-
 /** Black color, #303030. */
 $color-black: (
   100: #444444,
@@ -61,12 +50,65 @@ $color-black: (
   )
 );
 
+/** Light coless theme, white + blue + red. */
+.light-coless-theme {
+  @include angular-material-theme(
+    mat-light-theme(
+      mat-palette($color-white),
+      mat-palette($mat-blue),
+      mat-palette($mat-red)
+    )
+  );
+  @include mat-button-theme(
+    mat-light-theme(
+      mat-palette($color-black),
+      mat-palette($mat-blue),
+      mat-palette($mat-red)
+    )
+  );
+  @include mat-form-field-theme(
+    mat-light-theme(
+      mat-palette($color-black),
+      mat-palette($mat-blue),
+      mat-palette($mat-red)
+    )
+  );
+  @include mat-input-theme(
+    mat-light-theme(
+      mat-palette($color-black),
+      mat-palette($mat-blue),
+      mat-palette($mat-red)
+    )
+  );
+}
+
 /** Dark coless theme, black + teal + red. */
 .dark-coless-theme {
   @include angular-material-theme(
     mat-dark-theme(
       mat-palette($color-black),
       mat-palette($mat-teal),
+      mat-palette($mat-red)
+    )
+  );
+  @include mat-button-theme(
+    mat-dark-theme(
+      mat-palette($color-white),
+      mat-palette($mat-blue),
+      mat-palette($mat-red)
+    )
+  );
+  @include mat-form-field-theme(
+    mat-dark-theme(
+      mat-palette($color-white),
+      mat-palette($mat-blue),
+      mat-palette($mat-red)
+    )
+  );
+  @include mat-input-theme(
+    mat-dark-theme(
+      mat-palette($color-white),
+      mat-palette($mat-blue),
       mat-palette($mat-red)
     )
   );
