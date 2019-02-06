@@ -2,24 +2,19 @@
   <h1>{{app.title}}</h1>
   <p class="welcome">Welcome to
     <mat-form-field style="text-align: center;">
-      <input matInput placeholder="Title" [(ngModel)]="app.title">
+      <input matInput required autocomplete="off" placeholder="Title" [(ngModel)]="app.title">
+      <mat-hint>APP title</mat-hint>
+      <mat-error>Required</mat-error>
     </mat-form-field>
     !
   </p>
-  <div>
-    <mat-button-toggle-group #groupTheme="matButtonToggleGroup" (change)="app.changeTheme(groupTheme.value)">
-      <mat-button-toggle disabled>更换主题</mat-button-toggle>
-      <mat-button-toggle value="light-coless-theme" [checked]="true">White</mat-button-toggle>
-      <mat-button-toggle value="dark-coless-theme">Black</mat-button-toggle>
-      <mat-button-toggle value="light-blue-theme">Blue</mat-button-toggle>
-      <mat-button-toggle value="dark-cyan-theme">Cyan</mat-button-toggle>
-      <mat-button-toggle value="light-indigo-theme">Indigo</mat-button-toggle>
-      <mat-button-toggle value="dark-teal-theme">Teal</mat-button-toggle>
-    </mat-button-toggle-group>
-  </div>
+  <mat-form-field>
+    <mat-select placeholder="选择主题" name="theme" [(value)]="theme" (valueChange)="app.changeTheme(theme)">
+      <mat-option *ngFor="let item of themes" [value]="item.name" [ngStyle]="{'color': item.color}">{{item.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
   <div>
     <button mat-button>Button</button>
-    <button mat-button color="primary">Primary</button>
     <button mat-button color="accent">Accent</button>
     <button mat-button color="warn">Warn</button>
     <button mat-button disabled>Disabled</button>
@@ -27,15 +22,11 @@
   <p>This is a <a class="link" href="">inside link</a> and a <a mat-button>mat link</a>.</p>
   <div>
     <button mat-raised-button>Button</button>
-    <button mat-raised-button color="primary">Primary</button>
     <button mat-raised-button color="accent">Accent</button>
     <button mat-raised-button color="warn">Warn</button>
     <button mat-raised-button disabled>Disabled</button>
   </div>
   <div>
-    <button mat-fab>
-      <mat-icon>thumb_up</mat-icon>
-    </button>
     <button mat-fab color="primary">
       <mat-icon>thumb_up</mat-icon>
     </button>

@@ -1,16 +1,7 @@
 import { Injectable, TrackByFunction } from '@angular/core';
-import { Theme } from '../other/@types';
+import { ThemeList } from '../other/@types';
 import { trackBy } from '../other/function';
 import { FillWithPipe } from '../other/pipe/fill-with.pipe';
-
-interface ThemeList {
-  'light-coless-theme': Theme;
-  'dark-coless-theme': Theme;
-  'light-blue-theme': Theme;
-  'dark-cyan-theme': Theme;
-  'light-indigo-theme': Theme;
-  'dark-teal-theme': Theme;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +17,8 @@ export class APPService {
   /** TrackByIDFunction. */
   trackByID: TrackByFunction<any> = trackBy('id');
 
-  private themes: ThemeList;
+  /** All themes. */
+  public themes: ThemeList;
 
   constructor() {
     this.fillWithPipe = new FillWithPipe();
