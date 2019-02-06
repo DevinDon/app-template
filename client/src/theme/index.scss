@@ -169,7 +169,22 @@ body {
     min-width: 80vw;
     min-height: 100vh;
   }
-  .mat-raised-button, .mat-button {
-    border-radius: 2px;
+  .mat-raised-button,
+  .mat-button,
+  .mat-stroked-button,
+  .mat-datepicker-content,
+  .mat-dialog-container,
+  .mat-card,
+  .mat-datepicker-content,
+  .mat-dialog-container,
+  .mat-expansion-panel,
+  .mat-form-field-flex,
+  .mat-menu-panel,
+  .mat-select-panel,
+  .mat-snack-bar-container,
+  .mat-tooltip,
+  .mat-button-toggle-group-appearance-standard,
+  .mat-button-toggle-standalone.mat-button-toggle-appearance-standard {
+    border-radius: 1px;
   }
 }
