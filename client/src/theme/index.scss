@@ -80,6 +80,13 @@ $color-black: (
       mat-palette($mat-red)
     )
   );
+  @include mat-select-theme(
+    mat-light-theme(
+      mat-palette($color-black),
+      mat-palette($mat-blue),
+      mat-palette($mat-red)
+    )
+  );
 }
 
 /** Dark coless theme, black + teal + red. */
@@ -106,6 +113,13 @@ $color-black: (
     )
   );
   @include mat-input-theme(
+    mat-dark-theme(
+      mat-palette($color-white),
+      mat-palette($mat-blue),
+      mat-palette($mat-red)
+    )
+  );
+  @include mat-select-theme(
     mat-dark-theme(
       mat-palette($color-white),
       mat-palette($mat-blue),
