@@ -9,19 +9,11 @@ import { APPService } from 'src/app/service/app.service';
 })
 export class HomeComponent implements OnInit {
 
-  theme: string;
-  themes: Theme[] = [];
+  currectTheme = 'light-coless-theme';
 
   constructor(
     public app: APPService
-  ) {
-    this.theme = 'light-coless-theme';
-    for (const name in app.themes) {
-      if (app.themes.hasOwnProperty(name)) {
-        this.themes.push(app.themes[name]);
-      }
-    }
-  }
+  ) { }
 
   ngOnInit() { }
 
