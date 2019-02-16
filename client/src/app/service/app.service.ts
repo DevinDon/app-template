@@ -1,5 +1,5 @@
 import { Injectable, TrackByFunction } from '@angular/core';
-import { ThemeList } from '../other/@types';
+import { ThemeGroup } from '../other/@types';
 import { trackBy } from '../other/function';
 import { FillWithPipe } from '../other/pipe/fill-with.pipe';
 
@@ -18,36 +18,41 @@ export class APPService {
   trackByID: TrackByFunction<any> = trackBy('id');
 
   /** All themes. */
-  public themes: ThemeList;
+  public themeGroups: ThemeGroup[];
 
   constructor() {
     this.fillWithPipe = new FillWithPipe();
-    this.themes = {
-      'dark-coless-theme': {
+    this.themeGroups = [{
+      name: 'dark',
+      themes: [{
         name: 'dark-coless-theme',
+        backgroundColor: '#161616',
         color: '#303030'
-      },
-      'dark-cyan-theme': {
+      }, {
         name: 'dark-cyan-theme',
+        backgroundColor: '#161616',
         color: '#00bcd4'
-      },
-      'dark-teal-theme': {
+      }, {
         name: 'dark-teal-theme',
+        backgroundColor: '#161616',
         color: '#009688'
-      },
-      'light-blue-theme': {
+      }]
+    }, {
+      name: 'light',
+      themes: [{
         name: 'light-blue-theme',
+        backgroundColor: '#fff',
         color: '#2196f3'
-      },
-      'light-coless-theme': {
+      }, {
         name: 'light-coless-theme',
+        backgroundColor: '#fff',
         color: '#fafafa'
-      },
-      'light-indigo-theme': {
+      }, {
         name: 'light-indigo-theme',
+        backgroundColor: '#fff',
         color: '#3f51b5'
-      }
-    };
+      }]
+    }];
   }
 
   /**
@@ -55,10 +60,17 @@ export class APPService {
    * @param {string} name Theme name.
    * @returns {void} Void.
    */
-  changeTheme(name: keyof ThemeList): void {
+  changeTheme(name: string): void {
     document.body.classList.value = 'mat-app-background';
     document.body.classList.add(name);
-    document.head.querySelector('[name=theme-color]').setAttribute('content', this.themes[name].color);
+    this.themeGroups.find(group => {
+      const result = group.themes.find(theme => theme.name === name);
+      console.log(result);
+      if (result) {
+        document.head.querySelector('[name=theme-color]').setAttribute('content', result.color);
+      }
+      return Boolean(result);
+    });
     console.log(`Theme changed to ${name}.`);
   }
 
