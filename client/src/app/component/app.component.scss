@@ -1,9 +1,26 @@
-@import "function.scss";
+@import 'function.scss';
 
-mat-toolbar.header {
-  @include flexRow();
-}
+$toolbar-height: 48px;
 
-mat-toolbar.footer {
-  @include flexRow(center);
+mat-sidenav-container {
+  > mat-sidenav {
+    position: fixed;
+    width: 20rem;
+  }
+  > mat-sidenav-content {
+    > .toolbar {
+      box-shadow: boxShadow();
+      position: fixed;
+      padding: 0;
+      margin: 0;
+      height: $toolbar-height;
+      transition: unset;
+      width: 100%;
+      z-index: 2;
+      &.trans {
+        background-color: #00000000;
+        box-shadow: unset;
+      }
+    }
+  }
 }
