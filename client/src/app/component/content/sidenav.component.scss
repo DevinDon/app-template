@@ -1,0 +1,32 @@
+.sidenav {
+  > * {
+    width: 100%;
+  }
+  > .top {
+    text-align: center;
+  }
+  > .item {
+    font-size: large;
+    font-weight: bold;
+    padding: 1rem;
+  }
+  // > .item::after {
+  //   background-color: currentColor;
+  //   content: "";
+  //   height: 100%;
+  //   position: absolute;
+  //   top: 0;
+  //   right: 0;
+  //   width: 1rem;
+  // }
+  > .bottom {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    > .contact {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+  }
+}

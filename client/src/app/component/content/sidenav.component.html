@@ -1,0 +1,21 @@
+<div class="sidenav" fxFlex="grow" fxFlexFill fxLayout="column" fxLayoutAlign="flex-start center">
+
+  <img [src]="app.background" alt="Background banner.">
+
+  <header class="top">
+    <h1>INFINITY</h1>
+  </header>
+
+  <a mat-button class="item" [ngStyle]="getLinkStyle(links.home)" [routerLink]="[ '/' ]">Home</a>
+  <a mat-button class="item" [ngStyle]="getLinkStyle(links.about)" [routerLink]="[ '/about' ]">About</a>
+
+  <footer class="bottom">
+    <div class="contact">
+      <mat-icon>email</mat-icon>
+      <mat-icon>phone</mat-icon>
+      <mat-icon>settings</mat-icon>
+    </div>
+    <p><sub>Copyright 2019+ Infinity</sub></p>
+  </footer>
+
+</div>
