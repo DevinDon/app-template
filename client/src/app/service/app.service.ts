@@ -1,5 +1,5 @@
 import { Injectable, TrackByFunction } from '@angular/core';
-import { ThemeGroup } from '../other/@types';
+import { ThemeGroup, Theme } from '../other/@types';
 import { trackBy } from '../other/function';
 import { FillWithPipe } from '../other/pipe/fill-with.pipe';
 
@@ -18,7 +18,9 @@ export class APPService {
   trackByID: TrackByFunction<any> = trackBy('id');
 
   /** All themes. */
-  public themeGroups: ThemeGroup[];
+  themeGroups: ThemeGroup[];
+  /** Currect theme. */
+  theme: Theme;
 
   constructor() {
     this.fillWithPipe = new FillWithPipe();
@@ -26,33 +28,40 @@ export class APPService {
       name: 'dark',
       themes: [{
         name: 'dark-coless-theme',
-        backgroundColor: '#161616',
-        color: '#303030'
+        primary: '#424242',
+        accent: '#2196f3',
+        warn: 'f44336'
       }, {
         name: 'dark-cyan-theme',
-        backgroundColor: '#161616',
-        color: '#00bcd4'
+        primary: '#424242',
+        accent: '#e91e63',
+        warn: '#f44336'
       }, {
         name: 'dark-teal-theme',
-        backgroundColor: '#161616',
-        color: '#009688'
+        primary: '#424242',
+        accent: '#e91e63',
+        warn: '#f44336'
       }]
     }, {
       name: 'light',
       themes: [{
         name: 'light-blue-theme',
-        backgroundColor: '#fff',
-        color: '#2196f3'
+        primary: '#2196f3',
+        accent: '#ff5722',
+        warn: '#f44336'
       }, {
         name: 'light-coless-theme',
-        backgroundColor: '#fff',
-        color: '#fafafa'
+        primary: '#ffffff',
+        accent: '#2196f3',
+        warn: '#f44336'
       }, {
         name: 'light-indigo-theme',
-        backgroundColor: '#fff',
-        color: '#3f51b5'
+        primary: '#3f51b5',
+        accent: '#ff5722',
+        warn: '#f44336'
       }]
     }];
+    this.changeTheme('light-coless-theme');
   }
 
   /**
@@ -66,7 +75,8 @@ export class APPService {
     this.themeGroups.find(group => {
       const result = group.themes.find(theme => theme.name === name);
       if (result) {
-        document.head.querySelector('[name=theme-color]').setAttribute('content', result.color);
+        document.head.querySelector('[name=theme-color]').setAttribute('content', result.primary);
+        this.theme = result;
       }
       return Boolean(result);
     });

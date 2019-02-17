@@ -1,8 +1,9 @@
 /** Material theme with primary color. */
 export interface Theme {
   name: string;
-  backgroundColor: string;
-  color: string;
+  primary: string;
+  accent: string;
+  warn: string;
 }
 
 export interface ThemeGroup {
