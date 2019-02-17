@@ -11,7 +11,7 @@
   <mat-form-field>
     <mat-select placeholder="选择主题" name="theme" [(value)]="currectTheme" (valueChange)="app.changeTheme(currectTheme)">
       <mat-optgroup *ngFor="let group of app.themeGroups" [label]="group.name">
-        <mat-option *ngFor="let theme of group.themes" [value]="theme.name" [ngStyle]="{'color': theme.color}">
+        <mat-option *ngFor="let theme of group.themes" [value]="theme.name" [ngStyle]="{'color': theme.primary}">
           {{theme.name}}
         </mat-option>
       </mat-optgroup>
