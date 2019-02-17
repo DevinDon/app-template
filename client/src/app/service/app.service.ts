@@ -65,7 +65,6 @@ export class APPService {
     document.body.classList.add(name);
     this.themeGroups.find(group => {
       const result = group.themes.find(theme => theme.name === name);
-      console.log(result);
       if (result) {
         document.head.querySelector('[name=theme-color]').setAttribute('content', result.color);
       }
