@@ -12,14 +12,14 @@
   align-items: $align;
 }
 
-@mixin transition($during: 300ms, $delay: 50ms) {
+@mixin transition($during: 300ms, $delay: 25ms) {
   transition: $during $delay ease-in-out all;
 }
 
 @function boxShadow($direction: bottom) {
-  $shadow: 1px 3px 10px -5px rgba(0, 0, 0, 0.3);
+  $shadow: -3px 3px 10px -5px rgba(0, 0, 0, 0.3);
   @if $direction != bottom {
-    $shadow: 1px -3px 10px -5px rgba(0, 0, 0, 0.3);
+    $shadow: -3px -3px 10px -5px rgba(0, 0, 0, 0.3);
   }
   @return $shadow;
 }
