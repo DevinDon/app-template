@@ -8,7 +8,7 @@ import { FillWithPipe } from '../other/pipe/fill-with.pipe';
 })
 export class APPService {
 
-  private fillWithPipe: FillWithPipe;
+  fillWithPipe: FillWithPipe;
 
   /** Sidenav background. */
   background: string;
