@@ -12,7 +12,7 @@
   align-items: $align;
 }
 
-@mixin transition($during: 300ms, $delay: 25ms) {
+@mixin transition($during: 300ms, $delay: 50ms) {
   transition: $during $delay ease-in-out all;
 }
 

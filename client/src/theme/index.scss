@@ -174,10 +174,10 @@ $color-black: (
 
 // Set global styles.
 body {
+  font-family: "Consolas", "微软雅黑 Light", "微软雅黑", "黑体", sans-serif;
   font-size: 1rem;
   margin: 0;
   padding: 0;
-  font-family: "Consolas", "微软雅黑 Light", "微软雅黑", "黑体", sans-serif;
   > app-root {
     @include flexColumn(flex-start, flex-start);
     min-width: 80vw;
@@ -200,5 +200,16 @@ body {
   .mat-button-toggle-group-appearance-standard,
   .mat-button-toggle-standalone.mat-button-toggle-appearance-standard {
     border-radius: 1px;
+  }
+}
+
+// Set transition animation.
+body {
+  *, *:hover {
+    @include transition();
+  }
+  .cdk-overlay-pane,
+  mat-sidenav {
+    transition: unset;
   }
 }
