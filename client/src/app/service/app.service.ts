@@ -10,6 +10,8 @@ export class APPService {
 
   private fillWithPipe: FillWithPipe;
 
+  /** Sidenav background. */
+  background: string;
   /** APP title. */
   title = 'Client';
   /** TrackByFunction. */
@@ -24,6 +26,7 @@ export class APPService {
 
   constructor() {
     this.fillWithPipe = new FillWithPipe();
+    this.background = '/assets/image/background-light.png';
     this.themeGroups = [{
       name: 'dark',
       themes: [{
@@ -33,12 +36,12 @@ export class APPService {
         warn: 'f44336'
       }, {
         name: 'dark-cyan-theme',
-        primary: '#424242',
+        primary: '#00bcd4',
         accent: '#e91e63',
         warn: '#f44336'
       }, {
         name: 'dark-teal-theme',
-        primary: '#424242',
+        primary: '#009688',
         accent: '#e91e63',
         warn: '#f44336'
       }]
@@ -76,6 +79,11 @@ export class APPService {
       const result = group.themes.find(theme => theme.name === name);
       if (result) {
         document.head.querySelector('[name=theme-color]').setAttribute('content', result.primary);
+        if (group.name === 'dark') {
+          this.background = '/assets/image/background-dark.png';
+        } else {
+          this.background = '/assets/image/background-light.png';
+        }
         this.theme = result;
       }
       return Boolean(result);
