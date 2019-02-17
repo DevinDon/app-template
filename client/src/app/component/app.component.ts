@@ -25,18 +25,22 @@ export class APPComponent {
     this.sideMode = 'over';
     this.sideOpened = window.innerWidth < 600 ? false : true;
     this.toolbarBackgroundColor = '#00000000';
-    this.listenToolbarBackgroundColor();
+    this.listenToolbarBackgroundColor(120);
   }
 
-  listenToolbarBackgroundColor() {
+  /**
+   * Transparent toolbar.
+   * @param height Transparent height, px.
+   */
+  listenToolbarBackgroundColor(height: number) {
     fromEvent(window, 'scroll').subscribe(e => {
-      if (pageYOffset > 48) {
+      if (pageYOffset > height) {
         this.isTop = false;
         this.toolbarBackgroundColor = this.app.theme.primary;
         return;
       }
       this.isTop = true;
-      const alpha = this.app.fillWithPipe.transform(Math.floor(pageYOffset / 48 * 255).toString(16), 2);
+      const alpha = this.app.fillWithPipe.transform(Math.floor(pageYOffset / height * 255).toString(16), 2);
       this.toolbarBackgroundColor = this.app.theme.primary + alpha;
     });
   }
