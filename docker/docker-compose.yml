@@ -2,26 +2,18 @@ version: '3'
 
 services:
 
-  # # MySQL, backend, expose 3306
-  # app-mysql:
-  #   image: mysql:5
-  #   container_name: app-mysql
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: app
-  #     MYSQL_DATABASE: app
-  #     MYSQL_USER: app
-  #     MYSQL_PASSWORD: app
-  #   networks:
-  #     - backend
-  #   expose:
-  #     - "3306"
-  #   volumes:
-  #     - ./config/mysql:/etc/mysql:ro
-
   # PostgreSQL, backend ,expose 5432
   app-postgres:
     image: postgres
     container_name: app-postgres
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 5
+        window: 10s
     environment:
       POSTGRES_USER: app
       POSTGRES_PASSWORD: app
@@ -31,30 +23,51 @@ services:
     expose:
       - "5432"
     # volumes:
-    #   - ./config/postgresql:/etc/postgresql:ro
+    #   - ./config/postgresql:/etc/postgresql
+    #   - data-postgres:/var/lib/postgresql/data
 
   # Redis, backend, expose 6379
   app-redis:
     image: redis
     container_name: app-redis
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 5
+        window: 10s
     networks:
+      - swarmnet
       - backend
     expose:
       - "6379"
     # volumes:
-    #   - ./config/redis:/etc/redis:ro
+    #   - ./config/redis:/etc/redis
+    #   - data-redis:/data
 
   # KBS, frontend & backend, expose 8080 - 8082
   app-server:
-    build: ./server
+    # build: ./server
+    image: your-app-name # build it by yourself
     container_name: app-server
     depends_on:
       - app-postgres
       - app-redis
+    deploy:
+      mode: replicated
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 10s
     links:
       - app-postgres
       - app-redis
     networks:
+      - swarmnet
       - frontend
       - backend
     expose:
@@ -63,6 +76,7 @@ services:
       - "8082"
     volumes:
       - ./client:/app/client:ro
+      # - data-server:/app/data
 
   # Nginx, frontend & backend & hostnet, ports 80 & 443 & 13306(dev) & 16379(dev)
   app-nginx:
@@ -70,14 +84,22 @@ services:
     container_name: app-nginx
     depends_on:
       - app-server
+    deploy:
+      mode: replicated
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 10s
     links:
       - app-postgres
       - app-redis
       - app-server
     networks:
+      - swarmnet
       - frontend
       - backend
-      - hostnet
     expose:
       - "80"
       - "443"
@@ -91,11 +113,15 @@ services:
       - "15432:5432"
       - "16379:6379"
     volumes:
-      - ./config/nginx:/etc/nginx:ro
-      - ./client:/app:ro
+      - ./config/nginx:/etc/nginx
+      # - ./client:/app:ro
 
 networks:
   frontend:
   backend:
-  hostnet:
-    external: true
+  swarmnet:
+
+volumes:
+  data-postgres:
+  data-redis:
+  data-server:
