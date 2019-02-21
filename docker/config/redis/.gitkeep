@@ -1,5 +1,0 @@
-mail-redis:
-  image: redis
-  container_name: mail-redis
-  ports:
-    - "16379:6379"
