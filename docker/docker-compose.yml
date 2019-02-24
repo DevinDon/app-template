@@ -2,9 +2,9 @@ version: '3.7'
 
 services:
 
-  # Nginx, overnet & frontend & backend, ports 80 & 443 & 15432 (postgresql) & 16379 (redis)
+  # Nginx, overnet & frontend & backend, ports / expose 80 & 443 & 15432 (postgresql) & 16379 (redis)
   app-nginx:
-    image: your-app-nginx-image
+    image: registry.cn-shanghai.aliyuncs.com/iinfinity/nginx
     depends_on:
       - postgres
       - redis
@@ -14,16 +14,18 @@ services:
       replicas: 1
       restart_policy:
         condition: on-failure
-        delay: 30s
+        delay: 10s
         max_attempts: 5
         window: 30s
     networks:
       - overnet
-    ports:
+    ports: # comment on proxy mode
       - "80:80"
       - "443:443"
       - "15432:5432"
       - "16379:6379"
+    volumes:
+      - "./etc/nginx:/etc/nginx:ro"
 
   # PostgreSQL, backend ,expose 5432
   app-postgres:
@@ -63,7 +65,7 @@ services:
 
   # KBS, frontend & backend, expose 8080
   app-server:
-    image: your-app-server-image
+    image: docker.io/username/app-server
     depends_on:
       - postgres
       - redis
@@ -72,7 +74,7 @@ services:
       replicas: 2
       restart_policy:
         condition: on-failure
-        delay: 30s
+        delay: 10s
         max_attempts: 5
         window: 30s
     networks:
