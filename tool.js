@@ -11,7 +11,7 @@ console.log(
   '\x1B[36m%s\x1B[0m',
   `
   -------------------------------
-  command: ${task}, arch: ${arch || 'x86/64'}
+  command: ${task}, arch: ${arch || 'amd64'}
   -------------------------------
   `
 );
