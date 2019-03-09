@@ -27,7 +27,26 @@ services:
     volumes:
       - "./etc/nginx:/etc/nginx:ro"
 
-  # PostgreSQL, backend ,expose 5432
+  # KBS, frontend & backend, expose 8080
+  app-server:
+    image: docker.io/username/app-server
+    depends_on:
+      - postgres
+      - redis
+    deploy:
+      mode: replicated
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 30s
+    networks:
+      - overnet
+    volumes:
+      - data-server:/app/data
+
+  # PostgreSQL, backend, expose 5432
   app-postgres:
     image: postgres
     deploy:
@@ -62,25 +81,6 @@ services:
       - overnet
     volumes:
       - data-redis:/data
-
-  # KBS, frontend & backend, expose 8080
-  app-server:
-    image: docker.io/username/app-server
-    depends_on:
-      - postgres
-      - redis
-    deploy:
-      mode: replicated
-      replicas: 2
-      restart_policy:
-        condition: on-failure
-        delay: 10s
-        max_attempts: 5
-        window: 30s
-    networks:
-      - overnet
-    volumes:
-      - data-server:/app/data
 
 networks:
   overnet:
