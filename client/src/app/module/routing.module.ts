@@ -4,9 +4,9 @@ import { AboutComponent } from '../component/content/about/about.component';
 import { HomeComponent } from '../component/content/home/home.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: HomeComponent },
-  { path: 'home', pathMatch: 'full', redirectTo: '' },
-  { path: 'about', component: AboutComponent }
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: 'home', pathMatch: 'full', component: HomeComponent, data: { animation: 'home' } },
+  { path: 'about', component: AboutComponent, data: { animation: 'about' } }
 ];
 
 @NgModule({
