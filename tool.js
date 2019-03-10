@@ -53,16 +53,18 @@ async function clean() {
 /** Build and pack application. */
 async function pack(arch) {
   const suffix = arch ? `.${arch}` : '';
-  read(`docker/config/**/*`)
-    .pipe(save('dist/config'));
-  read(`docker/server/Dockerfile${suffix}`)
-    .on('error', catchError)
-    .pipe(gulpConcat('Dockerfile'))
-    .pipe(save('dist/server'));
-  read(`docker/docker-compose${suffix}.yml`)
-    .on('error', catchError)
-    .pipe(gulpConcat('docker-compose.yml'))
-    .pipe(save('dist'));
+  // read(`docker/config/**/*`)
+  //   .pipe(save('dist/config'));
+  // read(`docker/server/Dockerfile${suffix}`)
+  //   .on('error', catchError)
+  //   .pipe(gulpConcat('Dockerfile'))
+  //   .pipe(save('dist/server'));
+  // read(`docker/docker-compose${suffix}.yml`)
+  //   .on('error', catchError)
+  //   .pipe(gulpConcat('docker-compose.yml'))
+  //   .pipe(save('dist'));
+  read(`docker/**/*`)
+    .pipe(save('dist'))
   read(`client/dist/**/*`)
     .pipe(save('dist/client'));
   read([
