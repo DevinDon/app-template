@@ -45,6 +45,10 @@ export class APPComponent {
     });
   }
 
+  /**
+   * Get side mode, over mode on moblie and side mode on desktop.
+   * @returns {'over' | 'side'} 'over' or 'side'.
+   */
   getSideMode(): 'over' | 'side' {
     return window.innerWidth < 600 ? 'over' : 'side';
   }
