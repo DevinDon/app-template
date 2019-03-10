@@ -30,7 +30,7 @@ export class SidenavComponent implements OnInit {
     this.links = {
       home: {
         active: false,
-        url: '/'
+        url: '/home'
       },
       about: {
         active: false,
