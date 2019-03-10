@@ -8,6 +8,7 @@ mat-sidenav-container {
     width: 20rem;
   }
   > mat-sidenav-content {
+    min-height: 100vh;
     > .toolbar {
       box-shadow: boxShadow();
       position: fixed;
@@ -22,5 +23,8 @@ mat-sidenav-container {
         box-shadow: unset;
       }
     }
+    // > app-content {
+    //   overflow-x: hidden;
+    // }
   }
 }
