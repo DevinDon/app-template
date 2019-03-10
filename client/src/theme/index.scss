@@ -1,14 +1,14 @@
-@import '~@angular/material/theming';
-@import 'function.scss';
+@import "~@angular/material/theming";
+@import "function.scss";
 
 /** Background palette for light themes. */
 $mat-light-theme-background: (
   status-bar: map_get($mat-grey, 300),
-  app-bar:    map_get($mat-grey, 100),
+  app-bar: map_get($mat-grey, 100),
   background: white,
-  hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
-  card:       white,
-  dialog:     white,
+  hover: rgba(black, 0.04),
+  // TODO(kara): check style with Material Design UX card: white,
+  dialog: white,
   disabled-button: rgba(black, 0.12),
   raised-button: white,
   focused-button: $dark-focused,
@@ -16,15 +16,11 @@ $mat-light-theme-background: (
   selected-disabled-button: map_get($mat-grey, 400),
   disabled-button-toggle: map_get($mat-grey, 200),
   unselected-chip: map_get($mat-grey, 300),
-  disabled-list-option: map_get($mat-grey, 200),
+  disabled-list-option: map_get($mat-grey, 200)
 );
 
 // Set font family.
-@include mat-core(
-  mat-typography-config(
-    $font-family: '"Consolas", "微软雅黑 Light", "微软雅黑", "黑体", sans-serif'
-  )
-);
+@include mat-core(mat-typography-config($font-family: '"Consolas", "微软雅黑 Light", "微软雅黑", "黑体", sans-serif'));
 
 /** White color, #fff. */
 $color-white: (
@@ -53,122 +49,54 @@ $color-black: (
 /** Light coless theme, white + blue + red. */
 .light-coless-theme {
   @include angular-material-theme(
-    mat-light-theme(
-      mat-palette($color-white),
-      mat-palette($mat-blue),
-      mat-palette($mat-red)
-    )
+    mat-light-theme(mat-palette($color-white), mat-palette($mat-blue), mat-palette($mat-red))
   );
-  @include mat-button-theme(
-    mat-light-theme(
-      mat-palette($color-black),
-      mat-palette($mat-blue),
-      mat-palette($mat-red)
-    )
-  );
+  @include mat-button-theme(mat-light-theme(mat-palette($color-black), mat-palette($mat-blue), mat-palette($mat-red)));
   @include mat-form-field-theme(
-    mat-light-theme(
-      mat-palette($color-black),
-      mat-palette($mat-blue),
-      mat-palette($mat-red)
-    )
+    mat-light-theme(mat-palette($color-black), mat-palette($mat-blue), mat-palette($mat-red))
   );
-  @include mat-input-theme(
-    mat-light-theme(
-      mat-palette($color-black),
-      mat-palette($mat-blue),
-      mat-palette($mat-red)
-    )
-  );
-  @include mat-select-theme(
-    mat-light-theme(
-      mat-palette($color-black),
-      mat-palette($mat-blue),
-      mat-palette($mat-red)
-    )
-  );
+  @include mat-input-theme(mat-light-theme(mat-palette($color-black), mat-palette($mat-blue), mat-palette($mat-red)));
+  @include mat-select-theme(mat-light-theme(mat-palette($color-black), mat-palette($mat-blue), mat-palette($mat-red)));
 }
 
 /** Dark coless theme, black + teal + red. */
 .dark-coless-theme {
   @include angular-material-theme(
-    mat-dark-theme(
-      mat-palette($color-black),
-      mat-palette($mat-teal),
-      mat-palette($mat-red)
-    )
+    mat-dark-theme(mat-palette($color-black), mat-palette($mat-teal), mat-palette($mat-red))
   );
-  @include mat-button-theme(
-    mat-dark-theme(
-      mat-palette($color-white),
-      mat-palette($mat-blue),
-      mat-palette($mat-red)
-    )
-  );
+  @include mat-button-theme(mat-dark-theme(mat-palette($color-white), mat-palette($mat-blue), mat-palette($mat-red)));
   @include mat-form-field-theme(
-    mat-dark-theme(
-      mat-palette($color-white),
-      mat-palette($mat-blue),
-      mat-palette($mat-red)
-    )
+    mat-dark-theme(mat-palette($color-white), mat-palette($mat-blue), mat-palette($mat-red))
   );
-  @include mat-input-theme(
-    mat-dark-theme(
-      mat-palette($color-white),
-      mat-palette($mat-blue),
-      mat-palette($mat-red)
-    )
-  );
-  @include mat-select-theme(
-    mat-dark-theme(
-      mat-palette($color-white),
-      mat-palette($mat-blue),
-      mat-palette($mat-red)
-    )
-  );
+  @include mat-input-theme(mat-dark-theme(mat-palette($color-white), mat-palette($mat-blue), mat-palette($mat-red)));
+  @include mat-select-theme(mat-dark-theme(mat-palette($color-white), mat-palette($mat-blue), mat-palette($mat-red)));
 }
 
 /** Light blue theme, blue + deep orange + red. */
 .light-blue-theme {
   @include angular-material-theme(
-    mat-light-theme(
-      mat-palette($mat-blue),
-      mat-palette($mat-deep-orange),
-      mat-palette($mat-red)
-    )
+    mat-light-theme(mat-palette($mat-blue), mat-palette($mat-deep-orange), mat-palette($mat-red))
   );
 }
 
 /** Dark cyan theme, cyan + pink + red. */
 .dark-cyan-theme {
   @include angular-material-theme(
-    mat-dark-theme(
-      mat-palette($mat-cyan),
-      mat-palette($mat-pink),
-      mat-palette($mat-red)
-    )
+    mat-dark-theme(mat-palette($mat-cyan), mat-palette($mat-pink), mat-palette($mat-red))
   );
 }
 
 /** Light indigo theme, indigo + deep orange + red. */
 .light-indigo-theme {
   @include angular-material-theme(
-    mat-light-theme(
-      mat-palette($mat-indigo),
-      mat-palette($mat-deep-orange),
-      mat-palette($mat-red)
-    )
+    mat-light-theme(mat-palette($mat-indigo), mat-palette($mat-deep-orange), mat-palette($mat-red))
   );
 }
 
 /** Dark teal theme, teal + pink + red. */
 .dark-teal-theme {
   @include angular-material-theme(
-    mat-dark-theme(
-      mat-palette($mat-teal),
-      mat-palette($mat-pink),
-      mat-palette($mat-red)
-    )
+    mat-dark-theme(mat-palette($mat-teal), mat-palette($mat-pink), mat-palette($mat-red))
   );
 }
 
@@ -205,7 +133,8 @@ body {
 
 // Set transition animation.
 body {
-  *, *:hover {
+  *,
+  *:hover {
     @include transition();
   }
   .cdk-overlay-pane,
@@ -213,3 +142,27 @@ body {
     transition: unset;
   }
 }
+
+// Set scroll bar.
+::-webkit-scrollbar {
+  width: 0;
+}
+// ::-webkit-scrollbar-track {
+//   background-color: #00000000;
+// }
+// ::-webkit-scrollbar-thumb {
+//   background: black;
+//   background-image: -webkit-linear-gradient(
+//     45deg,
+//     rgba(255, 255, 255, 0.2) 25%,
+//     transparent 25%,
+//     transparent 50%,
+//     rgba(255, 255, 255, 0.2) 50%,
+//     rgba(255, 255, 255, 0.2) 75%,
+//     transparent 75%,
+//     transparent
+//   );
+// }
+// ::-webkit-scrollbar-track-piece {
+//   background-color: #00000000;
+// }
