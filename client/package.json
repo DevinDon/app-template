@@ -8,7 +8,8 @@
     "lint": "ng lint",
     "start": "echo Open localhost:4200 on browser. && ng serve",
     "test": "ng test",
-    "update": "ng update --all --force"
+    "update": "ng update --all --force",
+    "path": "ngsw-config dist ngsw-config.json"
   },
   "private": true,
   "dependencies": {
