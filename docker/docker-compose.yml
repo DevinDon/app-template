@@ -4,7 +4,7 @@ services:
 
   # Nginx, overnet & frontend & backend, ports / expose 80 & 443 & 15432 (postgresql) & 16379 (redis)
   app-nginx:
-    image: registry.cn-shanghai.aliyuncs.com/iinfinity/nginx
+    image: nginx
     depends_on:
       - postgres
       - redis
@@ -29,7 +29,7 @@ services:
 
   # KBS, frontend & backend, expose 8080
   app-server:
-    image: docker.io/username/app-server
+    image: app-server
     depends_on:
       - postgres
       - redis
@@ -44,7 +44,7 @@ services:
     networks:
       - overnet
     volumes:
-      - data-server:/app/data
+      - "data-server:/app/data"
 
   # PostgreSQL, backend, expose 5432
   app-postgres:
@@ -64,7 +64,7 @@ services:
     networks:
       - overnet
     volumes:
-      - data-postgres:/var/lib/postgresql/data
+      - "data-postgres:/var/lib/postgresql/data"
 
   # Redis, backend, expose 6379
   app-redis:
@@ -80,7 +80,7 @@ services:
     networks:
       - overnet
     volumes:
-      - data-redis:/data
+      - "data-redis:/data"
 
 networks:
   overnet:
