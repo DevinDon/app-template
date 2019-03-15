@@ -1,11 +1,10 @@
 {
-  "name": "client",
-  "short_name": "client",
+  "name": "Application template client",
+  "short_name": "PWA",
   "theme_color": "#2196f3",
   "background_color": "#fafafa",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
+  "start_url": "./index.html",
   "icons": [
     {
       "src": "assets/icon/icon-72x72.png",
