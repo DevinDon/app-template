@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Theme } from 'src/app/other/@types';
 import { APPService } from 'src/app/service/app.service';
 
 @Component({

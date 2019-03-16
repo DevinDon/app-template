@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import 'jasmine';
-import { StubAboutComponent } from '../component/content/about/about.component.spec';
-import { StubContentComponent } from '../component/content/content.component.spec';
-import { StubHomeComponent } from '../component/content/home/home.component.spec';
-import { StubSidenavComponent } from '../component/content/sidenav.component.spec';
-import { StubDialogAlertComponent } from '../component/dialog/dialog-alert/dialog-alert.component.spec';
+import { StubAboutComponent } from 'src/app/component/content/about/about.component.spec';
+import { StubContentComponent } from 'src/app/component/content/content.component.spec';
+import { StubHomeComponent } from 'src/app/component/content/home/home.component.spec';
+import { StubSidenavComponent } from 'src/app/component/content/sidenav.component.spec';
+import { StubDialogAlertComponent } from 'src/app/component/dialog/dialog-alert/dialog-alert.component.spec';
 import { MatModule } from './mat.module';
 
 @NgModule({

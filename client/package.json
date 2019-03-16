@@ -7,7 +7,7 @@
     "build:github": "ng build --prod --output-path ../docs --base-href /app-template/",
     "e2e": "ng e2e",
     "lint": "ng lint",
-    "start": "echo Open localhost:4200 on browser. && ng serve",
+    "start": "echo Open localhost:4200 on your browser. && ng serve",
     "test": "ng test",
     "update": "ng update --all --force"
   },

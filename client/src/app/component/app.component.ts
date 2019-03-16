@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { APPService } from '../service/app.service';
 import { fromEvent } from 'rxjs';
+import { APPService } from 'src/app/service/app.service';
 
 @Component({
   selector: 'app-root',

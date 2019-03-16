@@ -1,7 +1,7 @@
 import { Injectable, TrackByFunction } from '@angular/core';
-import { ThemeGroup, Theme } from '../other/@types';
-import { trackBy } from '../other/function';
-import { FillWithPipe } from '../other/pipe/fill-with.pipe';
+import { FillWithPipe } from 'src/app/other/pipe/fill-with.pipe';
+import { trackBy } from 'src/app/other/function';
+import { ThemeGroup, Theme } from 'src/app/other/@types';
 
 @Injectable({
   providedIn: 'root'
