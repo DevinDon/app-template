@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1552655244999,
+  "timestamp": 1552715318822,
   "appData": "Application template.",
   "index": "/app-template/index.html",
   "assetGroups": [
@@ -11,7 +11,7 @@
       "urls": [
         "/app-template/favicon.ico",
         "/app-template/index.html",
-        "/app-template/main.bb43a5d37f07baabda38.js",
+        "/app-template/main.72e3479b159952f7384e.js",
         "/app-template/polyfills.46532d96d3286697c138.js",
         "/app-template/runtime.a5dd35324ddfd942bef1.js",
         "/app-template/styles.d2b78c999bdc5a128be3.css"
@@ -51,8 +51,8 @@
     "/app-template/assets/image/background-dark.png": "163e6df7e7cd4bce53346fb31706b4ceef07aa2b",
     "/app-template/assets/image/background-light.png": "af694c349d61b07419e70a9eb8b0d793cf073005",
     "/app-template/favicon.ico": "b8c1a4fa5e069ee5c421d1fa7675e2f6eac95022",
-    "/app-template/index.html": "e1bcc2382407e6571d6841f2afaf125c7d2040f9",
-    "/app-template/main.bb43a5d37f07baabda38.js": "4dbc4a2720128adde29a12041a4bda36a9fe2e3d",
+    "/app-template/index.html": "ff34415a17802cd94961826076549dd93b61d82f",
+    "/app-template/main.72e3479b159952f7384e.js": "b0c740aab73f8058c4018ff45833d52fafa3cf51",
     "/app-template/polyfills.46532d96d3286697c138.js": "6946e10a03311677a01490b8e91741668e64e17e",
     "/app-template/runtime.a5dd35324ddfd942bef1.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
     "/app-template/styles.d2b78c999bdc5a128be3.css": "5a83cb1cbf7c98836a520c13ae862a1e34c220c4",
