@@ -1,6 +1,6 @@
 <mat-sidenav-container fxFlex="grow" fxFlexFill>
 
-  <mat-sidenav #sidenav [mode]="getSideMode()" [opened]="sideOpened">
+  <mat-sidenav #sidenav [(mode)]="app.sideMode" [(opened)]="app.sideOpen">
     <app-sidenav></app-sidenav>
   </mat-sidenav>
 

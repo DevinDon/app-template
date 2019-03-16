@@ -11,10 +11,6 @@ export class APPComponent {
 
   /** Is on top, control toolbar shadow. */
   isTop: boolean;
-  /** Sidenav side mode. */
-  sideMode: 'over' | 'side';
-  /** Is sidenav open. */
-  sideOpened: boolean;
   /** Toobar background color. */
   toolbarBackgroundColor: string;
 
@@ -22,8 +18,6 @@ export class APPComponent {
     public app: APPService
   ) {
     this.isTop = true;
-    this.sideMode = 'over';
-    this.sideOpened = window.innerWidth < 600 ? false : true;
     this.toolbarBackgroundColor = '#00000000';
     this.listenToolbarBackgroundColor(120);
   }
@@ -43,14 +37,6 @@ export class APPComponent {
       const alpha = this.app.fillWithPipe.transform(Math.floor(pageYOffset / height * 255).toString(16), 2);
       this.toolbarBackgroundColor = this.app.theme.primary + alpha;
     });
-  }
-
-  /**
-   * Get side mode, over mode on moblie and side mode on desktop.
-   * @returns {'over' | 'side'} 'over' or 'side'.
-   */
-  getSideMode(): 'over' | 'side' {
-    return window.innerWidth < 600 ? 'over' : 'side';
   }
 
 }

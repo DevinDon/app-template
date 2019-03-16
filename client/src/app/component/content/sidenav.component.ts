@@ -57,7 +57,7 @@ export class SidenavComponent implements OnInit {
   }
 
   /**
-   * Get link style.
+   * Get link style, font color & background color.
    * @param link Link info.
    */
   getLinkStyle(link: Link) {

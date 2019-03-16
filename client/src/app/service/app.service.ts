@@ -1,7 +1,9 @@
 import { Injectable, TrackByFunction } from '@angular/core';
-import { FillWithPipe } from 'src/app/other/pipe/fill-with.pipe';
+import { fromEvent } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Theme, ThemeGroup } from 'src/app/other/@types';
 import { trackBy } from 'src/app/other/function';
-import { ThemeGroup, Theme } from 'src/app/other/@types';
+import { FillWithPipe } from 'src/app/other/pipe/fill-with.pipe';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +21,11 @@ export class APPService {
   /** TrackByIDFunction. */
   trackByID: TrackByFunction<any> = trackBy('id');
 
+  /** Side mode. */
+  sideMode: 'over' | 'side';
+  /** Side open. */
+  sideOpen: boolean;
+
   /** All themes. */
   themeGroups: ThemeGroup[];
   /** Currect theme. */
@@ -27,6 +34,8 @@ export class APPService {
   constructor() {
     this.fillWithPipe = new FillWithPipe();
     this.background = 'assets/image/background-light.png';
+    this.sideMode = this.getSideMode();
+    this.sideOpen = window.innerWidth > 600;
     this.themeGroups = [{
       name: 'dark',
       themes: [{
@@ -65,6 +74,21 @@ export class APPService {
       }]
     }];
     this.changeTheme('light-coless-theme');
+    this.listenOnWindowResize();
+  }
+
+  /**
+   * Listen event on winows resize.
+   * @returns {void} Void.
+   */
+  listenOnWindowResize(): void {
+    fromEvent(window, 'resize').pipe(
+      debounceTime(50),
+      distinctUntilChanged()
+    ).subscribe(e => {
+      this.sideMode = this.getSideMode();
+      this.sideOpen = window.innerWidth > 600;
+    });
   }
 
   /**
@@ -89,6 +113,14 @@ export class APPService {
       return Boolean(result);
     });
     console.log(`Theme changed to ${name}.`);
+  }
+
+  /**
+   * Get side mode, over mode on moblie and side mode on desktop.
+   * @returns {'over' | 'side'} 'over' or 'side'.
+   */
+  getSideMode(): 'over' | 'side' {
+    return window.innerWidth < 600 ? 'over' : 'side';
   }
 
   /**
