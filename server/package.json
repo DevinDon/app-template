@@ -6,9 +6,11 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "dist": "node dist",
-    "start": "ts-node src",
-    "test": "ts-node test/src",
+    "dist": "node dist/main prod",
+    "start": "start:dev",
+    "start:dev": "ts-node src/main dev",
+    "start:prod": "ts-node src/main prod",
+    "test": "karma start",
     "update": "npm up --dev",
     "watch": "tsc -w"
   },
@@ -20,7 +22,15 @@
   "author": "Devin Don <DevinDon@Foxmail.com>",
   "license": "MIT",
   "dependencies": {
-    "koa-backend-server": "^0.5.3"
+    "koa-backend-server": "^0.5.7"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/karma-jasmine": "0.0.31",
+    "jasmine-core": "^3.3.0",
+    "karma": "^4.0.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.0",
+    "karma-typescript": "^4.0.0"
+  }
 }
