@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "dist": "node dist/main prod",
-    "start": "start:dev",
+    "start": "npm run start:dev",
     "start:dev": "ts-node src/main dev",
     "start:prod": "ts-node src/main prod",
     "test": "karma start",
