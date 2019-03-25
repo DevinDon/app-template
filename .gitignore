@@ -1,4 +1,9 @@
-*build
-*dist
-*node_modules
-*.vscode
+# Dist
+/dist
+/client/dist
+/server/dist
+
+# Node Modules
+/node_modules
+/client/node_modules
+/server/node_modules
