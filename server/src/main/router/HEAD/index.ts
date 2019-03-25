@@ -1,4 +1,4 @@
-import { RouterPaths } from 'koa-backend-server';
+import { RouterPaths } from '@iinfinity/rester';
 
 /** All HEAD router. */
 export const HEAD: RouterPaths = {};

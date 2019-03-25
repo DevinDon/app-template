@@ -1,4 +1,4 @@
-import { RouterPaths } from 'koa-backend-server';
+import { RouterPaths } from '@iinfinity/rester';
 
 /** All PUT router. */
 export const PUT: RouterPaths = {};

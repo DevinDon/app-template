@@ -1,4 +1,4 @@
-import { AllPaths } from 'koa-backend-server';
+import { AllPaths } from '@iinfinity/rester';
 import DELETE from './DELETE';
 import GET from './GET';
 import HEAD from './HEAD';

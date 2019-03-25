@@ -1,4 +1,4 @@
-import { Server, KBSConfig } from 'koa-backend-server';
+import { Server, KBSConfig } from '@iinfinity/rester';
 import PATH from './router';
 import { statistic } from './ware';
 
@@ -33,7 +33,6 @@ const prodConfig: KBSConfig = {
     static: { // Backend static html page
       path: 'client'
     },
-    version: 'v1',
     paths: PATH
   },
   session: {
@@ -77,7 +76,6 @@ const devConfig: KBSConfig = {
     static: { // Backend static html page
       path: 'client'
     },
-    version: 'v1',
     paths: PATH
   },
   session: {

@@ -1,5 +1,5 @@
 import { Middleware } from 'koa';
-import { CORS_ALLOW_ALL, RouterPaths } from 'koa-backend-server';
+import { CORS_ALLOW_ALL, RouterPaths } from '@iinfinity/rester';
 import { Statistic } from '../../entity';
 import { generateResponse } from '../function';
 

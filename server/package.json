@@ -6,10 +6,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "dist": "node dist/main prod",
-    "start": "npm run start:dev",
-    "start:dev": "ts-node src/main dev",
-    "start:prod": "ts-node src/main prod",
+    "debug": "ts-node src/main",
+    "start": "npm run build && node dist",
     "test": "karma start",
     "update": "npm up --dev",
     "watch": "tsc -w"
@@ -19,7 +17,6 @@
     "nodejs",
     "typescript"
   ],
-  "author": "Devin Don <DevinDon@Foxmail.com>",
   "license": "MIT",
   "dependencies": {
     "koa-backend-server": "^0.5.7"
