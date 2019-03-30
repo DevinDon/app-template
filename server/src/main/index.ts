@@ -1,9 +1,9 @@
-import { Server, KBSConfig } from '@iinfinity/rester';
+import { Server, ServerConfig } from '@iinfinity/rester';
 import PATH from './router';
 import { statistic } from './ware';
 
 /** Production config. */
-const prodConfig: KBSConfig = {
+const prodConfig: ServerConfig = {
   address: {
     portocol: 'HTTP',
     host: '0.0.0.0',
@@ -46,7 +46,7 @@ const prodConfig: KBSConfig = {
 };
 
 /** Devlopment config. */
-const devConfig: KBSConfig = {
+const devConfig: ServerConfig = {
   address: {
     portocol: 'HTTP',
     host: '0.0.0.0',
@@ -89,7 +89,7 @@ const devConfig: KBSConfig = {
 };
 
 const server = new Server(devConfig);
-// // Use example statistic middleware
-// server.use(statistic);
+// Use example statistic middleware
+server.use({ statistic });
 
 server.listen();
