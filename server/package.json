@@ -14,7 +14,8 @@
     "debug": "node -r ts-node/register --inspect-brk src/main/index.ts",
     "dist": "node dist",
     "start": "npm run build && npm run dist",
-    "test": "node node_modules/jasmine/bin/jasmine.js --config=jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register"
+    "test": "node node_modules/jasmine/bin/jasmine.js --config=jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register",
+    "update": "npm up --dev"
   },
   "keywords": [
     "server",
@@ -23,15 +24,15 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@iinfinity/rester": "^0.7.1",
-    "@iinfinity/logger": "^0.2.0",
-    "typescript": "^3.3.4000"
+    "@iinfinity/logger": "^0.3.1",
+    "@iinfinity/rester": "^0.7.2"
   },
   "devDependencies": {
     "@types/jasmine": "^3.3.12",
-    "@types/node": "^11.12.1",
-    "jasmine": "^3.3.1",
+    "@types/node": "^11.13.4",
+    "jasmine": "^3.4.0",
     "jasmine-console-reporter": "^3.1.0",
-    "ts-node": "^8.0.3"
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.3"
   }
 }
