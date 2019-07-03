@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouteReuseStrategy } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
+import { MaterialModule } from './module/material.module';
+import { RouteReuseHandler, RoutingModule } from './module/routing.module';
+import { SharedModule } from './module/shared.module';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -10,11 +12,13 @@ import { AppService } from './app.service';
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule
+    SharedModule,
+    RoutingModule,
+    MaterialModule
   ],
   providers: [
-    AppService
+    AppService,
+    { provide: RouteReuseStrategy, useClass: RouteReuseHandler }
   ]
 })
 export class AppModule { }
