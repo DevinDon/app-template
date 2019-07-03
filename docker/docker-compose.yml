@@ -2,13 +2,31 @@ version: '3.7'
 
 services:
 
-  # Nginx, overnet & frontend & backend, ports / expose 80 & 443 & 15432 (postgresql) & 16379 (redis)
-  app-nginx:
-    image: nginx
-    depends_on:
-      - postgres
-      - redis
-      - server
+  # # PostgreSQL, backend ,expose 5432
+  # application-database:
+  #   image: postgres
+  #   environment:
+  #     POSTGRES_USER: application
+  #     POSTGRES_PASSWORD: application
+  #     POSTGRES_DB: application
+  #   networks:
+  #     - overnet
+  #   volumes:
+  #     - "application-database:/var/lib/postgresql/data"
+  #   #   - ./config/postgresql:/etc/postgresql:ro
+
+  # # Redis, backend, expose 6379
+  # application-redis:
+  #   image: redis
+  #   container_name: application-redis
+  #   networks:
+  #     - backend
+  #   # volumes:
+  #   #   - ./config/redis:/etc/redis:ro
+
+  # KBS, frontend & backend, expose 8080 - 8082
+  application-server:
+    image: application-server
     deploy:
       mode: replicated
       replicas: 1
@@ -16,71 +34,34 @@ services:
         condition: on-failure
         delay: 10s
         max_attempts: 5
-        window: 30s
+        window: 10s
     networks:
       - overnet
-    ports: # comment on proxy mode
-      - "80:80"
-      - "443:443"
-      - "15432:5432"
-      - "16379:6379"
+    volumes:
+      - "application-server:/db:rw"
+
+  # Nginx, frontend & backend & hostnet, ports 80 & 443 & 13306(dev) & 16379(dev)
+  application-client:
+    image: registry.cn-shanghai.aliyuncs.com/iinfinity/nginx:amd64
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 10s
+    networks:
+      - overnet
+    # ports:
+      # - "80:80"
+      # - "443:443"
+      # - "13306:3306"
+      # - "15432:5432"
+      # - "16379:6379"
     volumes:
       - "./etc/nginx:/etc/nginx:ro"
-
-  # KBS, frontend & backend, expose 8080
-  app-server:
-    image: app-server
-    depends_on:
-      - postgres
-      - redis
-    deploy:
-      mode: replicated
-      replicas: 2
-      restart_policy:
-        condition: on-failure
-        delay: 10s
-        max_attempts: 5
-        window: 30s
-    networks:
-      - overnet
-    volumes:
-      - "data-server:/app/data"
-
-  # PostgreSQL, backend, expose 5432
-  app-postgres:
-    image: postgres
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 5
-        window: 30s
-    environment:
-      POSTGRES_USER: app
-      POSTGRES_PASSWORD: app
-      POSTGRES_DB: app
-    networks:
-      - overnet
-    volumes:
-      - "data-postgres:/var/lib/postgresql/data"
-
-  # Redis, backend, expose 6379
-  app-redis:
-    image: redis
-    deploy:
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 5
-        window: 30s
-    networks:
-      - overnet
-    volumes:
-      - "data-redis:/data"
+      - "./client:/app:ro"
 
 networks:
   overnet:
@@ -88,6 +69,5 @@ networks:
     name: overnet
 
 volumes:
-  data-postgres:
-  data-redis:
-  data-server:
+  # application-database:
+  application-server:

@@ -1,1 +1,1 @@
-docker stack rm app-name
+docker stack rm application
