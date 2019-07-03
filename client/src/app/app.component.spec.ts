@@ -1,13 +1,13 @@
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
 import { Component } from '@angular/core';
-import { APPService } from './app.service';
+import { async, TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+import { AppService } from './app.service';
 
 // tslint:disable: component-selector
 @Component({ selector: 'router-outlet', template: '' })
 class RouterOutletComponent { }
 
-const appServiceStub: Partial<APPService> = {
+const appServiceStub: Partial<AppService> = {
   title: 'Template',
   desc: 'Web APP: Angular client + Rester server.'
 };
@@ -19,7 +19,7 @@ describe('AppComponent', () => {
         AppComponent,
         RouterOutletComponent
       ],
-      providers: [{ provide: APPService, useValue: appServiceStub }]
+      providers: [{ provide: AppService, useValue: appServiceStub }]
     }).compileComponents();
   }));
 
