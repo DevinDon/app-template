@@ -8,7 +8,7 @@ import { AppService } from './app.service';
 })
 export class AppComponent {
 
-  public desc = 'Web APP: Angular client + Rester server.';
+  public desc = 'Angular client + Rester server';
 
   constructor(
     public app: AppService
