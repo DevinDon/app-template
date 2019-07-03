@@ -1,8 +1,15 @@
+// import { asyncHello, hello } from '../main';
 
-describe('index', () => {
+// describe('Hello, world!', () => {
 
-  it('should start server', done => {
-    done();
-  });
+//   it('should say `Hello, world!`', done => {
+//     expect(hello('world')).toEqual('Hello, world!');
+//     done();
+//   });
 
-});
+//   it('should async say `Hello, world!`', async done => {
+//     expect(await asyncHello('world')).toEqual('Hello, world!');
+//     done();
+//   });
+
+// });
