@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouteReuseStrategy } from '@angular/router';
 import { AppComponent } from './app.component';
-import { AppService } from './app.service';
+import { APPService } from './app.service';
 import { MaterialModule } from './module/material.module';
 import { RouteReuseHandler, RoutingModule } from './module/routing.module';
 import { SharedModule } from './module/shared.module';
@@ -17,7 +17,7 @@ import { SharedModule } from './module/shared.module';
     MaterialModule
   ],
   providers: [
-    AppService,
+    APPService,
     { provide: RouteReuseStrategy, useClass: RouteReuseHandler }
   ]
 })
