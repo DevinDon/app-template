@@ -1,0 +1,21 @@
+@import "~@iinfinity/theme/theme/variable.scss";
+
+#window {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  > .title {
+    font-size: xx-large;
+    font-weight: bolder;
+  }
+  > .desc {
+    color: $color-gray;
+    font-size: small;
+    margin: 0 0 1rem 0;
+  }
+  > .outlet {
+    padding: 0 1rem;
+  }
+}
