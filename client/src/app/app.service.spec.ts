@@ -9,4 +9,14 @@ describe('AppService', () => {
     const service: APPService = TestBed.get(APPService);
     expect(service).toBeTruthy();
   });
+
+  it('should has properity title', () => {
+    const service: APPService = TestBed.get(APPService);
+    expect(service.title).toBeTruthy();
+  });
+
+  it('should has properity desc', () => {
+    const service: APPService = TestBed.get(APPService);
+    expect(service.desc).toBeTruthy();
+  });
 });
