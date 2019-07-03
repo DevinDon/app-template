@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
-import { ActivatedRouteSnapshot, DetachedRouteHandle, RouteReuseStrategy, RouterModule, Route } from '@angular/router';
+import { ActivatedRouteSnapshot, DetachedRouteHandle, Route, RouteReuseStrategy, RouterModule } from '@angular/router';
+import { AboutComponent } from '../about/about.component';
 
-export const routes: Route[] = [];
+export const routes: Route[] = [
+  { path: 'about', component: AboutComponent }
+];
 
 @NgModule({
   declarations: [],
