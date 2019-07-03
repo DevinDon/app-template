@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve --host 0.0.0.0 --port 80 --disable-host-check --aot -o",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -12,14 +12,17 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.1.0",
+    "@angular/cdk": "~8.0.2",
     "@angular/common": "~8.1.0",
     "@angular/compiler": "~8.1.0",
     "@angular/core": "~8.1.0",
     "@angular/forms": "~8.1.0",
+    "@angular/material": "^8.0.2",
     "@angular/platform-browser": "~8.1.0",
     "@angular/platform-browser-dynamic": "~8.1.0",
     "@angular/router": "~8.1.0",
     "@iinfinity/theme": "0.1.0",
+    "hammerjs": "^2.0.8",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
