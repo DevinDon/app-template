@@ -14,8 +14,4 @@ describe('AppService', () => {
     expect(service.title).toBeTruthy();
   });
 
-  it('should has properity desc', () => {
-    const service: AppService = TestBed.get(AppService);
-    expect(service.desc).toBeTruthy();
-  });
 });

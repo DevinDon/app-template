@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { async, TestBed } from '@angular/core/testing';
+import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 
@@ -8,11 +8,15 @@ import { AppService } from './app.service';
 class RouterOutletComponent { }
 
 const appServiceStub: Partial<AppService> = {
-  title: 'Template',
-  desc: 'Web APP: Angular client + Rester server.'
+  title: 'Template'
 };
 
 describe('AppComponent', () => {
+
+  let fixture: ComponentFixture<AppComponent>;
+  let app: AppComponent;
+  let element: HTMLElement;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -21,25 +25,21 @@ describe('AppComponent', () => {
       ],
       providers: [{ provide: AppService, useValue: appServiceStub }]
     }).compileComponents();
+    fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    app = fixture.debugElement.componentInstance;
+    element = fixture.debugElement.nativeElement;
   }));
 
   it('should be created', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
   it('should render title in an h1.title tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1.title').textContent).toContain(appServiceStub.title);
+    expect(element.querySelector('h1.title').textContent).toContain(appServiceStub.title);
   });
 
   it('should render desc in a p.desc tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('p.desc').textContent).toContain(appServiceStub.desc);
+    expect(element.querySelector('p.desc').textContent).toContain(app.desc);
   });
 });

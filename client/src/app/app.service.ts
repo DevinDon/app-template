@@ -7,8 +7,6 @@ export class AppService {
 
   public title = 'Template';
 
-  public desc = 'Web APP: Angular client + Rester server.';
-
   constructor() { }
 
 }
