@@ -1,0 +1,16 @@
+{
+  "address": {
+    "host": "0.0.0.0",
+    "port": 8080,
+    "porxy": true
+  },
+  "database": {
+    "type": "sqlite",
+    "database": "/db/sqlite.db",
+    "entities": [
+      "**/*.entity.js"
+    ],
+    "logging": false,
+    "synchronize": true
+  }
+}
