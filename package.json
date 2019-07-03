@@ -1,7 +1,7 @@
 {
-  "name": "app",
+  "name": "tour-of-heroes",
   "version": "0.0.0",
-  "description": "Application with client and server.",
+  "description": "Tour of Heroes.",
   "private": true,
   "directories": {
     "doc": "docs"
@@ -15,6 +15,7 @@
     "install:client": "cd client && npm i",
     "install:server": "cd server && npm i",
     "pack": "npm run build && npm run pack:only",
+    "pack:demo": "cd client && npm run build:demo && cd .. && npm run build:server && npm run pack:only",
     "pack:only": "node tool pack",
     "update": "npm up --dev && npm run update:client && npm run update:server",
     "update:client": "cd client && npm run update",
@@ -22,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DevinDon/app-template.git"
+    "url": "git+https://github.com/DevinDon/tour-of-heroes.git"
   },
   "keywords": [
     "server",
@@ -33,9 +34,9 @@
   "author": "Devin Don <DevinDon@Foxmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DevinDon/app-template/issues"
+    "url": "https://github.com/DevinDon/tour-of-heroes/issues"
   },
-  "homepage": "https://github.com/DevinDon/app-template#readme",
+  "homepage": "https://github.com/DevinDon/tour-of-heroes#readme",
   "devDependencies": {
     "gulp": "^4.0.0",
     "gulp-clean": "^0.4.0",
