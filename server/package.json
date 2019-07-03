@@ -1,38 +1,50 @@
 {
-  "name": "server",
+  "name": "tour-of-heroes.server",
   "version": "0.0.0",
-  "private": true,
-  "description": "The server end of this app.",
+  "description": "Tour of Heroes server end.",
   "main": "dist/index.js",
   "directories": {
     "doc": "docs",
     "example": "src/demo",
     "test": "src/test"
   },
+  "files": [
+    "dist",
+    "docs"
+  ],
   "scripts": {
     "build": "tsc",
-    "debug": "node -r ts-node/register --inspect-brk src/main/index.ts",
-    "dist": "node dist",
+    "debug": "node --inspect-brk -r ts-node/register src/main/index.ts",
+    "dev": "bash -c \"MODE=DEV node -r ts-node/register src/main/index.ts\"",
+    "dist": "bash -c \"MODE=PROD node dist\"",
     "start": "npm run build && npm run dist",
-    "test": "node node_modules/jasmine/bin/jasmine.js --config=jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register",
-    "update": "npm up --dev"
+    "test": "node node_modules/jasmine/bin/jasmine.js --config=src/test/jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register"
   },
   "keywords": [
-    "server",
-    "nodejs",
-    "typescript"
+    "typescript",
+    "project"
   ],
+  "author": "IInfinity <I.INF@Outlook.com> (https://don.red/)",
   "license": "MIT",
+  "private": true,
   "dependencies": {
-    "@iinfinity/logger": "^0.3.1",
-    "@iinfinity/rester": "^0.7.2"
+    "@rester/core": "0.9.5",
+    "sqlite3": "^4.0.9"
   },
   "devDependencies": {
-    "@types/jasmine": "^3.3.12",
-    "@types/node": "^11.13.4",
-    "jasmine": "^3.4.0",
-    "jasmine-console-reporter": "^3.1.0",
-    "ts-node": "^8.1.0",
-    "typescript": "^3.4.3"
-  }
+    "@types/jasmine": "3.3.13",
+    "@types/node": "12.0.8",
+    "jasmine": "3.4.0",
+    "jasmine-console-reporter": "3.1.0",
+    "ts-node": "8.2.0",
+    "typescript": "3.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevinDon/tour-of-heroes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DevinDon/tour-of-heroes/issues"
+  },
+  "homepage": "https://github.com/DevinDon/tour-of-heroes"
 }
