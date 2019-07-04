@@ -1,25 +1,27 @@
 # APP Template
 
-Web application with Angular & Koa.
+Web Application Template, with Angular client end and Rester server end.
+
+Web 应用项目模板, 前端 [Angular](https://angular.io) + 后端 [Rester](https://github.com/DevinDon/rester).
+
+# Demo
+
+See [Angular 8 + Rester](https://demo.don.red/app-template) online demo.
+
+See [Angular 6 + Koa](https://devindon.github.io/app-template) online demo.
 
 # Feature
 
 - Docker compose support, just one command to deploy.
 - Multi-platform support, such as Raspberry Pi(ARM32v7) and x86/64.
-- Database(MySQL, POSTGRESQL and so on) support, via TypeORM.
-- Session support, with redis storage.
+- Database(MySQL, POSTGRESQL, SQLite and so on) support, via [TypeORM](https://typeorm.io).
 - PWA support, via Angular PWA.
-- Angular Material support, and the custome theme template.
-
-# Description
-
-TypeScript Template Porject, with client(Angular) end and server(Koa) end.
-
-TypeScript 项目模板, 前端 Angular + 后端 Koa.
+- Angular Material support, and the custome coless theme template.
 
 # Script
 
 **package.json**
+
 ```json
 "scripts": {
   "build": "npm run build:client && npm run build:server",
@@ -37,70 +39,16 @@ TypeScript 项目模板, 前端 Angular + 后端 Koa.
 }
 ```
 
-*See [tool.js](https://github.com/DevinDon/app-template/blob/master/tool.js) for detail.*
+*See [tool.js](https://github.com/DevinDon/app-template/blob/master/tool.js) for more detail.*
 
-## Build
+## Build & Pack
 
-*Build this application.*
+> npm run pack
 
-> `npm run build:client && npm run build:server`
+## Deploy
 
-### Build client
-
-> `npm run build:client`
-
-### Build server
-
-> `npm run build:server`
-
-## Clean
-
-> `npm run clean`
-
-## Pack
-
-*Build and pack this application.*
-
-> `npm run pack`
-
-### Pack only
-
-*Pack this application only.*
-
-> `npm run pack:only`
-
-### Pack for other arch
-
-*For example, the **ARM32V7(RaspberryPi)**.*
-
-> `npm run pack arm32v7`
-
-> `npm run pack:only arm32v7`
-
-## Update package version
-
-*Update all package.*
-
-> `npm run update`
-
-# Client
-
-Build client with Angular.
-
-使用 Angular 构建客户端.
-
-# Server
-
-The server uses KBS as the backend server by default.
-
-服务器端默认使用基于 Koa2 封装的 [Koa Backend Server, KBS](https://www.npmjs.com/package/koa-backend-server) 作为后端服务器.
-
-With database, redis(session) and router support.
-
-提供数据库, 持久会话以及路由管理支持.
-
-# Deploy
+> cd dist && sh start.sh
 
 Deploy with docker, modify the configuration yourself.
 
-使用 Docker 搭建环境, 自行修改配置.
+使用 Docker 搭建环境, 默认配置即可适用于大部分场景.
