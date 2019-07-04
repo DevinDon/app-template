@@ -3,7 +3,7 @@ version: '3.7'
 services:
 
   # # PostgreSQL, backend ,expose 5432
-  # application-database:
+  # app-template-database:
   #   image: postgres
   #   environment:
   #     POSTGRES_USER: application
@@ -12,21 +12,21 @@ services:
   #   networks:
   #     - overnet
   #   volumes:
-  #     - "application-database:/var/lib/postgresql/data"
+  #     - "app-template-database:/var/lib/postgresql/data"
   #   #   - ./config/postgresql:/etc/postgresql:ro
 
   # # Redis, backend, expose 6379
-  # application-redis:
+  # app-template-redis:
   #   image: redis
-  #   container_name: application-redis
+  #   container_name: app-template-redis
   #   networks:
   #     - backend
   #   # volumes:
   #   #   - ./config/redis:/etc/redis:ro
 
   # KBS, frontend & backend, expose 8080 - 8082
-  application-server:
-    image: application-server
+  app-template-server:
+    image: app-template-server
     deploy:
       mode: replicated
       replicas: 1
@@ -38,10 +38,10 @@ services:
     networks:
       - overnet
     volumes:
-      - "application-server:/db:rw"
+      - "app-template-database:/db:rw"
 
   # Nginx, frontend & backend & hostnet, ports 80 & 443 & 13306(dev) & 16379(dev)
-  application-client:
+  app-template-client:
     image: registry.cn-shanghai.aliyuncs.com/iinfinity/nginx:amd64
     deploy:
       mode: replicated
@@ -69,5 +69,5 @@ networks:
     name: overnet
 
 volumes:
-  # application-database:
-  application-server:
+  app-template-database:
+  # app-template-server:
