@@ -43,4 +43,13 @@ export class MottoController {
     });
   }
 
+  @GET('/')
+  async getOneByRandom() {
+    const result = await this.service.getOneByRandom();
+    return response({
+      status: Boolean(result),
+      content: result
+    });
+  }
+
 }

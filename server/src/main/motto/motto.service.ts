@@ -18,12 +18,20 @@ export class MottoService {
     return MottoEntity.findOne(id);
   }
 
-  getMoreByConditions(motto: Partial<Motto>): Promise<MottoEntity[]> {
+  getMoreByConditions(motto: Partial<Motto>): Promise<Motto[]> {
     return MottoEntity.find(motto);
   }
 
-  getOneByID(id: number): Promise<MottoEntity | undefined> {
+  getOneByID(id: number): Promise<Motto | undefined> {
     return MottoEntity.findOne(id);
+  }
+
+  getOneByRandom(): Promise<Motto | undefined> {
+    return MottoEntity.createQueryBuilder()
+      .select()
+      .orderBy('RANDOM()')
+      .take(1)
+      .getOne();
   }
 
 }
