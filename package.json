@@ -1,7 +1,6 @@
 {
-  "name": "tour-of-heroes",
+  "name": "app-template",
   "version": "0.0.0",
-  "description": "Tour of Heroes.",
   "private": true,
   "directories": {
     "doc": "docs"

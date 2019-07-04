@@ -1,7 +1,6 @@
 {
-  "name": "tour-of-heroes.server",
+  "name": "app-template.server",
   "version": "0.0.0",
-  "description": "Tour of Heroes server end.",
   "main": "dist/index.js",
   "directories": {
     "doc": "docs",
