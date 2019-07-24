@@ -1,9 +1,9 @@
 import { CORSHandler, Rester } from '@rester/core';
-import { MottoController } from './motto/motto.controller';
+import { MottoView } from './motto/motto.view';
 
 const rester = new Rester()
-  .configControllers
-  .add(MottoController)
+  .configViews
+  .add(MottoView)
   .end()
   .configHandlers
   .add(CORSHandler)

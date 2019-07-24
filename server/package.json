@@ -14,9 +14,9 @@
   "scripts": {
     "build": "tsc",
     "debug": "node --inspect-brk -r ts-node/register src/main/index.ts",
-    "dev": "bash -c \"MODE=DEV node -r ts-node/register src/main/index.ts\"",
-    "dist": "bash -c \"MODE=PROD node dist\"",
-    "start": "npm run build && npm run dist",
+    "dev": "cross-env MODE=DEV node -r ts-node/register src/main/index.ts",
+    "prod": "cross-env MODE=PROD node dist",
+    "start": "npm run dev",
     "test": "node node_modules/jasmine/bin/jasmine.js --config=src/test/jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register"
   },
   "keywords": [
@@ -27,16 +27,17 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@rester/core": "0.9.5",
-    "sqlite3": "^4.0.9"
+    "@rester/core": "0.10.2",
+    "sqlite3": "4.0.9"
   },
   "devDependencies": {
     "@types/jasmine": "3.3.13",
-    "@types/node": "12.0.8",
+    "@types/node": "12.6.8",
+    "cross-env": "5.2.0",
     "jasmine": "3.4.0",
     "jasmine-console-reporter": "3.1.0",
-    "ts-node": "8.2.0",
-    "typescript": "3.5.2"
+    "ts-node": "8.3.0",
+    "typescript": "3.5.3"
   },
   "repository": {
     "type": "git",

@@ -1,55 +1,38 @@
-import { Controller, DELETE, GET, Inject, PathVariable, POST, PUT, RequestBody } from '@rester/core';
-import { response } from '../model/response.model';
-import { Motto } from './motto.entity';
-import { MottoService } from './motto.service';
+import { Controller } from '@rester/core';
+import { MottoEntity } from './motto.entity';
+import { Motto } from './motto.model';
 
-@Controller('/motto')
+@Controller()
 export class MottoController {
 
-  @Inject()
-  private service!: MottoService;
-
-  @POST('/')
-  async addOne(@RequestBody() motto: Motto) {
-    const result = await this.service.addOne(motto);
-    return response({
-      status: Boolean(result),
-      content: result
-    });
+  addOne(motto: Motto): Promise<Motto | undefined> {
+    return MottoEntity.insert(motto).then(v => v.identifiers[0] ? motto : undefined);
   }
 
-  @DELETE('/{{id}}')
-  async removeOneByID(@PathVariable('id') id: number) {
-    return response({
-      status: await this.service.removeOneByID(+id)
-    });
+  removeOneByID(id: number): Promise<boolean> {
+    // sqlite delete result is always `{ raw: [] }`
+    return MottoEntity.delete(id).then(v => true);
   }
 
-  @PUT('/{{id}}')
-  async modifyOneByID(@PathVariable('id') id: number, @RequestBody() motto: Motto) {
-    const result = await this.service.modifyOneByID(+id, motto);
-    return response({
-      status: Boolean(result),
-      content: result
-    });
+  async modifyOneByID(id: number, motto: Motto): Promise<Motto | undefined> {
+    await MottoEntity.update(id, motto);
+    return MottoEntity.findOne(id);
   }
 
-  @GET('/{{id}}')
-  async getOneByID(@PathVariable('id') id: number) {
-    const result = await this.service.getOneByID(+id);
-    return response({
-      status: Boolean(result),
-      content: result
-    });
+  getMoreByConditions(motto: Partial<Motto>): Promise<Motto[]> {
+    return MottoEntity.find(motto);
   }
 
-  @GET('/')
-  async getOneByRandom() {
-    const result = await this.service.getOneByRandom();
-    return response({
-      status: Boolean(result),
-      content: result
-    });
+  getOneByID(id: number): Promise<Motto | undefined> {
+    return MottoEntity.findOne(id);
+  }
+
+  getOneByRandom(): Promise<Motto | undefined> {
+    return MottoEntity.createQueryBuilder()
+      .select()
+      .orderBy('RANDOM()')
+      .take(1)
+      .getOne();
   }
 
 }

@@ -1,10 +1,5 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from 'typeorm';
-
-export interface Motto {
-  id: number;
-  content: string;
-  who?: string;
-}
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Motto } from './motto.model';
 
 @Entity('motto')
 export class MottoEntity extends BaseEntity implements Motto {
