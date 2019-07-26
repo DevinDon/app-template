@@ -42,7 +42,7 @@ services:
 
   # Nginx, frontend & backend & hostnet, ports 80 & 443 & 13306(dev) & 16379(dev)
   app-template-client:
-    image: docker.io/iinfinity/nginx
+    image: iinfinity/nginx
     deploy:
       mode: replicated
       replicas: 1
