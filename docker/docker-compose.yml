@@ -26,7 +26,7 @@ services:
 
   # KBS, frontend & backend, expose 8080 - 8082
   app-template-server:
-    image: app-template-server:latest
+    image: app-template-server
     deploy:
       mode: replicated
       replicas: 1
@@ -42,7 +42,7 @@ services:
 
   # Nginx, frontend & backend & hostnet, ports 80 & 443 & 13306(dev) & 16379(dev)
   app-template-client:
-    image: iinfinity/nginx:latest
+    image: iinfinity/nginx
     deploy:
       mode: replicated
       replicas: 1
@@ -60,7 +60,8 @@ services:
       # - "15432:5432"
       # - "16379:6379"
     volumes:
-      - "./etc/nginx:/etc/nginx:ro"
+      - "./etc/nginx/http.d:/etc/nginx/http.d:ro"
+      - "./etc/nginx/stream.d:/etc/nginx/stream.d:ro"
       - "./client:/app:ro"
 
 networks:

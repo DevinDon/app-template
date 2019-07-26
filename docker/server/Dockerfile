@@ -1,4 +1,4 @@
-FROM iinfinity/node:latest
+FROM iinfinity/node
 ENV MODE=PROD
 WORKDIR /app
 COPY ["package.json", "package-lock.json", "./"]
