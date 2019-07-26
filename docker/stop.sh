@@ -1,1 +1,1 @@
-docker stack rm application
+docker stack rm app-template
