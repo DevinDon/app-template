@@ -16,6 +16,7 @@
     "pack": "npm run build && npm run pack:only",
     "pack:demo": "cd client && npm run build:demo && cd .. && npm run build:server && npm run pack:only",
     "pack:only": "node tool pack",
+    "start": "sh dist/stop.sh & git pull && npm i && npm run pack && cd dist && sh start.sh",
     "update": "npm up --dev && npm run update:client && npm run update:server",
     "update:client": "cd client && npm run update",
     "update:server": "cd server && npm run update"
