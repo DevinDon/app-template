@@ -26,7 +26,7 @@ services:
 
   # KBS, frontend & backend, expose 8080 - 8082
   app-template-server:
-    image: app-template-server
+    image: app-template-server:latest
     deploy:
       mode: replicated
       replicas: 1
@@ -42,7 +42,7 @@ services:
 
   # Nginx, frontend & backend & hostnet, ports 80 & 443 & 13306(dev) & 16379(dev)
   app-template-client:
-    image: iinfinity/nginx
+    image: iinfinity/nginx:latest
     deploy:
       mode: replicated
       replicas: 1
