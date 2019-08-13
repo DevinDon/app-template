@@ -27,8 +27,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@rester/core": "0.10.2",
-    "sqlite3": "4.0.9"
+    "@rester/core": "0.10.2"
   },
   "devDependencies": {
     "@types/jasmine": "3.3.13",
