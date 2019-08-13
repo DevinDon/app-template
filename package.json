@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DevinDon/tour-of-heroes.git"
+    "url": "git+https://github.com/DevinDon/app-template.git"
   },
   "keywords": [
     "server",
@@ -34,9 +34,9 @@
   "author": "Devin Don <DevinDon@Foxmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DevinDon/tour-of-heroes/issues"
+    "url": "https://github.com/DevinDon/app-template/issues"
   },
-  "homepage": "https://github.com/DevinDon/tour-of-heroes#readme",
+  "homepage": "https://github.com/DevinDon/app-template#readme",
   "devDependencies": {
     "gulp": "^4.0.0",
     "gulp-clean": "^0.4.0",

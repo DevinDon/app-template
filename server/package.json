@@ -40,10 +40,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DevinDon/tour-of-heroes.git"
+    "url": "git+https://github.com/DevinDon/app-template.git"
   },
   "bugs": {
-    "url": "https://github.com/DevinDon/tour-of-heroes/issues"
+    "url": "https://github.com/DevinDon/app-template/issues"
   },
-  "homepage": "https://github.com/DevinDon/tour-of-heroes"
+  "homepage": "https://github.com/DevinDon/app-template"
 }
