@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { ComponentType } from '@angular/cdk/portal';
+import { Injectable, OnDestroy, TemplateRef } from '@angular/core';
+import { MatDialog, MatDialogConfig, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { BehaviorSubject, Subscription, fromEvent } from 'rxjs';
+import { BehaviorSubject, fromEvent, Subscription } from 'rxjs';
 import { filter, map, mergeMap, throttleTime } from 'rxjs/operators';
 import { Device, getDeviceInfo } from '../util/device';
+import { destory } from '../util/subscription';
 
 interface Subjections {
   device: BehaviorSubject<Device>;
@@ -20,7 +22,7 @@ export const APP = {
 @Injectable({
   providedIn: 'root'
 })
-export class AppService {
+export class AppService implements OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
@@ -100,6 +102,46 @@ export class AppService {
 
   loadingFree() {
     this.subjections.loading.next(Math.min(this.subjections.loading.value - 1, 0));
+  }
+
+  openBar(
+    message: string,
+    action: string = '了解',
+    config: MatSnackBarConfig = {
+      duration: 5000,
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom'
+    }
+  ) {
+    return this.bar.open(message, action, config);
+  }
+
+  closeBar() {
+    this.bar.dismiss();
+  }
+
+  openDialog<T>(
+    component: ComponentType<T> | TemplateRef<T>,
+    config?: MatDialogConfig
+  ) {
+    return this.dialog.open(
+      component,
+      Object.assign(
+        {},
+        config || {},
+        {
+          panelClass: ['fit-dialog']
+        }
+      )
+    );
+  }
+
+  closeDialog() {
+    this.dialog.closeAll();
+  }
+
+  ngOnDestroy() {
+    destory(this.subscriptions);
   }
 
 }
