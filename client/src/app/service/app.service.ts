@@ -3,7 +3,7 @@ import { MatDialog, MatSnackBar } from '@angular/material';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject, Subscription, fromEvent } from 'rxjs';
-import { filter, map, mergeMap } from 'rxjs/operators';
+import { filter, map, mergeMap, throttleTime } from 'rxjs/operators';
 import { Device, getDeviceInfo } from '../util/device';
 
 interface Subjections {
@@ -55,11 +55,17 @@ export class AppService {
   }
 
   observableDevice() {
-    return this.subjections.device;
+    return this.subjections.device
+      .pipe(
+        throttleTime(50)
+      );
   }
 
   observableLoading() {
-    return this.subjections.loading;
+    return this.subjections.loading
+      .pipe(
+        throttleTime(50)
+      );
   }
 
   observablePaths() {
