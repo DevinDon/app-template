@@ -3,8 +3,6 @@ import { Route } from '@angular/router';
 export const routes: Route[] = [
   {
     path: 'about',
-    data: {
-      title: '关于'
-    }
+    loadChildren: () => import('../../page/about/about.module').then(m => m.AboutModule)
   }
 ];
