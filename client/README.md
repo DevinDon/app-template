@@ -867,6 +867,134 @@ import { LoadingInterceptor } from './util/loading.interceptor';
 export class AppModule { }
 ```
 
+## 10 Custom Index Page
+
+```html
+<!-- src/app/app.component.html -->
+
+<div id="wave"></div>
+<div id="window">
+
+  <!-- <h1 class="title" [@title]="animation.title.state" (@title.done)="animation.title.callback()">{{ app.title }}</h1> -->
+  <h1 class="title">{{ title }}</h1>
+
+  <p class="desc">{{ desc }}</p>
+
+  <div class="link">
+    <a mat-button href="https://github.com/DevinDon/app-template" target="_blank">
+      <mat-icon class="ri-github-line"></mat-icon><span class="name">GitHub</span>
+    </a>
+    <a mat-button href="https://angular.io" target="_blank">
+      <mat-icon class="ri-angularjs-line"></mat-icon><span class="name">Angular</span>
+    </a>
+    <a mat-button href="https://github.com/DevinDon/rester" target="_blank">
+      <mat-icon class="ri-server-line"></mat-icon><span class="name">Rester</span>
+    </a>
+  </div>
+
+  <section class="outlet">
+    <router-outlet></router-outlet>
+  </section>
+
+</div>
+```
+
+```scss
+// src/app/app.component.scss
+
+#wave {
+  position        : fixed;
+  top             : 0;
+  left            : 0;
+  width           : 100vw;
+  height          : 100vh;
+  background-color: #76daff;
+  overflow        : hidden;
+  z-index         : -1;
+
+  &::before,
+  &::after {
+    content                  : "";
+    position                 : absolute;
+    left                     : 50%;
+    background-color         : #fff;
+    min-width                : 300rem;
+    min-height               : 300rem;
+    animation-name           : rotate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  &::before {
+    bottom            : 15vh;
+    border-radius     : 46%;
+    animation-duration: 15s;
+  }
+
+  &::after {
+    bottom            : 12vh;
+    opacity           : 0.5;
+    border-radius     : 48%;
+    animation-duration: 15s;
+  }
+}
+
+#window {
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+  align-items    : center;
+  min-height     : 100vh;
+
+  >.title {
+    font-size  : xx-large;
+    font-weight: bolder;
+  }
+
+  >.desc {
+    color    : gray;
+    font-size: small;
+    margin   : 0 0 1rem 0;
+  }
+
+  >.outlet {
+    padding: 0 1rem;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, 0) rotateZ(0deg);
+  }
+
+  50% {
+    transform: translate(-50%, -2%) rotateZ(180deg);
+  }
+
+  100% {
+    transform: translate(-50%, 0%) rotateZ(360deg);
+  }
+}
+```
+
+```typescript
+// src/app/app.component.ts
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+
+  title = 'Client';
+  desc = 'Angular client + Rester server';
+
+}
+```
+
 # Attention
 
 ## 1 Route
