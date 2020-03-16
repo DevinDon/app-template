@@ -1,5 +1,5 @@
-import { Injectable, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable, isDevMode } from '@angular/core';
 
 interface Environment {
   protocol: 'http' | 'https';
@@ -39,23 +39,23 @@ export class ApiService {
     ApiService.API = isDevMode() ? this.dev.full : this.prod.full;
   }
 
-  delete<T = any>(path: string, options?: any) {
-    return this.http.delete<T>(ApiService.API + path, options);
+  delete<T = any>(path: string) {
+    return this.http.delete<T>(ApiService.API + path);
   }
 
-  get<T = any>(path: string, options?: any) {
-    return this.http.get<T>(ApiService.API + path, options);
+  get<T = any>(path: string) {
+    return this.http.get<T>(ApiService.API + path);
   }
 
-  patch<T = any>(path: string, data: any = {}, options?: any) {
-    return this.http.patch<T>(ApiService.API + path, data, options);
+  patch<T = any>(path: string, data: any = {}) {
+    return this.http.patch<T>(ApiService.API + path, data);
   }
 
-  post<T = any>(path: string, data: any = {}, options?: any) {
-    return this.http.post<T>(ApiService.API + path, data, options);
+  post<T = any>(path: string, data: any = {}) {
+    return this.http.post<T>(ApiService.API + path, data);
   }
 
-  put<T = any>(path: string, data: any = {}, options?: any) {
-    return this.http.put<T>(ApiService.API + path, data, options);
+  put<T = any>(path: string, data: any = {}) {
+    return this.http.put<T>(ApiService.API + path, data);
   }
 }
