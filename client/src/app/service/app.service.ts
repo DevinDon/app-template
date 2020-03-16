@@ -109,7 +109,7 @@ export class AppService implements OnDestroy {
 
   openBar(
     message: string,
-    action: string = '了解',
+    action: string = 'OK',
     config: MatSnackBarConfig = {
       duration: 5000,
       horizontalPosition: 'right',
