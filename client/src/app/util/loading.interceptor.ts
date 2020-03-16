@@ -1,6 +1,8 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+// src/app/util/loading.interceptor.ts
+
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { AppService } from '../service/app.service';
 
@@ -16,7 +18,7 @@ export class LoadingInterceptor implements HttpInterceptor {
         catchError(
           error => {
             this.app.openBar('网络忙，请稍后重试。');
-            return of(new HttpResponse({ body: { status: false } }));
+            throw error;
           }
         ),
         finalize(() => this.app.loadingFree())
