@@ -426,7 +426,7 @@ import { ActivatedRouteSnapshot, DetachedRouteHandle, RouteReuseStrategy, Router
 import { routes } from './routes';
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class RouteModule { }
