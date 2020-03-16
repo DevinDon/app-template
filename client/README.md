@@ -426,11 +426,15 @@ export class PageModule { }
     </a>
   </div>
 
-  <div *ngIf="version" style="font-size: small; color: gray;">
+  <div *ngIf="version; else defaultTemplate" class="version">
     <span class="type">{{ version.type }}</span><span class="split"> & </span>
     <span class="major">{{ version.major }}</span>.<span class="minor">{{ version.minor }}</span>.<span
       class="patch">{{ version.patch }}</span>
   </div>
+
+  <ng-template #defaultTemplate>
+    <div class="version">Loading version...</div>
+  </ng-template>
 
 </div>
 ```
@@ -495,8 +499,9 @@ export class PageModule { }
     margin   : 0 0 1rem 0;
   }
 
-  >.outlet {
-    width: 100vw;
+  .version {
+    font-size: small;
+    color    : gray;
   }
 }
 
