@@ -1,6 +1,7 @@
 import { ComponentType } from '@angular/cdk/portal';
 import { Injectable, OnDestroy, TemplateRef } from '@angular/core';
-import { MatDialog, MatDialogConfig, MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject, fromEvent, Subscription } from 'rxjs';
@@ -16,7 +17,7 @@ interface Subjections {
 
 export const APP = {
   name: 'Template',
-  published: '2019-12-27 18:00:00'
+  published: '2020-03-15 22:00:00'
 };
 
 @Injectable({

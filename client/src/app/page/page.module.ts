@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { ComponentModule } from '../component/component.module';
 import { MaterialModule } from '../module/material.module';
 import { SharedModule } from '../module/shared.module';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [AboutComponent],
   imports: [
     SharedModule,
     MaterialModule,

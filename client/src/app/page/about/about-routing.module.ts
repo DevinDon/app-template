@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about.component';
 
 const routes: Routes = [
-  { path: '', component: AboutComponent, data: { title: '关于' } }
+  { path: '', component: AboutComponent, data: { reload: false, title: '关于' } }
 ];
 
 @NgModule({
