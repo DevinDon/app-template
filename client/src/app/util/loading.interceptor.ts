@@ -17,7 +17,7 @@ export class LoadingInterceptor implements HttpInterceptor {
       .pipe(
         catchError(
           error => {
-            this.app.openBar('网络忙，请稍后重试。');
+            this.app.openBar('Network busy, try again later.');
             throw error;
           }
         ),

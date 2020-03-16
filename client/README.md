@@ -397,6 +397,8 @@ import { SharedModule } from '../module/shared.module';
 export class PageModule { }
 ```
 
+And then, generate about component.
+
 #### 5.4.2 About Page
 
 `ng g c page/about && ng g m page/about --routing`
@@ -695,7 +697,6 @@ export function getDeviceInfo(): Device {
     type: window.innerWidth > 1023 ? 'desktop' : 'mobile'
   };
 }
-
 ```
 
 ### 6.2 Subscriptions
@@ -708,7 +709,6 @@ import { Subscription } from 'rxjs';
 export function destory(subscriptions: Subscription[]) {
   subscriptions.forEach(v => v.unsubscribe());
 }
-
 ```
 
 ## 7. Create Services

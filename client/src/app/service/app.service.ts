@@ -1,3 +1,5 @@
+// src/app/service/app.service.ts
+
 import { ComponentType } from '@angular/cdk/portal';
 import { Injectable, OnDestroy, TemplateRef } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
