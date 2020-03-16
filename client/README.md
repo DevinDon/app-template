@@ -394,6 +394,54 @@ export class PageModule { }
 
 `ng g c page/about && ng g m page/about --routing`
 
+```html
+<!-- src/app/page/about/about.component.html -->
+
+<div *ngIf="version">
+  <span class="type">{{ version.type }}</span>
+  <span class="major">{{ version.major }}</span>.<span class="minor">{{ version.minor }}</span>.<span
+    class="patch">{{ version.patch }}</span>
+</div>
+```
+
+```typescript
+// src/app/page/about/about.component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/service/api.service';
+
+export interface Version {
+  major: number;
+  minor: number;
+  patch: number;
+  type: 'beta' | 'release';
+}
+
+@Component({
+  selector: 'app-about',
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.scss']
+})
+export class AboutComponent implements OnInit {
+
+  version: Version;
+
+  constructor(
+    private api: ApiService
+  ) { }
+
+  ngOnInit(): void {
+    this.getVersion();
+  }
+
+  getVersion() {
+    this.api.get<Version>('version')
+      .subscribe(v => this.version = v);
+  }
+
+}
+```
+
 ```typescript
 // src/app/page/about/about-routing.module.ts
 
