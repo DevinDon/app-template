@@ -402,8 +402,8 @@ export class PageModule { }
 ```html
 <!-- src/app/page/about/about.component.html -->
 
-<div *ngIf="version">
-  <span class="type">{{ version.type }}</span>
+<div *ngIf="version" style="font-size: small; color: gray;">
+  <span class="type">{{ version.type }}</span><span class="split"> & </span>
   <span class="major">{{ version.major }}</span>.<span class="minor">{{ version.minor }}</span>.<span
     class="patch">{{ version.patch }}</span>
 </div>
