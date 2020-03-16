@@ -1,3 +1,5 @@
+// src/app/module/routing/routing.module.ts
+
 import { NgModule } from '@angular/core';
 import { ActivatedRouteSnapshot, DetachedRouteHandle, RouteReuseStrategy, RouterModule } from '@angular/router';
 import { routes } from './routes';
@@ -6,7 +8,7 @@ import { routes } from './routes';
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class RouteModule { }
+export class RoutingModule { }
 
 export class AppRouteReuseStrategy implements RouteReuseStrategy {
 

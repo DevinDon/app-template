@@ -376,6 +376,8 @@ export class ComponentModule { }
 
 `ng g m page`
 
+##### (1) Component Module
+
 ```typescript
 // src/app/page/page.module.ts
 
@@ -399,20 +401,128 @@ export class PageModule { }
 
 `ng g c page/about && ng g m page/about --routing`
 
+##### (1) Component Template
+
 ```html
 <!-- src/app/page/about/about.component.html -->
 
-<div *ngIf="version" style="font-size: small; color: gray;">
-  <span class="type">{{ version.type }}</span><span class="split"> & </span>
-  <span class="major">{{ version.major }}</span>.<span class="minor">{{ version.minor }}</span>.<span
-    class="patch">{{ version.patch }}</span>
+<div id="wave"></div>
+<div class="window">
+
+  <!-- <h1 class="title" [@title]="animation.title.state" (@title.done)="animation.title.callback()">{{ app.title }}</h1> -->
+  <h1 class="title">{{ title }}</h1>
+
+  <p class="desc">{{ desc }}</p>
+
+  <div class="link">
+    <a mat-button href="https://github.com/DevinDon/app-template" target="_blank">
+      <mat-icon class="ri-github-line"></mat-icon><span class="name">GitHub</span>
+    </a>
+    <a mat-button href="https://angular.io" target="_blank">
+      <mat-icon class="ri-angularjs-line"></mat-icon><span class="name">Angular</span>
+    </a>
+    <a mat-button href="https://github.com/DevinDon/rester" target="_blank">
+      <mat-icon class="ri-server-line"></mat-icon><span class="name">Rester</span>
+    </a>
+  </div>
+
+  <div *ngIf="version" style="font-size: small; color: gray;">
+    <span class="type">{{ version.type }}</span><span class="split"> & </span>
+    <span class="major">{{ version.major }}</span>.<span class="minor">{{ version.minor }}</span>.<span
+      class="patch">{{ version.patch }}</span>
+  </div>
+
 </div>
 ```
+
+##### (2) Component Style
+
+```scss
+// src/app/page/about/about.component.scss
+
+#wave {
+  position        : fixed;
+  top             : 0;
+  left            : 0;
+  width           : 100vw;
+  height          : 100vh;
+  background-color: #76daff;
+  overflow        : hidden;
+  z-index         : -1;
+
+  &::before,
+  &::after {
+    content                  : "";
+    position                 : absolute;
+    left                     : 50%;
+    background-color         : #fff;
+    min-width                : 300rem;
+    min-height               : 300rem;
+    animation-name           : rotate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  &::before {
+    bottom            : 15vh;
+    border-radius     : 46%;
+    animation-duration: 15s;
+  }
+
+  &::after {
+    bottom            : 12vh;
+    opacity           : 0.5;
+    border-radius     : 48%;
+    animation-duration: 15s;
+  }
+}
+
+.window {
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+  align-items    : center;
+  min-height     : 100vh;
+
+  >.title {
+    font-size  : xx-large;
+    font-weight: bolder;
+  }
+
+  >.desc {
+    color    : gray;
+    font-size: small;
+    margin   : 0 0 1rem 0;
+  }
+
+  >.outlet {
+    width: 100vw;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, 0) rotateZ(0deg);
+  }
+
+  50% {
+    transform: translate(-50%, -2%) rotateZ(180deg);
+  }
+
+  100% {
+    transform: translate(-50%, 0%) rotateZ(360deg);
+  }
+}
+```
+
+##### (3) Component Class
 
 ```typescript
 // src/app/page/about/about.component.ts
 
 import { Component, OnInit } from '@angular/core';
+import { of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { ApiService } from 'src/app/service/api.service';
 
 export interface Version {
@@ -429,6 +539,8 @@ export interface Version {
 })
 export class AboutComponent implements OnInit {
 
+  title = 'Template';
+  desc = 'Angular client + Rester server';
   version: Version;
 
   constructor(
@@ -441,11 +553,21 @@ export class AboutComponent implements OnInit {
 
   getVersion() {
     this.api.get<Version>('version')
+      .pipe(
+        catchError(err => of({
+          major: 0,
+          minor: 0,
+          patch: 0,
+          type: 'beta'
+        } as Version))
+      )
       .subscribe(v => this.version = v);
   }
 
 }
 ```
+
+##### (4) Component Routing
 
 ```typescript
 // src/app/page/about/about-routing.module.ts
@@ -465,14 +587,31 @@ const routes: Routes = [
 export class AboutRoutingModule { }
 ```
 
-And then, format other files.
+##### (5) Component Module
+
+```typescript
+// src/app/page/about/about.module.ts
+
+import { NgModule } from '@angular/core';
+import { SharedModule } from 'src/app/module/shared.module';
+import { AboutRoutingModule } from './about-routing.module';
+
+@NgModule({
+  declarations: [],
+  imports: [
+    SharedModule,
+    AboutRoutingModule
+  ]
+})
+export class AboutModule { }
+```
 
 ### 5.5 Create Router Module
 
 #### 5.5.1 Route module
 
 ```typescript
-// src/app/module/route/route.module.ts
+// src/app/module/routing/routing.module.ts
 
 import { NgModule } from '@angular/core';
 import { ActivatedRouteSnapshot, DetachedRouteHandle, RouteReuseStrategy, RouterModule } from '@angular/router';
@@ -482,9 +621,9 @@ import { routes } from './routes';
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class RouteModule { }
+export class RoutingModule { }
 
-export class RouteReuseHandler implements RouteReuseStrategy {
+export class AppRouteReuseStrategy implements RouteReuseStrategy {
 
   private cache: Map<string, DetachedRouteHandle> = new Map();
 
@@ -514,11 +653,16 @@ export class RouteReuseHandler implements RouteReuseStrategy {
 #### 5.5.2 Routes
 
 ```typescript
-// src/app/module/route/routes.ts
+// src/app/module/routing/routes.ts
 
 import { Route } from '@angular/router';
 
 export const routes: Route[] = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'about'
+  },
   {
     path: 'about',
     loadChildren: () => import('../../page/about/about.module').then(m => m.AboutModule)
@@ -798,11 +942,11 @@ export class ApiService {
 `ng g interceptor util/loading`
 
 ```typescript
-// src/util/loading.interceptor.ts
+// src/app/util/loading.interceptor.ts
 
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { AppService } from '../service/app.service';
 
@@ -818,7 +962,7 @@ export class LoadingInterceptor implements HttpInterceptor {
         catchError(
           error => {
             this.app.openBar('Network busy, try again later.');
-            return of(new HttpResponse({ body: { status: false } }));
+            throw error;
           }
         ),
         finalize(() => this.app.loadingFree())
@@ -841,7 +985,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ComponentModule } from './component/component.module';
 import { MaterialModule } from './module/material.module';
-import { AppRouteReuseStrategy, RouteModule } from './module/route/route.module';
+import { AppRouteReuseStrategy, RoutingModule } from './module/routing/routing.module';
 import { SharedModule } from './module/shared.module';
 import { PageModule } from './page/page.module';
 import { ApiService } from './service/api.service';
@@ -859,7 +1003,7 @@ import { LoadingInterceptor } from './util/loading.interceptor';
     MaterialModule,
     ComponentModule,
     PageModule,
-    RouteModule
+    RoutingModule
   ],
   providers: [
     AppService,
@@ -877,25 +1021,7 @@ export class AppModule { }
 ```html
 <!-- src/app/app.component.html -->
 
-<div id="wave"></div>
 <div id="window">
-
-  <!-- <h1 class="title" [@title]="animation.title.state" (@title.done)="animation.title.callback()">{{ app.title }}</h1> -->
-  <h1 class="title">{{ title }}</h1>
-
-  <p class="desc">{{ desc }}</p>
-
-  <div class="link">
-    <a mat-button href="https://github.com/DevinDon/app-template" target="_blank">
-      <mat-icon class="ri-github-line"></mat-icon><span class="name">GitHub</span>
-    </a>
-    <a mat-button href="https://angular.io" target="_blank">
-      <mat-icon class="ri-angularjs-line"></mat-icon><span class="name">Angular</span>
-    </a>
-    <a mat-button href="https://github.com/DevinDon/rester" target="_blank">
-      <mat-icon class="ri-server-line"></mat-icon><span class="name">Rester</span>
-    </a>
-  </div>
 
   <section class="outlet">
     <router-outlet></router-outlet>
@@ -907,43 +1033,6 @@ export class AppModule { }
 ```scss
 // src/app/app.component.scss
 
-#wave {
-  position        : fixed;
-  top             : 0;
-  left            : 0;
-  width           : 100vw;
-  height          : 100vh;
-  background-color: #76daff;
-  overflow        : hidden;
-  z-index         : -1;
-
-  &::before,
-  &::after {
-    content                  : "";
-    position                 : absolute;
-    left                     : 50%;
-    background-color         : #fff;
-    min-width                : 300rem;
-    min-height               : 300rem;
-    animation-name           : rotate;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-  }
-
-  &::before {
-    bottom            : 15vh;
-    border-radius     : 46%;
-    animation-duration: 15s;
-  }
-
-  &::after {
-    bottom            : 12vh;
-    opacity           : 0.5;
-    border-radius     : 48%;
-    animation-duration: 15s;
-  }
-}
-
 #window {
   display        : flex;
   flex-direction : column;
@@ -951,33 +1040,8 @@ export class AppModule { }
   align-items    : center;
   min-height     : 100vh;
 
-  >.title {
-    font-size  : xx-large;
-    font-weight: bolder;
-  }
-
-  >.desc {
-    color    : gray;
-    font-size: small;
-    margin   : 0 0 1rem 0;
-  }
-
   >.outlet {
-    width  : 100vw;
-  }
-}
-
-@keyframes rotate {
-  0% {
-    transform: translate(-50%, 0) rotateZ(0deg);
-  }
-
-  50% {
-    transform: translate(-50%, -2%) rotateZ(180deg);
-  }
-
-  100% {
-    transform: translate(-50%, 0%) rotateZ(360deg);
+    width: 100vw;
   }
 }
 ```
@@ -992,12 +1056,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-
-  title = 'Client';
-  desc = 'Angular client + Rester server';
-
-}
+export class AppComponent { }
 ```
 
 # Attention

@@ -1,4 +1,8 @@
+// src/app/page/about/about.component.ts
+
 import { Component, OnInit } from '@angular/core';
+import { of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { ApiService } from 'src/app/service/api.service';
 
 export interface Version {
@@ -15,6 +19,8 @@ export interface Version {
 })
 export class AboutComponent implements OnInit {
 
+  title = 'Template';
+  desc = 'Angular client + Rester server';
   version: Version;
 
   constructor(
@@ -27,6 +33,14 @@ export class AboutComponent implements OnInit {
 
   getVersion() {
     this.api.get<Version>('version')
+      .pipe(
+        catchError(err => of({
+          major: 0,
+          minor: 0,
+          patch: 0,
+          type: 'beta'
+        } as Version))
+      )
       .subscribe(v => this.version = v);
   }
 

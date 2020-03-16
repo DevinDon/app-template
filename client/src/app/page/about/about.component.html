@@ -1,7 +1,29 @@
 <!-- src/app/page/about/about.component.html -->
 
-<div *ngIf="version" style="font-size: small; color: gray;">
-  <span class="type">{{ version.type }}</span><span class="split"> & </span>
-  <span class="major">{{ version.major }}</span>.<span class="minor">{{ version.minor }}</span>.<span
-    class="patch">{{ version.patch }}</span>
+<div id="wave"></div>
+<div class="window">
+
+  <!-- <h1 class="title" [@title]="animation.title.state" (@title.done)="animation.title.callback()">{{ app.title }}</h1> -->
+  <h1 class="title">{{ title }}</h1>
+
+  <p class="desc">{{ desc }}</p>
+
+  <div class="link">
+    <a mat-button href="https://github.com/DevinDon/app-template" target="_blank">
+      <mat-icon class="ri-github-line"></mat-icon><span class="name">GitHub</span>
+    </a>
+    <a mat-button href="https://angular.io" target="_blank">
+      <mat-icon class="ri-angularjs-line"></mat-icon><span class="name">Angular</span>
+    </a>
+    <a mat-button href="https://github.com/DevinDon/rester" target="_blank">
+      <mat-icon class="ri-server-line"></mat-icon><span class="name">Rester</span>
+    </a>
+  </div>
+
+  <div *ngIf="version" style="font-size: small; color: gray;">
+    <span class="type">{{ version.type }}</span><span class="split"> & </span>
+    <span class="major">{{ version.major }}</span>.<span class="minor">{{ version.minor }}</span>.<span
+      class="patch">{{ version.patch }}</span>
+  </div>
+
 </div>
