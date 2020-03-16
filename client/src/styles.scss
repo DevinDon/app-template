@@ -1,3 +1,9 @@
+// src/styles.scss
+
+// Fira Code Font
+@import url('https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css');
+
+// Remix Icon Font
 @import '~remixicon/fonts/remixicon.css';
 
 // Custom Theming for Angular Material
@@ -8,7 +14,8 @@
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat-core();
+$custom-typography: mat-typography-config($font-family: '"Fira Code","Consolas",  "Roboto",  "Helvetica Neue",  sans-serif');
+@include mat-core($custom-typography);
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -28,10 +35,10 @@ $edusys-theme: mat-light-theme($edusys-primary, $edusys-accent, $edusys-warn);
 // that you are using.
 @include angular-material-theme($edusys-theme);
 
-/* You can add global styles to this file, and also import other style files */
+// Global font & size
 body {
   margin          : 0;
-  font-family     : "Consolas", "Roboto", "Helvetica Neue", sans-serif;
+  font-family     : "Fira Code", "Consolas", "Roboto", "Helvetica Neue", sans-serif;
   font-size       : 1.4rem;
   background-color: #fafafa;
 }
