@@ -963,7 +963,7 @@ export class AppModule { }
   }
 
   >.outlet {
-    padding: 0 1rem;
+    width  : 100vw;
   }
 }
 
