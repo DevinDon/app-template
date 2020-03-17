@@ -1,28 +1,30 @@
 // src/styles.scss
 
 // Fira Code Font
-@import url('https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css');
+@import url("https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css");
 
 // Remix Icon Font
-@import '~remixicon/fonts/remixicon.css';
+@import "~remixicon/fonts/remixicon.css";
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-$custom-typography: mat-typography-config($font-family: '"Fira Code","Consolas",  "Roboto",  "Helvetica Neue",  sans-serif');
+$custom-typography: mat-typography-config(
+  $font-family: '"Fira Code","Consolas",  "Roboto",  "Helvetica Neue",  sans-serif'
+);
 @include mat-core($custom-typography);
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 
-$edusys-primary : mat-palette($mat-blue);
-$edusys-accent  : mat-palette($mat-orange, A200, A100, A400);
+$edusys-primary: mat-palette($mat-blue);
+$edusys-accent: mat-palette($mat-orange, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $edusys-warn: mat-palette($mat-red);
@@ -37,16 +39,16 @@ $edusys-theme: mat-light-theme($edusys-primary, $edusys-accent, $edusys-warn);
 
 // Global font & size
 body {
-  margin          : 0;
-  font-family     : "Fira Code", "Consolas", "Roboto", "Helvetica Neue", sans-serif;
-  font-size       : 1.4rem;
+  margin: 0;
+  font-family: "Fira Code", "Consolas", "Roboto", "Helvetica Neue", sans-serif;
+  font-size: 1.4rem;
   background-color: #fafafa;
 }
 
 // Mobile device
 @media only screen and (max-width: 599px) {
   :root {
-    font-size: calc(100vw / 36.0);
+    font-size: calc(100vw / 36);
   }
 
   body {
@@ -57,7 +59,7 @@ body {
 // Table device
 @media only screen and (min-width: 600px) and (max-width: 1023px) {
   :root {
-    font-size: calc(100vw / 80.0);
+    font-size: calc(100vw / 80);
   }
 
   body {
@@ -74,26 +76,26 @@ body {
 
 @media only screen and (min-width: 1280px) and (max-width: 1439px) {
   :root {
-    font-size: calc(100vw / 128.0);
+    font-size: calc(100vw / 128);
   }
 }
 
 @media only screen and (min-width: 1440px) and (max-width: 1599px) {
   :root {
-    font-size: calc(100vw / 144.0);
+    font-size: calc(100vw / 144);
   }
 }
 
 @media only screen and (min-width: 1600px) {
   :root {
-    font-size: calc(100vw / 160.0);
+    font-size: calc(100vw / 160);
   }
 }
 
 // Scroll bar
 ::-webkit-scrollbar-track-piece {
   background-color: #fff;
-  border-radius   : 0;
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar {
@@ -102,7 +104,7 @@ body {
 
 ::-webkit-scrollbar-thumb:vertical {
   background-color: #afafaf;
-  border-radius   : 2px;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -128,7 +130,7 @@ p {
 }
 
 a {
-  color          : unset;
+  color: unset;
   text-decoration: unset;
 
   &:hover {
@@ -141,26 +143,26 @@ a {
 mat-hint,
 mat-error,
 mat-label {
-  display        : flex !important;
-  flex-direction : row;
+  display: flex !important;
+  flex-direction: row;
   justify-content: flex-start;
-  align-items    : center;
-  width          : fit-content;
+  align-items: center;
+  width: fit-content;
 
-  >span {
-    margin-left: .4rem;
+  > span {
+    margin-left: 0.4rem;
   }
 }
 
 .fit-dialog {
-  display       : flex;
+  display: flex;
   flex-direction: column;
-  align-items   : center;
+  align-items: center;
 
   @media only screen and (max-width: 599px) {
-    width     : 80vw;
+    width: 80vw;
     max-height: 80vh;
-    overflow  : auto;
+    overflow: auto;
 
     mat-form-field {
       width: 100%;
@@ -169,14 +171,14 @@ mat-label {
 }
 
 .mat-card {
-  box-shadow        : 0 10px 20px rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05) !important;
   // box-shadow     : 0 10px 20px -25px rgba(0, 0, 0) !important;
 
   .mat-card-header {
-    display       : flex;
+    display: flex;
     flex-direction: row;
-    align-items   : center;
-    margin-bottom : 1.6rem;
+    align-items: center;
+    margin-bottom: 1.6rem;
 
     .mat-card-subtitle {
       margin-bottom: 0;
@@ -184,13 +186,29 @@ mat-label {
   }
 
   .mat-card-content {
-    font-size    : 1.4rem;
-    line-height  : 2rem;
+    font-size: 1.4rem;
+    line-height: 2rem;
     margin-bottom: 0;
   }
-
 }
 
 .mat-expansion-panel {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+i {
+  font-size: 1.6rem;
+  padding: 0 0.25rem;
+
+  &.large {
+    font-size: 2.4rem;
+  }
+
+  &.normal {
+    font-size: 1.6rem;
+  }
+
+  &.small {
+    font-size: 1.4rem;
+  }
 }

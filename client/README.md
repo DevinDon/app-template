@@ -1182,6 +1182,6 @@ And add sub-routes to app routing:
 
 `ng g c component/component-name`
 
-### 2.2 Change selector
+### 2.2 Export Component
 
-Find selector in `component.ts`.
+Export component in `src/app/component/component.module.ts`.
