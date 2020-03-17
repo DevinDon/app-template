@@ -1122,6 +1122,21 @@ import { Component } from '@angular/core';
 export class AppComponent { }
 ```
 
+## 11 Package Script
+
+```text
+"ng": "ng",
+"start": "ng serve -o",
+"preview": "ng serve --host 0.0.0.0 --port 4200 --disable-host-check",
+"build": "ng build --prod",
+"build:demo": "ng build --prod --base-href=/edusys/",
+"test": "ng test",
+"lint": "ng lint",
+"e2e": "ng e2e"
+```
+
+
+
 # Attention
 
 ## 1 Route

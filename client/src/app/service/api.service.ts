@@ -1,7 +1,9 @@
 // src/app/service/api.service.ts
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Injectable, isDevMode } from '@angular/core';
+import { of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 interface Environment {
   protocol: 'http' | 'https';
@@ -60,4 +62,31 @@ export class ApiService {
   put<T = any>(path: string, data: any = {}) {
     return this.http.put<T>(ApiService.API + path, data);
   }
+
+  uploadByHTTP(url: string, form: FormData) {
+    return this.http.post(url, form, { reportProgress: true, observe: 'events' });
+  }
+
+  uploadFile(url: string, file: any) {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.uploadByHTTP(url, formData)
+      .pipe(
+        map(event => {
+          console.log('event: ', event);
+          switch (event.type) {
+            case HttpEventType.UploadProgress:
+              file.progress = event.loaded / event.total * 100;
+              break;
+            case HttpEventType.Response:
+              return event;
+          }
+        }),
+        catchError(error => {
+          console.error(error);
+          return of(error);
+        })
+      );
+  }
+
 }

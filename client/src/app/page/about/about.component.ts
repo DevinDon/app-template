@@ -1,8 +1,9 @@
 // src/app/page/about/about.component.ts
 
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { ApiService } from 'src/app/service/api.service';
 
 export interface Version {
@@ -23,12 +24,15 @@ export class AboutComponent implements OnInit {
   desc = 'Angular client + Rester server';
   version: Version;
 
+  file: any;
+
   constructor(
-    private api: ApiService
+    private api: ApiService,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
-    this.getVersion();
+    // this.getVersion();
   }
 
   getVersion() {
@@ -42,6 +46,17 @@ export class AboutComponent implements OnInit {
         } as Version))
       )
       .subscribe(v => this.version = v);
+  }
+
+  selectFile(file: any) {
+    console.log('file: ', file);
+    this.file = file;
+  }
+
+  uploadFile() {
+    console.log('file: ', this.file);
+    this.api.uploadFile('https://file.io/', this.file)
+      .subscribe(v => typeof v === 'object' && console.log('Upload success.', this.file));
   }
 
 }
