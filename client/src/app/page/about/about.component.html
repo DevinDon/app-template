@@ -1,5 +1,4 @@
 <!-- src/app/page/about/about.component.html -->
-
 <div id="wave"></div>
 
 <div class="window">
@@ -12,19 +11,41 @@
 
   <div class="link">
     <a mat-button href="https://angular.io" target="_blank">
-      <mat-icon class="ri-angularjs-line"></mat-icon><span class="name">Angular</span>
+      <i class="ri-angularjs-line x-large "></i>
+      <span class="text">Angular</span>
     </a>
     <a mat-button href="https://github.com/DevinDon/app-template" target="_blank">
-      <mat-icon class="ri-github-line"></mat-icon><span class="name">GitHub</span>
+      <i class="ri-github-line x-large"></i>
+      <span class="text">GitHub</span>
     </a>
     <a mat-button href="https://github.com/DevinDon/rester" target="_blank">
-      <mat-icon class="ri-server-line"></mat-icon><span class="name">Rester</span>
+      <i class="ri-server-line x-large"></i>
+      <span class="text">Rester</span>
     </a>
   </div>
 
-  <div class="link">
-    <a mat-button [routerLink]="[ '/upload' ]">Demo: Upload</a>
-  </div>
+  <!-- <div class="demo">
+    <h2 class="title">Demos</h2>
+    <a mat-button [routerLink]="[ '/upload' ]">
+      <i class="ri-upload-cloud-line x-large"></i>
+      <span class="text">Upload</span>
+    </a>
+  </div> -->
+
+  <!-- <button mat-button color="primary">
+    <i class="ri-arrow-down-line x-large"></i>
+    <span class="text">Find More Demos</span>
+  </button> -->
+  <button mat-raised-button class="demo" color="primary" [routerLink]="[ '/upload' ]">
+    <i class="ri-arrow-down-line x-large"></i>
+    <span class="text">Find More Demos</span>
+  </button>
+  <!-- <button mat-mini-fab color="primary">
+    <i class="ri-arrow-down-line xx-large"></i>
+  </button> -->
+  <!-- <button mat-icon-button>
+    <i class="ri-arrow-down-line x-large"></i>
+  </button> -->
 
   <button mat-button class="version">
     <ng-container *ngIf="version; else defaultTemplate">

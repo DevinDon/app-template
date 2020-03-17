@@ -6,7 +6,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #76daff;
+  background-color: #2196f3;
   overflow: hidden;
   z-index: -1;
 
@@ -24,13 +24,13 @@
   }
 
   &::before {
-    bottom: 15vh;
+    top: 23vh;
     border-radius: 46%;
     animation-duration: 15s;
   }
 
   &::after {
-    bottom: 12vh;
+    top: 19vh;
     opacity: 0.5;
     border-radius: 48%;
     animation-duration: 15s;
@@ -50,6 +50,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top: -15rem;
 
     > .title {
       font-size: xx-large;
@@ -64,12 +65,16 @@
   }
 
   > .link {
-    margin: 1rem 0;
+    margin: 2rem 0;
+  }
+
+  > .demo {
+    margin: 3rem 0;
   }
 
   > .version {
     position: absolute;
-    bottom: 10rem;
+    bottom: 2rem;
     font-size: small;
     color: gray;
   }
