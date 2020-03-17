@@ -1,10 +1,9 @@
 // src/app/page/about/about.component.ts
 
-import { HttpClient, HttpEventType } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { ApiService } from 'src/app/service/api.service';
+import { catchError } from 'rxjs/operators';
 
 export interface Version {
   major: number;
@@ -24,19 +23,16 @@ export class AboutComponent implements OnInit {
   desc = 'Angular client + Rester server';
   version: Version;
 
-  file: any;
-
   constructor(
-    private api: ApiService,
     private http: HttpClient
   ) { }
 
   ngOnInit(): void {
-    // this.getVersion();
+    this.getVersion();
   }
 
   getVersion() {
-    this.api.get<Version>('version')
+    this.http.get<Version>('/assets/version.json')
       .pipe(
         catchError(err => of({
           major: 0,
