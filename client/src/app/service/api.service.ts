@@ -75,7 +75,6 @@ export class ApiService {
     return this.uploadByHTTP(url, formData)
       .pipe(
         map(event => {
-          console.log('event: ', event);
           switch (event.type) {
             case HttpEventType.UploadProgress:
               file.progress = event.loaded / event.total * 100;

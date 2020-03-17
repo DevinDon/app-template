@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
+import { AppService } from 'src/app/service/app.service';
 
 @Component({
   selector: 'app-upload',
@@ -12,7 +13,8 @@ export class UploadComponent implements OnInit {
   fileFirebase: any;
 
   constructor(
-    private api: ApiService
+    private api: ApiService,
+    private app: AppService
   ) { }
 
   ngOnInit(): void { }
@@ -25,7 +27,12 @@ export class UploadComponent implements OnInit {
   uploadFileToFileio() {
     console.log('file: ', this.fileio);
     this.api.uploadFile('https://file.io/', this.fileio)
-      .subscribe(v => typeof v === 'object' && console.log('Upload success.', this.fileio));
+      .subscribe(v => {
+        if (typeof v === 'object') {
+          this.fileio.inProgress = false;
+          this.app.openBar(`File Key: ${v.body.key}`);
+        }
+      });
   }
 
   selectFileToFileFirebase(file: any) {

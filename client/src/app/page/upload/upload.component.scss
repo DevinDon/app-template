@@ -6,11 +6,17 @@
   }
   > mat-card {
     margin: 1rem 0;
-    .file-name {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      width: 15rem;
-      white-space: nowrap;
+    mat-card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .file-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 80%;
+        white-space: nowrap;
+      }
     }
   }
 }

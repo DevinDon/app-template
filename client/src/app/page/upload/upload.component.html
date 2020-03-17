@@ -14,14 +14,17 @@
 
     <mat-card-content>
       <input #uploadFileio type="file" style="display: none;" (change)="selectFileToFileio(uploadFileio.files[0])">
-      <button mat-button class="file-name" (click)="uploadFileio.click()">
+      <button mat-button mat-raised-button class="file-name" color="primary" (click)="uploadFileio.click()">
+        <i class="ri-file-upload-line"></i>
         <span class="text">{{ fileio && fileio.name || 'Select File' }}</span>
       </button>
     </mat-card-content>
 
     <mat-card-actions align="end">
-      <button mat-button color="primary" (click)="uploadFileToFileio()">
-        <span class="text">{{ fileio && fileio.progress === 100 ? 'Uploaded' : 'Upload' }}</span>
+      <button mat-button color="primary" [disabled]="!fileio || fileio.inProgress" (click)="uploadFileToFileio()">
+        <i class="ri-upload-cloud-line"></i>
+        <span
+          class="text">{{ (fileio && fileio.inProgress && 'Uploading') || (fileio && fileio.progress === 100 && 'Uploaded') || 'Upload' }}</span>
       </button>
     </mat-card-actions>
 
@@ -42,14 +45,18 @@
     <mat-card-content>
       <input #uploadFirebase type="file" style="display: none;"
         (change)="selectFileToFileFirebase(uploadFirebase.files[0])">
-      <button mat-button class="file-name" (click)="uploadFirebase.click()">
+      <button mat-raised-button class="file-name" color="primary" (click)="uploadFirebase.click()">
+        <i class="ri-file-upload-line"></i>
         <span class="text">{{ fileFirebase && fileFirebase.name || 'Select File' }}</span>
       </button>
     </mat-card-content>
 
     <mat-card-actions align="end">
-      <button mat-button color="primary" (click)="uploadFileToFirebase()">
-        <span class="text">{{ fileFirebase && fileFirebase.progress === 100 ? 'Uploaded' : 'Upload' }}</span>
+      <button mat-button color="primary" [disabled]="!fileFirebase || fileFirebase.inProgress"
+        (click)="uploadFileToFirebase()">
+        <i class="ri-upload-cloud-line"></i>
+        <span
+          class="text">{{ (fileFirebase && fileFirebase.inProgress && 'Uploading') || (fileFirebase && fileFirebase.progress === 100 && 'Uploaded') || 'Upload' }}</span>
       </button>
     </mat-card-actions>
 
