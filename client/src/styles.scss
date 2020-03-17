@@ -170,6 +170,10 @@ mat-label {
   }
 }
 
+.mat-toolbar {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
 .mat-card {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05) !important;
   // box-shadow     : 0 10px 20px -25px rgba(0, 0, 0) !important;
@@ -200,15 +204,32 @@ i {
   font-size: 1.6rem;
   padding: 0 0.25rem;
 
-  &.large {
-    font-size: 2.4rem;
+  &.bold {
+    font-weight: bold;
+    padding: 0 0.5rem;
+  }
+
+  &.small {
+    font-size: 1.2rem;
+  }
+
+  &.small {
+    font-size: 1.4rem;
   }
 
   &.normal {
     font-size: 1.6rem;
   }
 
-  &.small {
-    font-size: 1.4rem;
+  &.large {
+    font-size: 1.8rem;
+  }
+
+  &.x-large {
+    font-size: 2rem;
+  }
+
+  &.xx-large {
+    font-size: 2.2rem;
   }
 }

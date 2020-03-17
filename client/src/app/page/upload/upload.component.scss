@@ -1,11 +1,12 @@
 // src/app/page/upload/upload.component.scss
 
+mat-toolbar {
+  background-color: white;
+}
+
 .window {
   padding: 1rem;
   min-height: 100vh;
-  > mat-toolbar {
-    background-color: white;
-  }
   > mat-card {
     margin: 1rem 0;
     mat-card-content {
