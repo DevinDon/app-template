@@ -932,13 +932,71 @@ export class ApiService {
 
   post<T = any>(path: string, data: any = {}) {
     return this.http.post<T>(ApiService.API + path, data);
+  }import { Injectable } from '@angular/core';
+import { firestore, initializeApp } from 'firebase';
+import 'firebase/firestore';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FirebaseService {
+
+  database: firestore.Firestore;
+
+  constructor() {
+    initializeApp({
+      apiKey: 'AIzaSyCzo3Z6Ttv8Q7jCSLdufTbL03IwBJjmDe4',
+      authDomain: 'localhost:4200',
+      projectId: 'fir-75ace',
+      storageBucket: 'gs://fir-75ace.appspot.com'
+    });
+    this.database = firestore();
   }
+
+}
+
 
   put<T = any>(path: string, data: any = {}) {
     return this.http.put<T>(ApiService.API + path, data);
   }
 }
 ```
+
+### 7.3 Firebase Service
+
+`ng g s service/firebase`
+
+```typescript
+//src/app/service/firebase.service.ts
+
+import { Injectable } from '@angular/core';
+import { firestore, initializeApp, storage } from 'firebase';
+import 'firebase/firestore';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FirebaseService {
+
+  database: firestore.Firestore;
+  storage: storage.Storage;
+
+  constructor() {
+    // demo
+    initializeApp({
+      apiKey: 'AIzaSyCzo3Z6Ttv8Q7jCSLdufTbL03IwBJjmDe4',
+      authDomain: 'localhost:4200',
+      projectId: 'fir-75ace',
+      storageBucket: 'gs://fir-75ace.appspot.com'
+    });
+    this.database = firestore();
+    this.storage = storage();
+  }
+
+}
+```
+
+
 
 ## 8 Create Interceptor
 
