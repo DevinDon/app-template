@@ -2,6 +2,8 @@
 
 import { Injectable } from '@angular/core';
 import { firestore, initializeApp, storage } from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/storage';
 
 @Injectable({
   providedIn: 'root'
