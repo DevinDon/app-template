@@ -24,28 +24,10 @@
     </a>
   </div>
 
-  <!-- <div class="demo">
-    <h2 class="title">Demos</h2>
-    <a mat-button [routerLink]="[ '/upload' ]">
-      <i class="ri-upload-cloud-line x-large"></i>
-      <span class="text">Upload</span>
-    </a>
-  </div> -->
-
-  <!-- <button mat-button color="primary">
-    <i class="ri-arrow-down-line x-large"></i>
-    <span class="text">Find More Demos</span>
-  </button> -->
-  <button mat-raised-button class="demo" color="primary" [routerLink]="[ '/upload' ]">
+  <button mat-raised-button color="primary" [routerLink]="[ '/upload' ]">
     <i class="ri-arrow-down-line x-large"></i>
     <span class="text">Find More Demos</span>
   </button>
-  <!-- <button mat-mini-fab color="primary">
-    <i class="ri-arrow-down-line xx-large"></i>
-  </button> -->
-  <!-- <button mat-icon-button>
-    <i class="ri-arrow-down-line x-large"></i>
-  </button> -->
 
   <button mat-button class="version">
     <ng-container *ngIf="version; else defaultTemplate">
