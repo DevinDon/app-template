@@ -13,6 +13,7 @@ import { SharedModule } from './module/shared.module';
 import { PageModule } from './page/page.module';
 import { ApiService } from './service/api.service';
 import { AppService } from './service/app.service';
+import { FirebaseService } from './service/firebase.service';
 import { LoadingInterceptor } from './util/loading.interceptor';
 
 @NgModule({
@@ -31,6 +32,7 @@ import { LoadingInterceptor } from './util/loading.interceptor';
   providers: [
     AppService,
     ApiService,
+    FirebaseService,
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     { provide: RouteReuseStrategy, useClass: AppRouteReuseStrategy }
   ],
