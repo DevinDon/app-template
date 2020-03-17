@@ -1148,3 +1148,31 @@ export class AppComponent { }
 ## 2 Something else
 
 Incoming.
+
+# How to do
+
+## 1 How to create a new Page
+
+### 1.1 Create Component
+
+`ng g c page/page-name`
+
+### 1.2 Create Module & Routing
+
+`ng g m page/page-name --routing`
+
+And then, add routes to routing:
+
+```typescript
+{ path: '', component: PageNameComponent, data: { reload: false, title: 'PageName' } }
+```
+
+And add sub-routes to app routing:
+
+```typescript
+{
+  path: 'page-name',
+  loadChildren: () => import('../../page/page-name/page-name.module').then(m => m.PageNameModule)
+}
+```
+
