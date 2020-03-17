@@ -1,63 +1,77 @@
 // src/app/page/about/about.component.scss
 
 #wave {
-  position        : fixed;
-  top             : 0;
-  left            : 0;
-  width           : 100vw;
-  height          : 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: #76daff;
-  overflow        : hidden;
-  z-index         : -1;
+  overflow: hidden;
+  z-index: -1;
 
   &::before,
   &::after {
-    content                  : "";
-    position                 : absolute;
-    left                     : 50%;
-    background-color         : #fff;
-    min-width                : 300rem;
-    min-height               : 300rem;
-    animation-name           : rotate;
+    content: "";
+    position: absolute;
+    left: 50%;
+    background-color: #fff;
+    min-width: 300rem;
+    min-height: 300rem;
+    animation-name: rotate;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
   }
 
   &::before {
-    bottom            : 15vh;
-    border-radius     : 46%;
+    bottom: 15vh;
+    border-radius: 46%;
     animation-duration: 15s;
   }
 
   &::after {
-    bottom            : 12vh;
-    opacity           : 0.5;
-    border-radius     : 48%;
+    bottom: 12vh;
+    opacity: 0.5;
+    border-radius: 48%;
     animation-duration: 15s;
   }
 }
 
 .window {
-  display        : flex;
-  flex-direction : column;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items    : center;
-  min-height     : 100vh;
+  align-items: center;
+  min-height: 100vh;
 
-  >.title {
-    font-size  : xx-large;
-    font-weight: bolder;
+  > .head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    > .title {
+      font-size: xx-large;
+      font-weight: bolder;
+    }
+
+    > .desc {
+      color: gray;
+      font-size: small;
+      margin: 0;
+    }
   }
 
-  >.desc {
-    color    : gray;
-    font-size: small;
-    margin   : 0 0 1rem 0;
+  > .link {
+    margin: 1rem 0;
   }
 
-  .version {
+  > .version {
+    position: absolute;
+    bottom: 10rem;
     font-size: small;
-    color    : gray;
+    color: gray;
   }
 }
 
