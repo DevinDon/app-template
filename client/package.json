@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve -o",
+    "preview": "ng serve --host 0.0.0.0 --port 4200 --disable-host-check",
+    "build": "ng build --prod",
+    "build:demo": "ng build --prod --base-href=/demo/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
