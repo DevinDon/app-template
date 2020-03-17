@@ -20,14 +20,16 @@
     </a>
   </div>
 
-  <div *ngIf="version; else defaultTemplate" class="version">
-    <span class="type">{{ version.type }}</span><span class="split"> & </span>
-    <span class="major">{{ version.major }}</span>.<span class="minor">{{ version.minor }}</span>.<span
-      class="patch">{{ version.patch }}</span>
-  </div>
+  <button mat-button class="version">
+    <ng-container *ngIf="version; else defaultTemplate">
+      <span class="type">{{ version.type }}</span><span class="split"> & </span>
+      <span class="major">{{ version.major }}</span>.<span class="minor">{{ version.minor }}</span>.<span
+        class="patch">{{ version.patch }}</span>
+    </ng-container>
+    <ng-template #defaultTemplate>
+      <span class="status">Loading...</span>
+    </ng-template>
 
-  <ng-template #defaultTemplate>
-    <div class="version">Loading version...</div>
-  </ng-template>
+  </button>
 
 </div>
