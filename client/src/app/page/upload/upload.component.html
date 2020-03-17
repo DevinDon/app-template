@@ -1,1 +1,62 @@
-<p>upload works!</p>
+<div class="window">
+
+  <mat-toolbar>
+    <span>Upload Demo</span>
+  </mat-toolbar>
+
+  <mat-card>
+
+    <mat-card-header>
+      <mat-card-title>File.io</mat-card-title>
+      <mat-card-subtitle>Upload to <a mat-button href="https://file.io" target="_blank">file.io</a> by http upload.
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <input #uploadFileio type="file" style="display: none;" (change)="selectFileToFileio(uploadFileio.files[0])">
+      <button mat-button class="file-name" (click)="uploadFileio.click()">
+        <span class="text">{{ fileio && fileio.name || 'Select File' }}</span>
+      </button>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-button color="primary" (click)="uploadFileToFileio()">
+        <span class="text">{{ fileio && fileio.progress === 100 ? 'Uploaded' : 'Upload' }}</span>
+      </button>
+    </mat-card-actions>
+
+    <mat-card-footer>
+      <mat-progress-bar mode="determinate" [value]="fileio && fileio.progress || 0"></mat-progress-bar>
+    </mat-card-footer>
+
+  </mat-card>
+
+  <mat-card>
+
+    <mat-card-header>
+      <mat-card-title>Firebase</mat-card-title>
+      <mat-card-subtitle>Upload to <a mat-button href="https://firebase.google.com" target="_blank">firebase</a> by
+        firebase storage.</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <input #uploadFirebase type="file" style="display: none;"
+        (change)="selectFileToFileFirebase(uploadFirebase.files[0])">
+      <button mat-button class="file-name" (click)="uploadFirebase.click()">
+        <span class="text">{{ fileFirebase && fileFirebase.name || 'Select File' }}</span>
+      </button>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-button color="primary" (click)="uploadFileToFirebase()">
+        <span class="text">{{ fileFirebase && fileFirebase.progress === 100 ? 'Uploaded' : 'Upload' }}</span>
+      </button>
+    </mat-card-actions>
+
+    <mat-card-footer>
+      <mat-progress-bar mode="determinate" [value]="fileFirebase && fileFirebase.progress || 0"></mat-progress-bar>
+    </mat-card-footer>
+
+  </mat-card>
+
+</div>

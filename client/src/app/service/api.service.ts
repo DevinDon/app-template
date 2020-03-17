@@ -70,6 +70,8 @@ export class ApiService {
   uploadFile(url: string, file: any) {
     const formData = new FormData();
     formData.append('file', file);
+    file.inProgress = true;
+    file.progress = 0;
     return this.uploadByHTTP(url, formData)
       .pipe(
         map(event => {

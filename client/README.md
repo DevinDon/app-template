@@ -1176,3 +1176,12 @@ And add sub-routes to app routing:
 }
 ```
 
+## 2 How to create a new Component
+
+### 2.1 Create Component
+
+`ng g c component/component-name`
+
+### 2.2 Change selector
+
+Find selector in `component.ts`.

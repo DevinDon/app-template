@@ -31,12 +31,4 @@
     </ng-template>
   </button>
 
-  <form>
-    <input #upload type="file" style="display: none;" (change)="selectFile(upload.files[0])">
-    <button mat-button (click)="upload.click()"
-      style="overflow: hidden; text-overflow: ellipsis; width: 15rem; white-space: nowrap;">{{ file && file.name || 'Select File' }}</button>
-    <button mat-button (click)="uploadFile()">{{ file && file.progress === 100 ? 'Uploaded' : 'Upload' }}</button>
-    <mat-progress-bar mode="determinate" [value]="file && file.progress || 0"></mat-progress-bar>
-  </form>
-
 </div>

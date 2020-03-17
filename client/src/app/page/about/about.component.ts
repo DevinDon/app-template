@@ -48,15 +48,4 @@ export class AboutComponent implements OnInit {
       .subscribe(v => this.version = v);
   }
 
-  selectFile(file: any) {
-    console.log('file: ', file);
-    this.file = file;
-  }
-
-  uploadFile() {
-    console.log('file: ', this.file);
-    this.api.uploadFile('https://file.io/', this.file)
-      .subscribe(v => typeof v === 'object' && console.log('Upload success.', this.file));
-  }
-
 }

@@ -1,0 +1,16 @@
+.window {
+  padding: 1rem;
+  min-height: 100vh;
+  > mat-toolbar {
+    background-color: white;
+  }
+  > mat-card {
+    margin: 1rem 0;
+    .file-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 15rem;
+      white-space: nowrap;
+    }
+  }
+}
