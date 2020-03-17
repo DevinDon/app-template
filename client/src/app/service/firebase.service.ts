@@ -1,8 +1,7 @@
-//src/app/service/firebase.service.ts
+// src/app/service/firebase.service.ts
 
 import { Injectable } from '@angular/core';
-import { firestore, initializeApp, storage } from 'firebase';
-import 'firebase/firestore';
+import { firestore, initializeApp, storage } from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
