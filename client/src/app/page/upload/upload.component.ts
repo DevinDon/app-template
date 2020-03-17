@@ -28,7 +28,6 @@ export class UploadComponent implements OnInit {
   }
 
   uploadFileToFileio() {
-    console.log('file: ', this.fileio);
     this.api.uploadFile('https://file.io/', this.fileio)
       .subscribe(v => {
         if (typeof v === 'object') {
