@@ -42,7 +42,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: calc(100vh - 5rem);
 
   > .head {
     display: flex;
