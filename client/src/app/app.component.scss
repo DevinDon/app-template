@@ -1,13 +1,19 @@
 // src/app/app.component.scss
 
-#window {
-  display        : flex;
-  flex-direction : column;
-  justify-content: center;
-  align-items    : center;
-  min-height     : 100vh;
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
-  >.outlet {
+  .mat-toolbar {
+    position: sticky;
+    height: 5rem;
+    top: 0;
+    left: 0;
+  }
+
+  > .outlet {
+    flex-grow: 1;
     width: 100vw;
   }
 }
