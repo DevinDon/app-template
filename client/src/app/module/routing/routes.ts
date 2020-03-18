@@ -9,11 +9,15 @@ export const routes: Route[] = [
     redirectTo: 'about'
   },
   {
-    path: 'upload',
-    loadChildren: () => import('../../page/upload/upload.module').then(m => m.UploadModule)
-  },
-  {
     path: 'about',
     loadChildren: () => import('../../page/about/about.module').then(m => m.AboutModule)
+  },
+  {
+    path: 'more',
+    loadChildren: () => import('../../page/more/more.module').then(m => m.MoreModule)
+  },
+  {
+    path: 'upload',
+    loadChildren: () => import('../../page/upload/upload.module').then(m => m.UploadModule)
   }
 ];
