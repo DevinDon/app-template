@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { AppService } from 'src/app/service/app.service';
 import { FirebaseService } from 'src/app/service/firebase.service';
+import { Device } from 'src/app/util/device';
 
 @Component({
   selector: 'app-upload',
@@ -14,12 +15,16 @@ export class UploadComponent implements OnInit {
 
   fileio: any;
   fileFirebase: any;
+  device: Device;
 
   constructor(
     private api: ApiService,
     private app: AppService,
     private firebase: FirebaseService
-  ) { }
+  ) {
+    app.observableDevice()
+      .subscribe(device => this.device = device);
+  }
 
   ngOnInit(): void { }
 

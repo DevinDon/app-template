@@ -2,66 +2,73 @@
 
 <div class="window">
 
-  <mat-card>
+  <mat-grid-list [cols]="(device.type === 'desktop' && 3) || (device.type === 'table' && 2) || 1" rowHeight="5:3"
+    gutterSize="20px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card>
 
-    <mat-card-header>
-      <mat-card-title>File.io</mat-card-title>
-      <mat-card-subtitle>Upload to <a mat-button href="https://file.io" target="_blank">file.io</a> by http upload.
-      </mat-card-subtitle>
-    </mat-card-header>
+        <mat-card-header>
+          <mat-card-title>File.io</mat-card-title>
+          <mat-card-subtitle>Upload to <a mat-button href="https://file.io" target="_blank">file.io</a> by http upload.
+          </mat-card-subtitle>
+        </mat-card-header>
 
-    <mat-card-content>
-      <input #uploadFileio type="file" style="display: none;" (change)="selectFileToFileio(uploadFileio.files[0])">
-      <button mat-button mat-raised-button class="file-name" color="primary" (click)="uploadFileio.click()">
-        <i class="ri-file-upload-line"></i>
-        <span class="text">{{ fileio && fileio.name || 'Select File' }}</span>
-      </button>
-    </mat-card-content>
+        <mat-card-content>
+          <input #uploadFileio type="file" style="display: none;" (change)="selectFileToFileio(uploadFileio.files[0])">
+          <button mat-button mat-raised-button class="file-name" color="primary" (click)="uploadFileio.click()">
+            <i class="ri-file-upload-line"></i>
+            <span class="text">{{ fileio && fileio.name || 'Select File' }}</span>
+          </button>
+        </mat-card-content>
 
-    <mat-card-actions align="end">
-      <button mat-button color="primary" [disabled]="!fileio || fileio.inProgress" (click)="uploadFileToFileio()">
-        <i class="ri-upload-cloud-line"></i>
-        <span
-          class="text">{{ (fileio && fileio.inProgress && 'Uploading') || (fileio && fileio.progress === 100 && 'Uploaded') || 'Upload' }}</span>
-      </button>
-    </mat-card-actions>
+        <mat-card-actions align="end">
+          <button mat-button color="primary" [disabled]="!fileio || fileio.inProgress" (click)="uploadFileToFileio()">
+            <i class="ri-upload-cloud-line"></i>
+            <span
+              class="text">{{ (fileio && fileio.inProgress && 'Uploading') || (fileio && fileio.progress === 100 && 'Uploaded') || 'Upload' }}</span>
+          </button>
+        </mat-card-actions>
 
-    <mat-card-footer>
-      <mat-progress-bar mode="determinate" [value]="fileio && fileio.progress || 0"></mat-progress-bar>
-    </mat-card-footer>
+        <mat-card-footer>
+          <mat-progress-bar mode="determinate" [value]="fileio && fileio.progress || 0"></mat-progress-bar>
+        </mat-card-footer>
 
-  </mat-card>
+      </mat-card>
+    </mat-grid-tile>
 
-  <mat-card>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card>
 
-    <mat-card-header>
-      <mat-card-title>Firebase</mat-card-title>
-      <mat-card-subtitle>Upload to <a mat-button href="https://firebase.google.com" target="_blank">firebase</a> by
-        firebase storage.</mat-card-subtitle>
-    </mat-card-header>
+        <mat-card-header>
+          <mat-card-title>Firebase</mat-card-title>
+          <mat-card-subtitle>Upload to <a mat-button href="https://firebase.google.com" target="_blank">firebase</a> by
+            firebase storage.</mat-card-subtitle>
+        </mat-card-header>
 
-    <mat-card-content>
-      <input #uploadFirebase type="file" style="display: none;"
-        (change)="selectFileToFileFirebase(uploadFirebase.files[0])">
-      <button mat-raised-button class="file-name" color="primary" (click)="uploadFirebase.click()">
-        <i class="ri-file-upload-line"></i>
-        <span class="text">{{ fileFirebase && fileFirebase.name || 'Select File' }}</span>
-      </button>
-    </mat-card-content>
+        <mat-card-content>
+          <input #uploadFirebase type="file" style="display: none;"
+            (change)="selectFileToFileFirebase(uploadFirebase.files[0])">
+          <button mat-raised-button class="file-name" color="primary" (click)="uploadFirebase.click()">
+            <i class="ri-file-upload-line"></i>
+            <span class="text">{{ fileFirebase && fileFirebase.name || 'Select File' }}</span>
+          </button>
+        </mat-card-content>
 
-    <mat-card-actions align="end">
-      <button mat-button color="primary" [disabled]="!fileFirebase || fileFirebase.inProgress"
-        (click)="uploadFileToFirebase()">
-        <i class="ri-upload-cloud-line"></i>
-        <span
-          class="text">{{ (fileFirebase && fileFirebase.inProgress && 'Uploading') || (fileFirebase && fileFirebase.progress === 100 && 'Uploaded') || 'Upload' }}</span>
-      </button>
-    </mat-card-actions>
+        <mat-card-actions align="end">
+          <button mat-button color="primary" [disabled]="!fileFirebase || fileFirebase.inProgress"
+            (click)="uploadFileToFirebase()">
+            <i class="ri-upload-cloud-line"></i>
+            <span
+              class="text">{{ (fileFirebase && fileFirebase.inProgress && 'Uploading') || (fileFirebase && fileFirebase.progress === 100 && 'Uploaded') || 'Upload' }}</span>
+          </button>
+        </mat-card-actions>
 
-    <mat-card-footer>
-      <mat-progress-bar mode="determinate" [value]="fileFirebase && fileFirebase.progress || 0"></mat-progress-bar>
-    </mat-card-footer>
+        <mat-card-footer>
+          <mat-progress-bar mode="determinate" [value]="fileFirebase && fileFirebase.progress || 0"></mat-progress-bar>
+        </mat-card-footer>
 
-  </mat-card>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 
 </div>

@@ -2,8 +2,8 @@
 
 <div class="window">
 
-  <mat-grid-list [cols]="(device.type === 'desktop' && 3) || (device.type === 'table' && 2) || 1" rowHeight="200px"
-    [gutterSize]="'20px'">
+  <mat-grid-list [cols]="(device.type === 'desktop' && 3) || (device.type === 'table' && 2) || 1" rowHeight="5:3"
+    gutterSize="20px">
 
     <mat-grid-tile *ngFor="let demo of demos" [colspan]="1" [rowspan]="1">
       <mat-card mat-ripple [routerLink]="demo.link">

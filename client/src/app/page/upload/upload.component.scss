@@ -5,11 +5,21 @@ mat-toolbar {
 }
 
 .window {
-  padding: 1rem;
+  padding: 1.5rem;
 
-  > mat-card {
-    margin: 1rem 0;
-    mat-card-content {
+  .mat-grid-tile {
+    overflow: visible;
+    max-width: 400px;
+  }
+
+  .mat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 80%;
+
+    .mat-card-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
