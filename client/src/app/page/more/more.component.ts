@@ -18,6 +18,8 @@ export class MoreComponent implements OnInit {
   device: Device;
   demos: Demo[] = [
     { link: ['/upload'], title: 'Upload Demo', subtitle: 'Upload demos about HTTP & Firebase.' },
+    { link: undefined, title: 'More', subtitle: 'More demo incoming...' },
+    { link: undefined, title: 'More', subtitle: 'More demo incoming...' },
     { link: undefined, title: 'More', subtitle: 'More demo incoming...' }
   ];
 
