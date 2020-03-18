@@ -3,7 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { MoreComponent } from './more.component';
 
 const routes: Routes = [
-  { path: '', component: MoreComponent, data: { reload: false, title: 'More Demos' } }
+  {
+    path: '',
+    component: MoreComponent,
+    data: {
+      reload: false,
+      title: 'More Demos'
+    }
+  }
 ];
 
 @NgModule({

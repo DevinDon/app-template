@@ -2,6 +2,7 @@
 
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Navigation } from './module/routing/routes';
 import { AppService } from './service/app.service';
 import { destory } from './util/subscription';
 
@@ -13,6 +14,7 @@ import { destory } from './util/subscription';
 export class AppComponent implements OnDestroy {
 
   title = 'Template';
+  navigation: Navigation = { icon: 'ri-home-3-line', link: ['/'], tip: 'Home' };
 
   private subscriptions: Subscription[] = [];
 
@@ -21,7 +23,10 @@ export class AppComponent implements OnDestroy {
   ) {
     this.subscriptions.push(
       app.observableRouterData()
-        .subscribe(data => this.title = data.title)
+        .subscribe(data => {
+          this.title = data.title;
+          this.navigation = data.navigation || { icon: 'ri-home-3-line', link: ['/'], tip: 'Home' };
+        })
     );
   }
 
