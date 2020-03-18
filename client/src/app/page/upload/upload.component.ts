@@ -37,7 +37,9 @@ export class UploadComponent implements OnInit {
       .subscribe(v => {
         if (typeof v === 'object') {
           this.fileio.inProgress = false;
-          this.app.openBar(`Download link: ${v.body.link}`);
+          this.app.openBar('Upload succeeded.', 'Download')
+            .onAction()
+            .subscribe(() => window.open(v.body.link, '_blank'));
         }
       });
   }
@@ -60,9 +62,11 @@ export class UploadComponent implements OnInit {
         failed => {
           console.error('Upload failed: ' + failed);
         },
-        async () => {
+        () => {
           this.fileFirebase.inProgress = false;
-          this.app.openBar(`Download link: ${await ref.getDownloadURL()}`);
+          this.app.openBar('Upload succeeded.', 'Download')
+            .onAction()
+            .subscribe(async () => window.open(await ref.getDownloadURL(), '_blank'));
         }
       );
   }
