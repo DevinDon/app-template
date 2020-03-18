@@ -14,13 +14,18 @@ export class FirebaseService {
   storage: storage.Storage;
 
   constructor() {
-    // demo
-    initializeApp({
+    // firebase config
+    const firebaseConfig = {
       apiKey: 'AIzaSyCzo3Z6Ttv8Q7jCSLdufTbL03IwBJjmDe4',
-      authDomain: 'localhost:4200',
+      authDomain: 'fir-75ace.firebaseapp.com',
+      databaseURL: 'https://fir-75ace.firebaseio.com',
       projectId: 'fir-75ace',
-      storageBucket: 'gs://fir-75ace.appspot.com'
-    });
+      storageBucket: 'fir-75ace.appspot.com',
+      messagingSenderId: '506838920825',
+      appId: '1:506838920825:web:7f33b503e5096aa8b12ea8',
+      measurementId: 'G-304K95P21H'
+    };
+    initializeApp(firebaseConfig);
     this.database = firestore();
     this.storage = storage();
   }
