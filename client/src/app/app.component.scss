@@ -17,3 +17,54 @@
     width: 100vw;
   }
 }
+
+#wave {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #2196f3;
+  overflow: hidden;
+  z-index: -1;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    background-color: #fff;
+    min-width: 300rem;
+    min-height: 300rem;
+    animation-name: rotate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  &::before {
+    top: 23vh;
+    border-radius: 46%;
+    animation-duration: 15s;
+  }
+
+  &::after {
+    top: 19vh;
+    opacity: 0.5;
+    border-radius: 48%;
+    animation-duration: 15s;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, 0) rotateZ(0deg);
+  }
+
+  50% {
+    transform: translate(-50%, -2%) rotateZ(180deg);
+  }
+
+  100% {
+    transform: translate(-50%, 0%) rotateZ(360deg);
+  }
+}
