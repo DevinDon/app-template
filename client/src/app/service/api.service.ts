@@ -63,16 +63,21 @@ export class ApiService {
     return this.http.put<T>(ApiService.API + path, data);
   }
 
-  uploadByHTTP(url: string, form: FormData) {
-    return this.http.post(url, form, { reportProgress: true, observe: 'events' });
+  uploadByHTTP(url: string, form: FormData, method: 'POST' | 'PUT') {
+    switch (method) {
+      case 'PUT':
+        return this.http.put(url, form, { reportProgress: true, observe: 'events' });
+      default:
+        return this.http.post(url, form, { reportProgress: true, observe: 'events' });
+    }
   }
 
-  uploadFile(url: string, file: any) {
+  uploadFile(url: string, file: any, method: 'POST' | 'PUT' = 'POST') {
     const formData = new FormData();
     formData.append('file', file);
     file.inProgress = true;
     file.progress = 0;
-    return this.uploadByHTTP(url, formData)
+    return this.uploadByHTTP(url, formData, method)
       .pipe(
         map(event => {
           switch (event.type) {
