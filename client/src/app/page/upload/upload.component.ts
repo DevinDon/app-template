@@ -33,13 +33,18 @@ export class UploadComponent implements OnInit {
   }
 
   uploadFileToFileio() {
-    this.api.uploadFile('https://file.io/', this.fileio)
+    this.api.uploadFile('https://file.io/', this.fileio, 'POST')
       .subscribe(v => {
         if (typeof v === 'object') {
+          console.log(v);
           this.fileio.inProgress = false;
-          this.app.openBar('Upload succeeded.', 'Download')
-            .onAction()
-            .subscribe(() => window.open(v.body.link, '_blank'));
+          if (v.ok === true) {
+            this.app.openBar('Upload succeeded.', 'Download')
+              .onAction()
+              .subscribe(() => window.open(v.body.link, '_blank'));
+          } else {
+            this.app.openBar('Upload failed.', 'OK');
+          }
         }
       });
   }
