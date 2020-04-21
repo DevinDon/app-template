@@ -15,9 +15,11 @@
     "build": "tsc",
     "debug": "node --inspect-brk -r ts-node/register src/main/index.ts",
     "dev": "cross-env MODE=DEV node -r ts-node/register src/main/index.ts",
+    "pack": "webpack --config webpack.prod.js",
     "prod": "cross-env MODE=PROD node dist",
     "start": "npm run dev",
-    "test": "node node_modules/jasmine/bin/jasmine.js --config=src/test/jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register"
+    "test": "node node_modules/jasmine/bin/jasmine.js --config=src/test/jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register",
+    "watch": "webpack-dev-server --open --config webpack.dev.js"
   },
   "keywords": [
     "typescript",
@@ -27,7 +29,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@rester/core": "0.10.5"
+    "@rester/core": "0.10.9"
   },
   "devDependencies": {
     "@types/jasmine": "3.5.10",
@@ -35,8 +37,11 @@
     "cross-env": "7.0.2",
     "jasmine": "3.5.0",
     "jasmine-console-reporter": "3.1.0",
+    "ts-loader": "7.0.1",
     "ts-node": "8.8.2",
-    "typescript": "3.8.3"
+    "typescript": "3.8.3",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.11"
   },
   "repository": {
     "type": "git",
