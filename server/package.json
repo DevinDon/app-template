@@ -1,16 +1,7 @@
 {
   "name": "app-template.server",
   "version": "0.0.0",
-  "main": "dist/index.js",
-  "directories": {
-    "doc": "docs",
-    "example": "src/demo",
-    "test": "src/test"
-  },
-  "files": [
-    "dist",
-    "docs"
-  ],
+  "private": true,
   "scripts": {
     "build": "tsc",
     "debug": "node --inspect-brk -r ts-node/register src/main/index.ts",
@@ -21,13 +12,6 @@
     "test": "node node_modules/jasmine/bin/jasmine.js --config=src/test/jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register",
     "watch": "webpack-dev-server --open --config webpack.dev.js"
   },
-  "keywords": [
-    "typescript",
-    "project"
-  ],
-  "author": "IInfinity <I.INF@Outlook.com> (https://don.red/)",
-  "license": "MIT",
-  "private": true,
   "dependencies": {
     "@rester/core": "0.10.9"
   },
@@ -43,14 +27,6 @@
     "webpack": "4.43.0",
     "webpack-cli": "3.3.11"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DevinDon/app-template.git"
-  },
-  "bugs": {
-    "url": "https://github.com/DevinDon/app-template/issues"
-  },
-  "homepage": "https://github.com/DevinDon/app-template",
   "optionalDependencies": {
     "mongo": "0.1.0",
     "pg": "8.0.2",
