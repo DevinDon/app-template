@@ -28,7 +28,7 @@
     "webpack-cli": "3.3.11"
   },
   "optionalDependencies": {
-    "mongo": "0.1.0",
+    "mongodb": "3.5.6",
     "pg": "8.0.2",
     "sqlite3": "4.1.1"
   }
