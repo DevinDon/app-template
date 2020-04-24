@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "npm run pack",
+    "clean": "sh -c 'rm -rf dist out'",
     "debug": "node --inspect-brk -r ts-node/register src/main/index.ts",
     "dev": "cross-env MODE=DEV node -r ts-node/register src/main/index.ts",
     "pack": "webpack --config webpack.prod.js",
