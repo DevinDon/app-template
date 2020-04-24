@@ -2,7 +2,7 @@ const path = require('path');
 
 function _externals() {
   let manifest = require('./package.json');
-  let dependencies = manifest.dependencies;
+  let dependencies = manifest.devDependencies;
   let externals = {};
   for (let p in dependencies) {
     externals[p] = 'commonjs ' + p;
@@ -33,13 +33,13 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   node: {
-    console: true,
-    global: true,
-    process: true,
-    Buffer: true,
-    __filename: true,
-    __dirname: true,
-    setImmediate: true
+    console: false,
+    global: false,
+    process: false,
+    Buffer: false,
+    __filename: false,
+    __dirname: false,
+    setImmediate: false
   },
   target: 'node',
   externals,
