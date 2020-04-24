@@ -5,3 +5,5 @@
 *.vscode
 *package-lock.json
 *.db
+*.log
+*.firebase
