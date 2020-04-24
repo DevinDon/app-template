@@ -13,7 +13,7 @@
     "watch": "webpack-dev-server --open --config webpack.dev.js"
   },
   "dependencies": {
-    "@rester/core": "0.10.9"
+    "@rester/core": "0.10.10"
   },
   "devDependencies": {
     "@types/jasmine": "3.5.10",
@@ -30,9 +30,5 @@
     "webpack": "4.43.0",
     "webpack-cli": "3.3.11"
   },
-  "optionalDependencies": {
-    "mongodb": "3.5.6",
-    "pg": "8.0.2",
-    "sqlite3": "4.1.1"
-  }
+  "optionalDependencies": {}
 }
