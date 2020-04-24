@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "tsc",
+    "build": "npm run pack",
     "debug": "node --inspect-brk -r ts-node/register src/main/index.ts",
     "dev": "cross-env MODE=DEV node -r ts-node/register src/main/index.ts",
     "pack": "webpack --config webpack.prod.js",
