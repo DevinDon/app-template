@@ -6,7 +6,7 @@ Web 应用项目模板, 前端 [Angular](https://angular.io) + 后端 [Rester](h
 
 # Demo
 
-See [Angular 8 + Rester](https://demo.don.red/app-template) online demo.
+See [Angular 8 + Rester](https://fir-75ace.web.app) (***Internet*** access required) online demo.
 
 <del>See [Angular 6 + Koa](https://devindon.github.io/app-template) online demo.</del>
 
