@@ -7,7 +7,38 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Lanuch: Current TS File",
+      "cwd": "${workspaceFolder}/server",
+      "args": [
+        "${relativeFile}"
+      ],
+      "runtimeArgs": [
+        "--require=ts-node/register",
+      ],
+      "sourceMaps": true,
+      "protocol": "inspector"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Test: Jasmine",
+      "cwd": "${workspaceFolder}/server",
+      "program": "${cwd}/node_modules/jasmine/bin/jasmine.js",
+      "args": [
+        "--require=ts-node/register",
+        "--config=src/test/jasmine.json",
+        "--reporter=jasmine-console-reporter"
+      ],
+      "sourceMaps": true,
+      "protocol": "inspector",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Debug - Server",
+      "cwd": "${workspaceFolder}/server",
       "runtimeArgs": [
         "-r",
         "ts-node/register"
@@ -16,7 +47,6 @@
         "src/main/index.ts"
       ],
       "sourceMaps": true,
-      "cwd": "${workspaceFolder}/server",
       "protocol": "inspector"
     }
   ]
