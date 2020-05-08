@@ -14,7 +14,7 @@
     "watch": "webpack-dev-server --open --config webpack.dev.js"
   },
   "dependencies": {
-    "@rester/core": "0.10.10"
+    "@rester/core": "0.10.11"
   },
   "devDependencies": {
     "@types/jasmine": "3.5.10",
