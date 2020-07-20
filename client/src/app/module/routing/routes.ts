@@ -25,5 +25,9 @@ export const routes: Route[] = [
   {
     path: 'upload',
     loadChildren: () => import('../../page/upload/upload.module').then(m => m.UploadModule)
+  },
+  {
+    path: 'drag',
+    loadChildren: () => import('../../page/drag/drag.component').then(m => m.DragComponent)
   }
 ];
