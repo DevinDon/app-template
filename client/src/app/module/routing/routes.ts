@@ -28,6 +28,6 @@ export const routes: Route[] = [
   },
   {
     path: 'drag',
-    loadChildren: () => import('../../page/drag/drag.component').then(m => m.DragComponent)
+    loadChildren: () => import('../../page/drag/drag.module').then(m => m.DragModule)
   }
 ];
