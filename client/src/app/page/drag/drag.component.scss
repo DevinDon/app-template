@@ -1,0 +1,20 @@
+.back {
+  width     : 100%;
+  min-height: 100vh;
+
+  >.drag {
+    position        : absolute;
+    margin          : 2rem;
+    background-color: #2f3542;
+    color           : white;
+    text-align      : center;
+    width           : 200px;
+    height          : 100px;
+    line-height     : 100px;
+    border-radius   : 4px;
+    cursor          : pointer;
+    box-shadow      : 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
+}
