@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { fromEvent } from 'rxjs';
-import { concatAll, map, scan, takeUntil, tap, throttleTime } from 'rxjs/operators';
+import { fromEvent, Observable } from 'rxjs';
+import { concatAll, map, scan, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-drag',
@@ -14,24 +14,38 @@ export class DragComponent implements OnInit, AfterViewInit {
 
   constructor() { }
 
+  ngOnInit() { }
+
+  ngAfterViewInit() {
+    const observableMouseUp = fromEvent<MouseEvent>(window, 'mouseup');
+
+    observableMouseUp.subscribe(
+      () => this.createObservable({
+        drag: this.refDrag.nativeElement,
+        back: this.refBack.nativeElement,
+        observableMouseUp
+      })
+    );
+  }
+
   validValue(value: number, max: number, min: number) {
     return Math.min(max, Math.max(min, value))
   }
 
-  ngOnInit() { }
-
-  ngAfterViewInit() {
-    const back = this.refBack.nativeElement;
-    const drag = this.refDrag.nativeElement;
-
+  createObservable(
+    { drag, back, observableMouseUp }: {
+      drag: HTMLDivElement,
+      back: HTMLDivElement,
+      observableMouseUp: Observable<MouseEvent>
+    }
+  ) {
     const MIN_HEIGHT = 0;
     const MIN_WIDTH = 0;
     const MAX_HEIGHT = window.innerHeight - 24 * 2 - drag.clientHeight;
     const MAX_WIDTH = window.innerWidth - 24 * 2 - drag.clientWidth;
 
-    const observableMouseDown = fromEvent(drag, 'mousedown');
-    const observableMouseMove = fromEvent(back, 'mousemove');
-    const observableMouseUp = fromEvent(window, 'mouseup');
+    const observableMouseDown = fromEvent<MouseEvent>(drag, 'mousedown');
+    const observableMouseMove = fromEvent<MouseEvent>(back, 'mousemove');
 
     // 1. 通过 mouseDownEvent 触发拖拽
     // 2. 将其映射为 mouseMoveEvent
@@ -40,10 +54,10 @@ export class DragComponent implements OnInit, AfterViewInit {
     // 5. 计算出需要的属性，包括鼠标变动量与元素新坐标
     // 6. 可选，日志查看结果
     // 7. 订阅事件，并修改元素属性
-    observableMouseDown.pipe(
+    const subscription = observableMouseDown.pipe(
       map(() => observableMouseMove.pipe(takeUntil(observableMouseUp))),
       concatAll(),
-      map((event: MouseEvent) => ({ event, x: drag.clientLeft, y: drag.clientLeft })),
+      map(event => ({ event, x: +drag.style.left.slice(0, -2), y: +drag.style.top.slice(0, -2) })),
       scan(
         (previous, current) => ({
           event: current.event,
@@ -51,10 +65,9 @@ export class DragComponent implements OnInit, AfterViewInit {
           y: this.validValue(current.event.clientY - previous.event.clientY + previous.y, MAX_HEIGHT, MIN_HEIGHT)
         })
       )
-    ).subscribe(position => {
-      drag.style.left = position.x + 'px';
-      drag.style.top = position.y + 'px';
-    });
+    ).subscribe(position => (drag.style.left = position.x + 'px') && (drag.style.top = position.y + 'px'));
+
+    observableMouseUp.subscribe(() => subscription.unsubscribe());
   }
 
 }
