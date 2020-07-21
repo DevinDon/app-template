@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { concatAll, map, scan, takeUntil } from 'rxjs/operators';
+import { concatAll, map, scan, takeUntil, tap, throttleTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-drag',
@@ -13,6 +13,10 @@ export class DragComponent implements OnInit, AfterViewInit {
   @ViewChild('drag') refDrag: ElementRef<HTMLDivElement>;
 
   constructor() { }
+
+  validValue(value: number, max: number, min: number) {
+    return Math.min(max, Math.max(min, value))
+  }
 
   ngOnInit() { }
 
@@ -39,23 +43,17 @@ export class DragComponent implements OnInit, AfterViewInit {
     observableMouseDown.pipe(
       map(() => observableMouseMove.pipe(takeUntil(observableMouseUp))),
       concatAll(),
-      map((event: MouseEvent) => ({ event, offset: { x: 0, y: 0 }, result: { x: drag.clientLeft, y: drag.clientLeft } })),
+      map((event: MouseEvent) => ({ event, x: drag.clientLeft, y: drag.clientLeft })),
       scan(
         (previous, current) => ({
           event: current.event,
-          offset: {
-            x: current.event.clientX - previous.event.clientX,
-            y: current.event.clientY - previous.event.clientY
-          },
-          result: {
-            x: current.event.clientX - previous.event.clientX + previous.result.x,
-            y: current.event.clientY - previous.event.clientY + previous.result.y
-          }
+          x: this.validValue(current.event.clientX - previous.event.clientX + previous.x, MAX_WIDTH, MIN_WIDTH),
+          y: this.validValue(current.event.clientY - previous.event.clientY + previous.y, MAX_HEIGHT, MIN_HEIGHT)
         })
       )
     ).subscribe(position => {
-      drag.style.left = Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, position.result.x)) + 'px';
-      drag.style.top = Math.min(MAX_HEIGHT, Math.max(MIN_HEIGHT, position.result.y)) + 'px';
+      drag.style.left = position.x + 'px';
+      drag.style.top = position.y + 'px';
     });
   }
 
