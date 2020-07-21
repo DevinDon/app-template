@@ -19,15 +19,15 @@ export class AppRouteReuseStrategy implements RouteReuseStrategy {
   }
 
   store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle): void {
-    this.cache.set(route.routeConfig.path, handle);
+    this.cache.set(route.routeConfig?.path ?? '', handle);
   }
 
   shouldAttach(route: ActivatedRouteSnapshot): boolean {
-    return this.cache.has(route.routeConfig.path);
+    return this.cache.has(route.routeConfig?.path ?? '');
   }
 
   retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle {
-    return this.cache.get(route.routeConfig.path);
+    return this.cache.get(route.routeConfig?.path ?? '')!;
   }
 
   shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {

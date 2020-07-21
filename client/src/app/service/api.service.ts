@@ -82,10 +82,13 @@ export class ApiService {
         map(event => {
           switch (event.type) {
             case HttpEventType.UploadProgress:
-              file.progress = event.loaded / event.total * 100;
+              file.progress = event.loaded / (event.total ?? 1) * 100;
+              return true;
               break;
             case HttpEventType.Response:
               return event;
+            default:
+              return false;
           }
         }),
         catchError(error => {
