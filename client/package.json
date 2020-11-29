@@ -8,11 +8,12 @@
     "preview": "ng serve --host 0.0.0.0 --port 4200 --disable-host-check",
     "build": "ng build --prod",
     "build:demo": "ng build --prod --base-href=/demo/",
-    "build:docker": "npm run build && docker build -t registry.don.red/app-template-client . && docker push registry.don.red/app-template-client",
+    "build:docker": "bash script/build.sh",
     "deploy": "firebase deploy",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "z": "echo $npm_package_name"
   },
   "dependencies": {
     "@angular/animations": "^9.1.12",
