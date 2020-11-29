@@ -1,5 +1,4 @@
 #!/bin/bash
-npm run build
 cd dist
 pwd
 tee > ./Dockerfile <<-'EOF'
