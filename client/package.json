@@ -1,5 +1,5 @@
 {
-  "name": "app-template.client",
+  "name": "app-template-client",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -8,6 +8,7 @@
     "preview": "ng serve --host 0.0.0.0 --port 4200 --disable-host-check",
     "build": "ng build --prod",
     "build:demo": "ng build --prod --base-href=/demo/",
+    "build:docker": "npm run build && docker build -t registry.don.red/app-template-client . && docker push registry.don.red/app-template-client",
     "deploy": "firebase deploy",
     "test": "ng test",
     "lint": "ng lint",
